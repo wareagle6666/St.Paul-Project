@@ -37,6 +37,7 @@
 
         // Add binding member to AppViewModel (for example, app.home);
         self[options.bindingMemberName] = ko.computed(function () {
+            var test = dataModel.getAccessToken();
             if (!dataModel.getAccessToken()) {
                 // The following code looks for a fragment in the URL to get the access token which will be
                 // used to call the protected Web API resource
@@ -48,7 +49,7 @@
                     dataModel.setAccessToken(fragment.access_token);
                 } else {
                     // no token - so bounce to Authorize endpoint in AccountController to sign in or register
-                    window.location = "/Account/Authorize?client_id=web&response_type=token&state=" + encodeURIComponent(window.location.hash);
+                   // window.location = "/Account/Authorize?client_id=web&response_type=token&state=" + encodeURIComponent(window.location.hash);
                 }
             }
 

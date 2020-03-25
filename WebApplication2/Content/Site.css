@@ -22,10 +22,21 @@ select,
 textarea {
     max-width: 280px;
 }
+.iconimage {
+    align-content: flex-end;
+    width: 7%;
+    max-height: 62px;
+    float: left;
+}
 
 /* Set padding to display errors that occur during databinding */
 .padding-error {
     padding-top: 20px;
+}
+iframe {
+    height:100%;
+    width:100%;
+
 }
 
 @media only screen and (max-width: 767px) {
