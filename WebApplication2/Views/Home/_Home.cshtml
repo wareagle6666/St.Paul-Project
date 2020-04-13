@@ -1,32 +1,37 @@
 ﻿<!-- ko with: home -->
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Your information</h2>
-        <p>This section shows how you can call ASP.NET Web API to get the user details.</p>
-        <p data-bind="text: myHometown"></p>
-       
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=273732">Learn more &raquo;</a></p>
+    
+    <div class="col-md-6 paypal">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="UJM2VHZULXGZA" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+        </form>
     </div>
 
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET Single Page Application (SPA) helps you build applications that include significant client-side interactions using HTML, CSS, and JavaScript.
-            It's now easier than ever before to getting started writing highly interactive web applications.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=273732">Learn more &raquo;</a></p>
-    </div>
+    @*<div class="col-md-4 streaming">
+        <form  asp-action="Index" asp-controller="OurPriest" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="image" src="~/Content/Images/stream.png" width="147" height="47" />
+            <img alt="facebook" border="0" src="~/Content/Images/facebook.jpg" width="1" height="1" />
+        </form>
+    </div>*@
 
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-6 facebook">
+        <form action="http://www.facebook.com/groups/199485506854969/" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="image" src="~/Content/Images/facebook2.jpg" width="147" height="47" />
+            <img alt="facebook" border="0" src="~/Content/Images/facebook.jpg" width="1" height="1" />
+        </form>
     </div>
 </div>
+
+    <div class="col-lg-12">
+        <iframe class="tempvideo" src="https://www.youtube.com/embed/live_stream?channel=UCJ4JXq5FoWke8LZ6BnRsbrQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+
 
 <!-- /ko -->

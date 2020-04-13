@@ -217,9 +217,21 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\ChurchBoardController.cs" />
+    <Compile Include="Controllers\ChurchFFController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
+    <Compile Include="Controllers\DEACONSController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntroToChurchController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\API\MeController.cs" />
+    <Compile Include="Controllers\MinistriesController.cs" />
+    <Compile Include="Controllers\OurFaithController.cs" />
+    <Compile Include="Controllers\OurPriestController.cs" />
+    <Compile Include="Controllers\SundaySchoolClassController.cs" />
+    <Compile Include="Controllers\SundaySchoolLibraryController.cs" />
+    <Compile Include="Controllers\VisitinganOrthodoxChurchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,6 +251,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\crossicon.png" />
+    <Content Include="Content\Images\facebook2.jpg" />
+    <Content Include="Content\Images\facebook.jpg" />
+    <Content Include="Content\Images\stream.png" />
     <Content Include="Content\Images\unnamed.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
@@ -321,6 +337,18 @@
     </Content>
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Calendar\Index.cshtml" />
+    <Content Include="Views\SundaySchoolClass\Index.cshtml" />
+    <Content Include="Views\SundaySchoolLibrary\Index.cshtml" />
+    <Content Include="Views\ChurchFF\Index.cshtml" />
+    <Content Include="Views\IntroToChurch\Index.cshtml" />
+    <Content Include="Views\Ministries\Index.cshtml" />
+    <Content Include="Views\ChurchBoard\Index.cshtml" />
+    <Content Include="Views\ContactUs\Index.cshtml" />
+    <Content Include="Views\OurFaith\Index.cshtml" />
+    <Content Include="Views\OurPriest\Index.cshtml" />
+    <Content Include="Views\VisitinganOrthodoxChurch\Index.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\DEACONS\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
