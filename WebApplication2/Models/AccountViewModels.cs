@@ -87,6 +87,9 @@ namespace WebApplication2.Models
 
         [Display(Name = "Role")]
         public string Role { get; set; }
+
+        [Display(Name = "Hometown")]
+        public string Hometown { get; set; }
     }
 
     public class ResetPasswordViewModel
