@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - St.Paul Coptic Orthodox Church</title>
-    <link href="https://lh4.googleusercontent.com/vwD_3wrtNdd3zfH9Gmaz9aq-LtuGCDR5YPh_3p5kI1va3mJotKesMili8NiSR6HjbQr3U1w=w16383" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/Images/unnamed.jpg" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -73,39 +74,41 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us & Resources<b class="caret"></b></a>
                                 <ul class="dropdown-menu multi-level">
                                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
                                     <li>@Html.ActionLink("Our Priest", "Index", "OurPriest", new { area = "" }, null)</li>
+                                    <li>@Html.ActionLink("Our Faith", "Index", "OurFaith", new { area = "" }, null)</li>
+                                    <li>@Html.ActionLink("Ministries", "Index", "Ministries", new { area = "" }, null)</li>
+                                    <li>@Html.ActionLink("Church Board", "Index", "ChurchBoard", new { area = "" }, null)</li>
+                                    <li>@Html.ActionLink("Visiting An Orthodox Church", "Index", "VisitinganOrthodoxChurch", new { area = "" }, null)</li>
                                     <li class="divider"></li>
                                     <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
                                     @*<li class="dropdown-submenu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                             <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">One more separated link</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
                     </ul>
-                </li>*@
+                </li>
+            </ul>
+        </li>*@
                                 </ul>
                             </li>
                         </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
+                        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>*@
                         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
                     </ul>
                 }
@@ -116,7 +119,7 @@
     <div class="container body-content">
         @RenderBody()
         @RenderSection("SPAViews", required: false)
-        <hr />
+        <br />
         &nbsp;
         <br />
         <footer>

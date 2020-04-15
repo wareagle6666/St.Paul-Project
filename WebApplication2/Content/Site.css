@@ -118,6 +118,13 @@ footer {
     font-weight:bold;
     text-decoration:underline;
 }
+.sectionheaderswithred {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    text-decoration: underline;
+    color:red;
+}
 .pheaders {
     font-weight: bold;
 }
@@ -134,10 +141,76 @@ footer {
     margin-right: auto;
     text-transform: uppercase;
 }
+.ourfaith {
+    width: 100%;
+}
+.visitation {
+    font-style:italic;
+    font-weight:bold;
+}
+.Tableclass {
+    width:100%;
+    border:1px solid black;
+}
+    .Tableclass td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+.tableheader {
+    text-align:center;
+}
+.ourpriest {
+    width: 40%;
+    margin-left: auto;
+    margin: auto;
+    display: table;
+    padding-bottom:10px;
+}
+.priesttext {
+    font-size: 20px;
+    margin-top: 10px;
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin: auto;
+}
+.textlink{
+font-weight:bold;
+text-decoration:none;
+
+}
+.boardlist {
+    font-size: 18px;
+}
+.comingsoon {
+    font-size: 50px;
+
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin: auto;
+}
+.alertext {
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin: auto;
+}
+.contactus {
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin: auto;
+    padding-bottom:20px;
+    font-size:20px;
+}
+.contacuslist{
+    padding-top:30px;
+    font-size:30px
+}
 /*
     Override For thirdparty
 */
-
 .logo-plus-button-plus-icon {
     background-image: none !important;
     background-color: transparent !important;
@@ -200,3 +273,253 @@ footer {
             -moz-border-radius: 6px 0 6px 6px;
             border-radius: 6px 0 6px 6px;
         }
+
+/*
+This file collects all the Custom CSS for the various bootstrap components.
+© 2019 Randal Sean Harrison, Ph.D.
+*/
+.panel-default > .panel-heading {
+    background-color: floralwhite !important;
+}
+a:hover, a:focus {
+    text-decoration: none !important;
+    color: red !important;
+}
+
+/* Default alert ------------------------------------------------ */
+.alert-default {
+    background: #e2e3e5;
+    border-color: #d6d8db;
+    color: #383d41;
+}
+
+/* Blockquotes ------------------------------------------------ */
+
+/* Maintain the same size for the anchor element (link) as the cite element */
+cite a {
+    font-size: inherit;
+}
+
+/* De-italicize the cite element */
+.no-italics {
+    font-style: normal;
+}
+
+/* Jumbotrons ------------------------------------------------ */
+
+/* Adds text shadow to make the text inside the jumbotron pop */
+.jumbotron p,
+.jumbotron h1 {
+    text-shadow: 2px 2px 1px black;
+}
+
+/* Adds a top margin to the jumbotron button for better readability */
+.jumbotron .btn {
+    margin-top: 1.5rem;
+}
+
+/* Transparent buttons */
+.btn-secondary-dark {
+    color: #000000;
+    background-color: transparent;
+    border-color: #000000;
+}
+
+.btn-secondary-light {
+    color: #FFFFFF;
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+/* Labels ------------------------------------------------ */
+
+.label-large {
+    font-size: large;
+}
+
+.label-small {
+    font-size: xx-small;
+}
+
+/* Lists ------------------------------------------------ */
+
+/* Add bottom margin to the description lists */
+dd {
+    margin-bottom: 1rem;
+}
+
+/* Set the anchor element to display block */
+.list-group li a {
+    display: block;
+}
+
+/* Symbols ------------------------------------------------ */
+.short-round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+/* Tables ------------------------------------------------ */
+
+/* Set styles for the Steps column */
+.numbered-steps tr td:first-of-type {
+    padding: 3px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+    background: aliceblue;
+    width: 1.5rem;
+    color: #666666;
+    font-size: 1.2rem;
+}
+
+/* Set the font color to gray */
+.gray {
+    color: gray;
+}
+
+/* Remove all borders from table */
+table.table-borderless tr,
+table.table-borderless th,
+table.table-borderless td {
+    border: none !important;
+}
+
+/* Arbitrary styling for the caption and summary */
+caption {
+    font-size: larger;
+    text-align: center;
+    color: inherit;
+}
+
+    caption .summary {
+        font-size: smaller;
+        text-align: center;
+        color: gray;
+    }
+
+/* Accordions ------------------------------------------------ */
+
+/* plus glyph for showing collapsible panels */
+.panel-heading .accordion-plus-toggle:before {
+    font-family: FontAwesome;
+    content: "\02D7";
+    float: right;
+    color: Red;
+}
+
+.panel-heading .accordion-plus-toggle.collapsed:before {
+    content: "\002B";
+    color: red;
+}
+
+/* arrow glyph for showing collapsible panels */
+.panel-heading .accordion-arrow-toggle:before {
+    font-family: FontAwesome;
+    content: "\f078";
+    float: right;
+    color: silver;
+}
+
+.panel-heading .accordion-arrow-toggle.collapsed:before {
+    content: "\f054";
+    color: silver;
+}
+
+/* sets the link to the width of the entire panel title */
+.panel-title > a {
+    display: block;
+}
+
+/* Carousels ------------------------------------------------ */
+
+/* Set the color of the captions explicitly */
+.carousel p,
+.carousel h3 {
+    color: white !important;
+}
+
+/* Space the circular slide indicators out a wee bit */
+.carousel-indicators li,
+carousel-indicators li.active {
+    margin-left: 5px;
+}
+
+/* Code Wells ------------------------------------------------ */
+
+/* Disables the background for alternating line numbers */
+ol.linenums li {
+    background: transparent !important;
+}
+
+/* Panels ------------------------------------------------ */
+
+/* Bold Headers */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold !important;
+}
+
+.example {
+    position: relative;
+    margin: 15px 0 -2px 0;
+    padding: 50px 20px 12px 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    z-index: 10;
+}
+
+    .example:after {
+        content: "Example";
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2px 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        background-color: #ececec;
+        color: #000000 !important;
+        padding: 6px;
+        border-radius: 4px 0 4px 0;
+        font-weight: 400;
+    }
+
+/* Tabs and Pills ------------------------------------------------ */
+
+/* Adds padding around the content inside each tab panel */
+.tab-pane {
+    padding: 1rem;
+}
+
+/* Image Grids ------------------------------------------------ */
+
+/* Adds margin bottom to the images NOT IN panels */
+.image-grid img {
+    margin-bottom: 1rem;
+}
+
+/* Styles for the instruction sets */
+.ap-check {
+    background-color: transparent !important;
+    height: 100%;
+    width: 100%;
+    border-bottom: none;
+}
+
+    .ap-check .panel-title::before {
+        content: "\f1db\00a0\00a0";
+        font-family: "Fontawesome";
+        font-size: 150%;
+    }
+
+.ap-checked .panel-title::before {
+    content: "\f058\00a0\00a0";
+    font-family: "Fontawesome";
+    color: green;
+}
+
+.ap-checked {
+    color: lightgray !important;
+}

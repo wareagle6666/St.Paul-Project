@@ -31,15 +31,19 @@ namespace WebApplication2
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
+            bundles.Add(new ScriptBundle("~/bundles/Scripts").Include(
+                "~/Scripts/fontawesome/all.js"));
+            bundles.Add(new ScriptBundle("~/bundles/Scripts/fontawesome").Include(
+                "~/Scripts/fontawesome/all.js", "~/Scripts/fontawesome/solid.js", "~/Scripts/fontawesome/fontawesome.js"));
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                "~/Scripts/modernizr-*"));
+             "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
-                 "~/Content/Site.css"));
+                 "~/Content/Site.css", "~/Content/fontawesome.css", "~/Content/fontawesome-all.css", "~/Content/solid.css"));
         }
     }
 }
