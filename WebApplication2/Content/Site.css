@@ -208,6 +208,18 @@ text-decoration:none;
     padding-top:30px;
     font-size:30px
 }
+.signup{
+    font-weight:bold;
+    font-size:25px;
+
+}
+.homeimage {
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin: auto;
+    width:100%;
+}
 /*
     Override For thirdparty
 */

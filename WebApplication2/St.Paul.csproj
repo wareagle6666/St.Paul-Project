@@ -278,6 +278,7 @@
     <Content Include="Content\Images\Gallery\image7.jpg" />
     <Content Include="Content\Images\Gallery\image8.jpg" />
     <Content Include="Content\Images\Gallery\image9.jpg" />
+    <Content Include="Content\Images\OurChurch.jpg" />
     <Content Include="Content\Images\ourfaith.jpg" />
     <Content Include="Content\Images\priest.jpg" />
     <Content Include="Content\Images\stream.png" />
