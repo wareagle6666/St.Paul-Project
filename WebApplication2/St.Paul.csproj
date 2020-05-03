@@ -234,6 +234,7 @@
     <Compile Include="Controllers\MinistriesController.cs" />
     <Compile Include="Controllers\OurFaithController.cs" />
     <Compile Include="Controllers\OurPriestController.cs" />
+    <Compile Include="Controllers\StreamingController.cs" />
     <Compile Include="Controllers\SundaySchoolClassController.cs" />
     <Compile Include="Controllers\SundaySchoolLibraryController.cs" />
     <Compile Include="Controllers\VisitinganOrthodoxChurchController.cs" />
@@ -528,6 +529,7 @@
     <Content Include="webfonts\fa-brands-400.woff" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="Views\Streaming\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
