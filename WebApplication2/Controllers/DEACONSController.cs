@@ -14,9 +14,6 @@ namespace WebApplication2.Controllers
         // GET: DEACONS
         public ActionResult Index()
         {
-
-            IList<Users> studentLis = new Users().getusers();
-            ViewData["users"] = studentLis;
             return View();
         }
     }

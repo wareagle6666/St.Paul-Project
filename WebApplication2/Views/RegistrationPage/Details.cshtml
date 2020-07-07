@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="pagesetup">
+    <h1 class="pageheaders">@ViewBag.EventTitle</h1>
+    <h2>Total Reserved Spot(s) are:  @ViewBag.GuestCount </h2>
+    <table class="table">
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Is Deacon?
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    @item.LastName
+
+                </td>
+                <td>
+                    @(@item.isDeacon ? "Yes" : "No")
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+

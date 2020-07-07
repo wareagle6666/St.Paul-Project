@@ -4,11 +4,11 @@
 }
 
 <div class="pagesetup">
-    <h1 class="pageheaders">My Regsitrations</h1>
-
+    <h1 class="pageheaders">Church Liturgy Schedule Registration</h1>
     <p>
-        @Html.ActionLink("Singup for More", "Index", "ChurchEventPages", new { area = "" }, null)
+        test  @User.IsInRole("Priest")
     </p>
+
     <table class="table">
         <tr>
             <th>
@@ -18,7 +18,10 @@
                 Date & Time
             </th>
             <th>
-                Spot(s) You Reserved
+                Total Spots
+            </th>
+            <th>
+                Spots Reserved
             </th>
             <th></th>
         </tr>
@@ -34,12 +37,15 @@
 
                 </td>
                 <td>
-                    @item.GuestCount
-
+                    @item.eventCount
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Index", "EventEditing", new { eventID = item.eventID }, new { eventID = item.eventID }) |
-                    @Html.ActionLink("Delete", "Delete", new { eventID = item.eventID })
+                    @item.eventRSVP
+                </td>
+                <td>
+
+                    @Html.ActionLink("CheckIn Guests", "Edit", new { eventID = item.eventID })
+
                 </td>
             </tr>
         }
@@ -47,3 +53,5 @@
     </table>
 
 </div>
+
+

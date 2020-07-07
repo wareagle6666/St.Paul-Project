@@ -44,13 +44,25 @@ namespace WebApplication2.Models
             var result = _dataProvider.DeleteSingleEvent(userName, eventID);
             return result;
         }
-      
+
+        public List<GuestList> GetGuestListForEvent(string userName, Guid eventID)
+        {
+            var result = _dataProvider.GetGuestListForEvent(userName, eventID);
+            return result;
+        }
+        public List<Events> GetCheckInEvents()
+        {
+            var list = _dataProvider.GetCheckInEvents();
+            return list;
+        }
+
         public Guid eventID { get; set; }
         public string eventName { get; set; }
         public DateTime eventDate { get; set; }
         public int eventCount { get; set; }
         public int eventRSVP { get; set; }
         public bool isLocked { get; set; }
+        public int GuestCount { get; set; }
 
 
     }

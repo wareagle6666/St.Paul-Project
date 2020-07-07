@@ -8,73 +8,43 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
+    [Authorize]
     public class RegistrationPageController : Controller
     {
         // GET: RegistrationPage
         public ActionResult Index()
         {
-            var listOfEvents = new Events().getAllEventsForUser(User.Identity.Name); 
+            Events eventclass = new Events();
+            var listOfEvents = new Events().getAllEventsForUser(User.Identity.Name);
+
+            if(listOfEvents.Count> 0)
+            {
+                foreach (var item in listOfEvents)
+                {
+                    var list = eventclass.GetGuestListForEvent(User.Identity.Name, item.eventID);
+                    item.GuestCount = list.Count;
+                }
+            }
             return View(listOfEvents);
         }
 
         // GET: RegistrationPage/Details/5
         public ActionResult Details(Guid eventID)
         {
-            return View();
+            Events eventclass = new Events();
+
+            var currentevent = eventclass.getSingleEvent(eventID);
+            var currenteventdetailslist = eventclass.GetGuestListForEvent(User.Identity.Name, eventID);
+
+            var stringdate = currentevent.eventDate.ToString("dddd, dd MMMM hh:mm tt");
+
+
+            ViewBag.EventTitle = currentevent.eventName + " " + stringdate;
+            ViewBag.GuestCount = currenteventdetailslist.Count;
+
+
+            return View(currenteventdetailslist);
         }
-
-        // GET: RegistrationPage/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: RegistrationPage/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RegistrationPage/Edit/5
-        public ActionResult Edit(Guid eventID)
-        {
-            return View();
-        }
-
-        // POST: RegistrationPage/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch (Exception e)
-            {
-                ErrorSignal.FromCurrentContext().Raise(e.InnerException);
-                return View();
-            }
-        }
-
-        //// GET: RegistrationPage/Delete/5
-        //public ActionResult Delete(Guid eventID)
-        //{
-        //    Delete(User.Identity.Name, eventID);
-
-        //    return RedirectToAction("Index");
-        //}
 
         //// POST: RegistrationPage/Delete/5
         //[HttpPost]
@@ -88,7 +58,7 @@ namespace WebApplication2.Controllers
             }
             catch (Exception e)
             {
-                ErrorSignal.FromCurrentContext().Raise(e.InnerException);
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }

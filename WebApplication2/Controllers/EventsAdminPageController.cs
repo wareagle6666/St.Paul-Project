@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
+    [Authorize]
     public class EventsAdminPageController : Controller
     {
         // GET: EventsAdminPage
         public ActionResult Index()
         {
-            return View();
+            Events classEvent = new Events();
+
+            var list = classEvent.GetCheckInEvents();
+
+            return View(list);
         }
 
         // GET: EventsAdminPage/Details/5
@@ -43,11 +49,38 @@ namespace WebApplication2.Controllers
         }
 
         // GET: EventsAdminPage/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid eventID)
         {
-            return View();
+            GuestList GuestClass = new GuestList();
+            var list = GuestClass.GetEventGeustList(eventID);
+            Events eventclass = new Events();
+
+            var currentevent = eventclass.getSingleEvent(eventID);
+            var currenteventdetailslist = eventclass.GetGuestListForEvent(User.Identity.Name, eventID);
+
+            var stringdate = currentevent.eventDate.ToString("dddd, dd MMMM hh:mm tt");
+
+
+            ViewBag.EventTitle = currentevent.eventName + " " + stringdate;
+            ViewBag.EventID = eventID;
+
+            return View(list);
         }
 
+        public ActionResult Check(Guid guestID, Guid EventID)
+        {
+            GuestList GuestClass = new GuestList();
+            var list = GuestClass.CheckInGuest(guestID);
+
+            return RedirectToAction("Edit", new { eventID = EventID });
+        }
+        public ActionResult UnCheck(Guid guestID, Guid EventID)
+        {
+            GuestList GuestClass = new GuestList();
+            var list = GuestClass.UnCheckInGuest(guestID);
+
+            return RedirectToAction("Edit", new { eventID = EventID });
+        }
         // POST: EventsAdminPage/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)

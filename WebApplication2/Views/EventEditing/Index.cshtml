@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="pagesetup">
+    <h1 class="pageheaders">@ViewBag.EventTitle</h1>
+    <h2>Total Reserved Spot(s) are:  @ViewBag.GuestCount </h2>
+    <table class="table">
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Is Deacon?
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    @item.LastName
+
+                </td>
+                <td>
+                    @(@item.isDeacon ? "Yes" : "No")
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { GuestID = item.GuestID }) |
+
+                    @Html.ActionLink(
+    "Delete",
+    "Remove",
+    "EventEditing",
+    new { onclick = "return Submit();" , confirm = true, GuestID = item.GuestID, eventID = ViewBag.EventID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <p>
+        @Html.ActionLink("Back to Event", "Index", "RegistrationPage", new { area = "" }, null)
+    </p>
+</div>
+<script type="text/javascript">
+function Submit() {
+        if (confirm("Are you should you want to Delete this person? ")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>

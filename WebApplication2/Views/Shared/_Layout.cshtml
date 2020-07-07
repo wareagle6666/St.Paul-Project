@@ -27,11 +27,74 @@
                 @using Microsoft.AspNet.Identity
                 @if (Request.IsAuthenticated)
                 {
-                    @Html.ActionLink("St.Paul Coptic Orthodox Church", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 <ul class="nav navbar-nav">
+
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>
+                    <li>@Html.ActionLink("Live Streaming", "Index", "Streaming", new { area = "" }, null)</li>
+                    @if (!User.IsInRole("User"))
+                    {
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Panel<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-level">
+                                <li>@Html.ActionLink("Check In Events", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+                                @if (User.IsInRole("Priest"))
+                                {
+                                    <li class="divider"></li>
+                                    <li>@Html.ActionLink("Second link", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+                                }
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-level">
+                                <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Service Registration", "Index", "ChurchEventPages", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("My Registration", "Index", "RegistrationPage", new { area = "" }, null)</li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-level">
+                                <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Service Registration", "Index", "ChurchEventPages", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("My Registration", "Index", "RegistrationPage", new { area = "" }, null)</li>
+                            </ul>
+                        </li>
+                    }
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sunday School<b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-level">
+                            <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us & Resources<b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-level">
+                            <li>@Html.ActionLink("Our Priest", "Index", "OurPriest", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Our Faith", "Index", "OurFaith", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Ministries", "Index", "Ministries", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Church Board", "Index", "ChurchBoard", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Gallery", "Index", "Gallery", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Visiting An Orthodox Church", "Index", "VisitinganOrthodoxChurch", new { area = "" }, null)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
                 </ul>
                     using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                     {
@@ -49,64 +112,42 @@
                 else
                 {
 
-                        <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
 
-                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Live Streaming", "Index", "Streaming", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
-                            <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sunday School<b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-level">
-                                    <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
-                                    <li class="divider"></li>
-                                    <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule<b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-level">
-                                    <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
-                                    <li class="divider"></li>
-                                    <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
-                                </ul>
-                            </li>
-                            <li>@Html.ActionLink("Gallery", "Index", "Gallery", new { area = "" }, null)</li>
-                            <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us & Resources<b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-level">
-                                    <li>@Html.ActionLink("Our Priest", "Index", "OurPriest", new { area = "" }, null)</li>
-                                    <li>@Html.ActionLink("Our Faith", "Index", "OurFaith", new { area = "" }, null)</li>
-                                    <li>@Html.ActionLink("Ministries", "Index", "Ministries", new { area = "" }, null)</li>
-                                    <li>@Html.ActionLink("Church Board", "Index", "ChurchBoard", new { area = "" }, null)</li>
-                                    <li>@Html.ActionLink("Visiting An Orthodox Church", "Index", "VisitinganOrthodoxChurch", new { area = "" }, null)</li>
-                                    <li class="divider"></li>
-                                    <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
-                                    @*<li class="dropdown-submenu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li class="dropdown-submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">One more separated link</a></li>
-                                    </ul>
-                                </li>
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Live Streaming", "Index", "Streaming", new { area = "" }, null)</li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sunday School<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-level">
+                                <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-level">
+                                <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Gallery", "Index", "Gallery", new { area = "" }, null)</li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us & Resources<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-level">
+                                <li>@Html.ActionLink("Our Priest", "Index", "OurPriest", new { area = "" }, null)</li>
+                                <li>@Html.ActionLink("Our Faith", "Index", "OurFaith", new { area = "" }, null)</li>
+                                <li>@Html.ActionLink("Ministries", "Index", "Ministries", new { area = "" }, null)</li>
+                                <li>@Html.ActionLink("Church Board", "Index", "ChurchBoard", new { area = "" }, null)</li>
+                                <li>@Html.ActionLink("Visiting An Orthodox Church", "Index", "VisitinganOrthodoxChurch", new { area = "" }, null)</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
                             </ul>
                         </li>
                     </ul>
-                </li>*@
-                                </ul>
-                            </li>
-                        </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
                         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>

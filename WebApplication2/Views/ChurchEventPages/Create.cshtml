@@ -5,16 +5,11 @@
 }
 
 <div class="pagesetup">
-    <h1 class="pageheaders"></h1>
+    <h1 class="pageheaders">@ViewBag.EventTitle  </h1>
     @{var count = ViewBag.CurrentCount;}
-    @*@Model.eventName
-        <br />
-        @Model.eventID
-        <br />
-        @Model.eventCount*@
 
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "ChurchEventPages", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "validateForm(event)" }))
     {
         <input id="AddButton" type="button" value="Add Guest" onclick="AddGuest();" />
 
@@ -29,7 +24,7 @@
             </thead>
             <tbody></tbody>
         </table>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit"  />
         <input type="hidden" id="eventID" value="@ViewBag.currentEventID" />
         <input type="hidden" id="totalContacts" value="0" />
     }
@@ -53,6 +48,53 @@
         }
         $("tbody").append('<tr><td><input type="text" name="[' + (tc - 1) + '].FirstName" /></td><td><input type="text" name="[' + (tc - 1) + '].LastName" /></td><td><input type="checkbox" name="[' + (tc - 1) + '].isDeacon" value="true"   /></td><td><input id=' + (tc - 1) + ' type="button" value="Remove Button" onclick="RemoveCell(this);" /><input type="hidden" name="[' + (tc - 1) + '].eventID" value="@ViewBag.currentEventID" /></td></tr>');
     };
+
+    function Submit(event) {
+        var test = event;
+        if (confirm("Are you sure you want to submit ?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function validateForm(event) {
+        event = event || window.event || event.srcElement;
+        var initialMonoReading = event.target[1].value;
+
+        if (initialMonoReading == null || initialMonoReading == undefined || initialMonoReading == "Submit") {
+          
+
+            alert('You need to fill out the form correctly please');
+           
+            event.preventDefault();
+            return false;
+        } else if (event.target.length > 0 ) {
+            var listCount = event.target.length;
+            var loopCount = parseInt(listCount / 5, 10);
+            var indexNumberF = 1;
+            var indexNumberL = 2;
+
+            for (var i = 0; i < loopCount; i++) {
+                if (event.target[indexNumberF].value == "" || event.target[indexNumberF].value == undefined) {
+                    alert('All First Names must be filled out!!!!!');
+
+                    event.preventDefault();
+                    return false;
+                }
+                else if (event.target[indexNumberL].value == "" || event.target[indexNumberL].value == undefined) {
+                    alert('All Last Names must be filled out !!!!');
+
+                    event.preventDefault();
+                    return false;
+                }
+                indexNumberF = indexNumberF + 5;
+                indexNumberL = indexNumberL + 5;
+            }
+        }
+        else {
+            $('#MonoErrorMessage').hide();
+        }
+    }
 
 
     function RemoveCell(r) {

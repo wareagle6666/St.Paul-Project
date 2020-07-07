@@ -174,6 +174,51 @@ namespace WebApplication2.Models
             var Result = ExecuteScalarSpWithDapper<int>("DeleteUserEvent", new { userID, eventID });
             return Result;
         }
+
+        public List<GuestList> GetGuestListForEvent(string userName, Guid eventID)
+        {
+            var userID = GetUserIdByUserName(userName);
+            var list = ExecuteSpWithDapper<GuestList>("GetDetailsForUserEvent", new { userID, eventID }).ToList();
+            return list;
+        }
+
+        public GuestList GetSingleGuestDetails(Guid guestID)
+        {
+            var result = ExecuteScalarSpWithDapper<GuestList>("GetSingleGuestDetails", new { guestID });
+            return result;
+        }
+
+        public int UpdateSingleGuest(GuestList guest)
+        {
+            var Result = ExecuteScalarSpWithDapper<int>("UpdateSingleGuest", new { guest.GuestID, guest.FirstName, guest.LastName, guest.isDeacon });
+            return Result;
+        }
+        public int DeleteSingleGuest(Guid guestID)
+        {
+
+            var result = ExecuteScalarSpWithDapper<int>("DeleteSingleGuest", new { guestID });
+            return result;
+        }
+        public List<Events> GetCheckInEvents()
+        {
+            var list = ExecuteSpWithDapper<Events>("GetEventListForCheckin").ToList();
+            return list;
+        }
+        public int CheckInGuest (Guid guestID)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("CheckGuest", new { guestID });
+            return result;
+        }
+        public int UnCheckInGuest(Guid guestID)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("UnCheckGuest", new { guestID });
+            return result;
+        }
+        public List<GuestList> GetGuestFullListForEvent( Guid eventID)
+        {
+            var list = ExecuteSpWithDapper<GuestList>("GetEventGuestList", new { eventID }).ToList();
+            return list;
+        }
     }
 
 }
