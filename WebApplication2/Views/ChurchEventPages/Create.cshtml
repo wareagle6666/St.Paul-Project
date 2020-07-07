@@ -1,0 +1,70 @@
+﻿@model WebApplication2.Models.Events
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="pagesetup">
+    <h1 class="pageheaders"></h1>
+    @{var count = ViewBag.CurrentCount;}
+    @*@Model.eventName
+        <br />
+        @Model.eventID
+        <br />
+        @Model.eventCount*@
+
+
+    @using (Html.BeginForm())
+    {
+        <input id="AddButton" type="button" value="Add Guest" onclick="AddGuest();" />
+
+        <table id="myTable" class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Deacon?</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <input type="submit" value="Submit" />
+        <input type="hidden" id="eventID" value="@ViewBag.currentEventID" />
+        <input type="hidden" id="totalContacts" value="0" />
+    }
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>
+    var value = @ViewBag.CurrentCount;
+    var currentCount = 0;
+
+    function AddGuest() {
+
+        tc = parseInt($("#totalContacts").val());
+        tc = tc + 1;
+        $("#totalContacts").val(tc)
+        currentCount = currentCount + 1;
+        if (currentCount >= value) {
+           // $("#AddButton").hide();
+            $("#AddButton").prop('disabled', true);
+
+        }
+        $("tbody").append('<tr><td><input type="text" name="[' + (tc - 1) + '].FirstName" /></td><td><input type="text" name="[' + (tc - 1) + '].LastName" /></td><td><input type="checkbox" name="[' + (tc - 1) + '].isDeacon" value="true"   /></td><td><input id=' + (tc - 1) + ' type="button" value="Remove Button" onclick="RemoveCell(this);" /><input type="hidden" name="[' + (tc - 1) + '].eventID" value="@ViewBag.currentEventID" /></td></tr>');
+    };
+
+
+    function RemoveCell(r) {
+        var i = r.parentNode.parentNode.rowIndex;
+                   tc = parseInt($("#totalContacts").val());
+            tc = tc - 1;
+            $("#totalContacts").val(tc)
+        currentCount = currentCount - 1;
+        if (currentCount < value) {
+            $("#AddButton").prop('disabled', false);
+        }
+        document.getElementById("myTable").deleteRow(i);
+    };
+
+</script>

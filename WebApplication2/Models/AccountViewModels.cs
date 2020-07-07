@@ -10,7 +10,7 @@ namespace WebApplication2.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
+        [Required]
         [Display(Name = "Hometown")]
         public string Hometown { get; set; }
     }
@@ -87,9 +87,18 @@ namespace WebApplication2.Models
 
         [Display(Name = "Role")]
         public string Role { get; set; }
-
+        [Required]
         [Display(Name = "Hometown")]
         public string Hometown { get; set; }
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

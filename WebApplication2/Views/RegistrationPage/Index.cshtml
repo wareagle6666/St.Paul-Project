@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="pagesetup">
+    <h1 class="pageheaders">My Regsitrations</h1>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                Date & Time
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.eventName
+                </td>
+                <td>
+                    @item.eventDate.ToString("dddd, dd MMMM hh:mm tt")
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { eventID = item.eventID }) |
+                    @Html.ActionLink("Details", "Details", new { eventID = item.eventID }) |
+                    @Html.ActionLink("Delete", "Delete", new { eventID = item.eventID })
+
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.userID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.userID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.userID })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
