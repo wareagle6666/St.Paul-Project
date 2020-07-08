@@ -37,11 +37,7 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { GuestID = item.GuestID }) |
 
-                    @Html.ActionLink(
-    "Delete",
-    "Remove",
-    "EventEditing",
-    new { onclick = "return Submit();" , confirm = true, GuestID = item.GuestID, eventID = ViewBag.EventID })
+                    @Html.ActionLink("Delete", "Remove", "EventEditing", new { onclick = "return Submit();" , confirm = true, GuestID = item.GuestID, eventID = ViewBag.EventID }, null)
                 </td>
             </tr>
         }
