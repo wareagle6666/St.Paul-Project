@@ -219,6 +219,29 @@ namespace WebApplication2.Models
             var list = ExecuteSpWithDapper<GuestList>("GetEventGuestList", new { eventID }).ToList();
             return list;
         }
+        public int SaveImage(Image image, int isHome)
+        {
+            var result = 0;
+            var Home = 0;
+            if (isHome == 1) {
+                result = ExecuteScalarSpWithDapper<int>("SaveGalleryImages", new { image.ImageTitle, image.ImageData, HomeImage = isHome });
+            }
+            else
+            {
+                result = ExecuteScalarSpWithDapper<int>("SaveGalleryImages", new { image.ImageTitle, image.ImageData, HomeImage = Home });
+            }
+            return result;
+        }
+        public List<Image> GetGalleryImages()
+        {
+            var list = ExecuteSpWithDapper<Image>("GetGalleryImages").ToList();
+            return list;
+        }
+        public Image GetHomeImage()
+        {
+            var image = ExecuteScalarSpWithDapper<Image>("GetHomePageImage");
+            return image;
+        }
     }
 
 }

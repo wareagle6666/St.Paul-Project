@@ -227,6 +227,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddGalleryImagesController.cs" />
     <Compile Include="Controllers\API\UsersController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChurchBoardController.cs" />
@@ -256,6 +257,7 @@
     <Compile Include="Models\Events.cs" />
     <Compile Include="Models\GuestList.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Interface\IDataProvider.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
@@ -284,20 +286,6 @@
     <Content Include="Content\Images\crossicon.png" />
     <Content Include="Content\Images\facebook2.jpg" />
     <Content Include="Content\Images\facebook.jpg" />
-    <Content Include="Content\Images\Gallery\image1.jpg" />
-    <Content Include="Content\Images\Gallery\image10.jpg" />
-    <Content Include="Content\Images\Gallery\image11.jpg" />
-    <Content Include="Content\Images\Gallery\image12.jpg" />
-    <Content Include="Content\Images\Gallery\image13.jpg" />
-    <Content Include="Content\Images\Gallery\image2.jpg" />
-    <Content Include="Content\Images\Gallery\image3.jpg" />
-    <Content Include="Content\Images\Gallery\image4.jpg" />
-    <Content Include="Content\Images\Gallery\image5.jpg" />
-    <Content Include="Content\Images\Gallery\image6.jpg" />
-    <Content Include="Content\Images\Gallery\image7.jpg" />
-    <Content Include="Content\Images\Gallery\image8.jpg" />
-    <Content Include="Content\Images\Gallery\image9.jpg" />
-    <Content Include="Content\Images\OurChurch.jpg" />
     <Content Include="Content\Images\ourfaith.jpg" />
     <Content Include="Content\Images\priest.jpg" />
     <Content Include="Content\Images\stream.png" />
@@ -558,9 +546,11 @@
     <Content Include="Views\EventEditing\Edit.cshtml" />
     <Content Include="Views\EventsAdminPage\Index.cshtml" />
     <Content Include="Views\EventsAdminPage\Edit.cshtml" />
+    <Content Include="Views\AddGalleryImages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Gallery\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

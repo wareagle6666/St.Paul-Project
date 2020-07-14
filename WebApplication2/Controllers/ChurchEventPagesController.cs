@@ -13,7 +13,6 @@ namespace WebApplication2.Controllers
     [Authorize]
     public class ChurchEventPagesController : Controller
     {
-        private Guid currentEventID;
         private EmailService emailService = new EmailService();
         // GET: ChurchEventPages
         public ActionResult Index()
@@ -32,7 +31,7 @@ namespace WebApplication2.Controllers
             var stringdate = eventDetails.eventDate.ToString("dddd, dd MMMM hh:mm tt");
             ViewBag.EventTitle = eventDetails.eventName + " " + stringdate;
 
-            ViewBag.CurrentCount = eventDetails.eventRSVP;
+            ViewBag.CurrentCount = eventDetails.eventCount - eventDetails.eventRSVP;
             ViewBag.currentEventID = eventID;
             return View(eventDetails);
         }
@@ -68,29 +67,6 @@ namespace WebApplication2.Controllers
                 ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
-        }
-
-        // POST: ChurchEventPages/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch (Exception e)
-            {
-                ErrorSignal.FromCurrentContext().Raise(e);
-                return View();
-            }
-        }
-
-        // GET: ChurchEventPages/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
         }
 
     }

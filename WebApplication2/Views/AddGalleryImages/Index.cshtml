@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="pagesetup">
+    <h1 class="pageheaders">Upload Images </h1>
+    <div>
+        <h2> Upload Multi Images</h2>
+        <form action="UploadImage"
+              controller="AddGalleryImages"
+              method="post"
+              enctype="multipart/form-data">
+            <input type="file" id="file1"
+                   name="file1"
+                   multiple="multiple" />
+            <button type="submit">Upload File(s)</button>
+        </form>
+    </div>
+    <div>
+        <h2> Upload Single Images</h2>
+        <form action="UploadSingeImage"
+              controller="AddGalleryImages"
+              method="post"
+              enctype="multipart/form-data">
+            <input type="file" id="file1"
+                   name="file1"
+                   multiple="multiple" />
+            <button type="submit">Upload File(s)</button>
+        </form>
+    </div>
+
+</div>
+
+

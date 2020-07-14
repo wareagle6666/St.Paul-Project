@@ -46,7 +46,7 @@
             $("#AddButton").prop('disabled', true);
 
         }
-        $("tbody").append('<tr><td><input type="text" name="[' + (tc - 1) + '].FirstName" /></td><td><input type="text" name="[' + (tc - 1) + '].LastName" /></td><td><input type="checkbox" name="[' + (tc - 1) + '].isDeacon" value="true"   /></td><td><input id=' + (tc - 1) + ' type="button" value="Remove Button" onclick="RemoveCell(this);" /><input type="hidden" name="[' + (tc - 1) + '].eventID" value="@ViewBag.currentEventID" /></td></tr>');
+        $("tbody").append('<tr><td><input type="text" name="[' + (tc - 1) + '].FirstName" /></td><td><input type="text" name="[' + (tc - 1) + '].LastName" /></td><td><input type="checkbox" name="[' + (tc - 1) + '].isDeacon" value="true"   /></td><td><input id=' + (tc - 1) + ' type="button" value="Remove Guest" onclick="RemoveCell(this);" /><input type="hidden" name="[' + (tc - 1) + '].eventID" value="@ViewBag.currentEventID" /></td></tr>');
     };
 
     function Submit(event) {

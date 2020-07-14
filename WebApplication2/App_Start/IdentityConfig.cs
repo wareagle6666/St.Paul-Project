@@ -8,6 +8,7 @@ using System.Net.Mime;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using Elmah;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -19,65 +20,74 @@ namespace WebApplication2
 {
     public class EmailService : IIdentityMessageService
     {
+
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            #region formatter
-            string text = string.Format("Please click on this link to {0}: {1}", message.Subject, message.Body);
-            string html = "Please confirm your account by clicking this link: <a href=\"" + message.Body + "\">link</a><br/>";
+            try {
+                // Plug in your email service here to send an email.
+                #region formatter
+                string text = string.Format("Please click on this link to {0}: {1}", message.Subject, message.Body);
+                string html = "Please confirm your account by clicking this link: <a href=\"" + message.Body + "\">link</a><br/>";
 
-            html += HttpUtility.HtmlEncode(@"Or click on the copy the following link on the browser:" + message.Body);
-            #endregion
+                html += HttpUtility.HtmlEncode(@"Or click on the copy the following link on the browser:" + message.Body);
+                #endregion
 
-            using (MailMessage mail = new MailMessage())
-            {
-                mail.From = new MailAddress("no-reply@gmail.com");
-                mail.To.Add(message.Destination);
-                mail.Subject = message.Subject;
-                mail.Body = message.Body;
-                mail.IsBodyHtml = true;
-
-                using (SmtpClient smtp = new SmtpClient())
+                using (MailMessage mail = new MailMessage())
                 {
-                    smtp.UseDefaultCredentials = false;
-                    smtp.EnableSsl = true;
-                    smtp.Credentials = new NetworkCredential("stpaulcopticorthodoxchurchatl@gmail.com", "Mathew0425");
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587; 
-                    smtp.Send(mail);
+                    mail.From = new MailAddress("St-PaulChurch@stpaulatlanta.org");
+                    mail.To.Add(message.Destination);
+                    mail.Subject = message.Subject;
+                    mail.Body = message.Body;
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient())
+                    {
+                        smtp.UseDefaultCredentials = false;
+                        smtp.Credentials = new NetworkCredential("St-PaulChurch@stpaulatlanta.org", "Emad0425@");
+                        smtp.Host = "mail.stpaulatlanta.org";
+                        smtp.Port = 25;
+                        smtp.EnableSsl = false;
+                        smtp.Send(mail);
+                    }
                 }
+                return Task.FromResult(0);
             }
-            return Task.FromResult(0);
+            catch (Exception e)
+            {
+                ErrorSignal.FromCurrentContext().Raise(e);
+                return Task.FromResult(1);
+            }
+
         }
         public Task EventEmail(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            #region formatter
-            string text = string.Format("Please click on this link to {0}: {1}", message.Subject, message.Body);
-            string html = "Please confirm your account by clicking this link: <a href=\"" + message.Body + "\">link</a><br/>";
+            try {
 
-            html += HttpUtility.HtmlEncode(@"Or click on the copy the following link on the browser:" + message.Body);
-            #endregion
-
-            using (MailMessage mail = new MailMessage())
-            {
-                mail.From = new MailAddress("no-reply@gmail.com");
-                mail.To.Add(message.Destination);
-                mail.Subject = message.Subject;
-                mail.Body = message.Body;
-                mail.IsBodyHtml = true;
-
-                using (SmtpClient smtp = new SmtpClient())
+                using (MailMessage mail = new MailMessage())
                 {
-                    smtp.UseDefaultCredentials = false;
-                    smtp.EnableSsl = true;
-                    smtp.Credentials = new NetworkCredential("stpaulcopticorthodoxchurchatl@gmail.com", "Mathew0425");
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.Send(mail);
+                    mail.From = new MailAddress("St-PaulChurch@stpaulatlanta.org");
+                    mail.To.Add(message.Destination);
+                    mail.Subject = message.Subject;
+                    mail.Body = message.Body;
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient())
+                    {
+                        smtp.UseDefaultCredentials = false;
+                        smtp.Credentials = new NetworkCredential("St-PaulChurch@stpaulatlanta.org", "Emad0425@");
+                        smtp.Host = "mail.stpaulatlanta.org";
+                        smtp.Port = 25;
+                        smtp.EnableSsl = false;
+                        smtp.Send(mail);
+                    }
                 }
+                return Task.FromResult(0);
             }
-            return Task.FromResult(0);
+            catch (Exception e)
+            {
+                ErrorSignal.FromCurrentContext().Raise(e);
+                return Task.FromResult(1);
+            }
         }
     }
 

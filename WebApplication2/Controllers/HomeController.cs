@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
@@ -10,7 +11,10 @@ namespace WebApplication2.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var imageList = new Image();
+
+            var image = imageList.GetHomeImage();
+            return View(image);
         }
     }
 }

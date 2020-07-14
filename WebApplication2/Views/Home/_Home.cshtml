@@ -10,14 +10,6 @@
         </form>
     </div>
 
-    @*<div class="col-md-4 streaming">
-            <form  asp-action="Index" asp-controller="OurPriest" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="image" src="~/Content/Images/stream.png" width="147" height="47" />
-                <img alt="facebook" border="0" src="~/Content/Images/facebook.jpg" width="1" height="1" />
-            </form>
-        </div>*@
-
     <div class="col-md-6 facebook">
         <form action="https://www.facebook.com/groups/199485506854969/" method="post" target="_blank">
             <input type="hidden" name="cmd" value="_s-xclick" />
@@ -26,21 +18,14 @@
         </form>
     </div>
 </div>
-<div class="alert alert-info alert-dismissible" role="alert">
 
-    <div class="alertext">
-        <P class="signup">
-            Sign up for the Holy Litrugy
-        </P>
-        <a href="https://signup.com/go/kpRoDbT" target="_blank"><img src="https://signup.com/imgs/icons/signup-choose-a-spot-btn.png" alt="Click to View Volunteer Opportunities on SignUp.com"></a>
-    </div>
 
-</div>
-@*<div class="col-lg-12 embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/live_stream?channel=UCJ4JXq5FoWke8LZ6BnRsbrQ" frameborder="0" allowfullscreen></iframe>
-    </div>*@
 <div class="col-lg-12 ">
-    <img class="homeimage" src="~/Content/Images/OurChurch.jpg" />
+    @{ 
+           var getimage = Convert.ToBase64String(Model.ImageData);
+           var picture = string.Format("data:image/jpeg;base64,{0}", getimage);
+           <img src="@Url.Content(picture)" style="width:100%;" />
+     }
 </div>
 
 
