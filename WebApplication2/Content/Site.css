@@ -115,6 +115,9 @@ footer {
         margin-top: 20px;
 
     }
+    .title {
+        font-size: 18.5PX;
+    }
 }
 .sectionheaders {
     padding-top:5px;
