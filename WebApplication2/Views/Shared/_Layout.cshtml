@@ -28,10 +28,15 @@
                 @if (Request.IsAuthenticated)
                 {
                 <ul class="nav navbar-nav">
-
+                    @if (!User.IsInRole("DoorCheckin")) {
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Live Streaming", "Index", "Streaming", new { area = "" }, null)</li>
-                    @if (!User.IsInRole("User"))
+                    }
+                    @if (User.IsInRole("DoorCheckin"))
+                    {
+                        <li>@Html.ActionLink("Check In Events", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+                    }
+                    @if (!User.IsInRole("User") && !User.IsInRole("DoorCheckin"))
                     {
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Panel<b class="caret"></b></a>
@@ -65,6 +70,10 @@
                             </ul>
                         </li>
                     }
+                    else if(User.IsInRole("DoorCheckin"))
+                    {
+
+                    }
                     else
                     {
                         <li>
@@ -80,6 +89,7 @@
                             </ul>
                         </li>
                     }
+                    @if (!User.IsInRole("DoorCheckin")) {
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sunday School<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-level">
@@ -101,6 +111,7 @@
                             <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
                         </ul>
                     </li>
+                    }
                 </ul>
                     using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                     {

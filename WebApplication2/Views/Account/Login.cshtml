@@ -11,8 +11,7 @@
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <h4>Use the account that was provided to you. If you don't have one contact Fr.Steven to assing you one</h4>
-                    <h4>NOTE: Accounts are only for board members and servants. </h4>
+                <h4>NOTE: <br /><br />Please make sure you create an account first. <br />If you don't have an account @Html.ActionLink("Click Here", "Register", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "registerLink" })</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
