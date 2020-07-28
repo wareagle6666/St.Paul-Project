@@ -197,6 +197,45 @@ text-decoration:none;
     margin-left: auto;
     margin: auto;
 }
+.greenlink{
+    color:green;
+    font-weight:bold;
+}
+a.greenlink {
+    color: green;
+}
+
+a.greenlink {
+    color: green;
+}
+
+a.greenlink {
+    color: green;
+}
+
+a.greenlink {
+    color: green;
+}
+.redlink {
+    color: red;
+    font-weight: bold;
+}
+
+a.redlink {
+    color: red;
+}
+
+a.redlink {
+    color: red;
+}
+
+a.redlink {
+    color: red;
+}
+
+a.redlink {
+    color: red;
+}
 .alertext {
     display: table;
     text-align: center;
@@ -226,6 +265,10 @@ text-decoration:none;
     margin-left: auto;
     margin: auto;
     width:100%;
+}
+.listheader{
+    color:red;
+    font-weight:bold;
 }
 /*
     Override For thirdparty

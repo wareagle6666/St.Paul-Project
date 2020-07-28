@@ -204,6 +204,11 @@ namespace WebApplication2.Models
             var list = ExecuteSpWithDapper<Events>("GetEventListForCheckin").ToList();
             return list;
         }
+        public List<Events> GetAllEventsForAdmins()
+        {
+            var list = ExecuteSpWithDapper<Events>("GetallEventsforAdmins").ToList();
+            return list;
+        }
         public int CheckInGuest (Guid guestID)
         {
             var result = ExecuteScalarSpWithDapper<int>("CheckGuest", new { guestID });

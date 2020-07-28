@@ -55,6 +55,11 @@ namespace WebApplication2.Models
             var list = _dataProvider.GetCheckInEvents();
             return list;
         }
+        public List<Events> GetAllEventsForAdmins()
+        {
+            var list = _dataProvider.GetAllEventsForAdmins();
+            return list;
+        }
 
         public Guid eventID { get; set; }
         public string eventName { get; set; }

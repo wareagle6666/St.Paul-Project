@@ -63,5 +63,6 @@ namespace WebApplication2.Models
         public DateTime timeStamp { get; set; }
         public bool isCheckedIn { get; set; }
         public DateTime CheckIntimeStamp { get; set; }
+        public string EventOwner { get; set; }
     }
 }

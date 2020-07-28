@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Edit";
+    
 }
 
 <div class="pagesetup">
@@ -17,11 +18,13 @@
             <th>
                 Is Deacon?
             </th>
+            <th>Group</th>
             <th></th>
 
         </tr>
+        <tr></tr>
 
-        @foreach (var item in Model)
+        @*@foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -37,14 +40,130 @@
                 <td>
                     @if (!item.isCheckedIn)
                     {
-                        @Html.ActionLink("CheckIn", "Check", new { guestID = item.GuestID, EventID = ViewBag.EventID })
+
+                        @Html.ActionLink("CheckIn", "Check", new { guestID = item.GuestID, EventID = ViewBag.EventID }, new { @class = "redlink" })
                     }
                     else
                     {
-                        @Html.ActionLink("UnCheck", "UnCheck", new { guestID = item.GuestID, EventID = ViewBag.EventID })
+                        @Html.ActionLink("UnCheck", "UnCheck", new { guestID = item.GuestID, EventID = ViewBag.EventID }, new { @class = "greenlink" })
                     }
                 </td>
             </tr>
+        }*@
+
+
+
+        @foreach (var items in Model)
+        {
+            var count = 0;
+
+
+
+            foreach (var item in items)
+            {
+                if (count == 0)
+                {
+                    <tr class="listheader">
+                        <td>
+                            @item.EventOwner Group
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    count++;
+                    if (count == 1)
+                    {
+                        <tr>
+                            <td>
+                                @item.FirstName
+                            </td>
+                            <td>
+                                @item.LastName
+
+                            </td>
+                            <td>
+                                @(@item.isDeacon ? "Yes" : "No")
+                            </td>
+                            <td>@count</td>
+                            <td>
+                                @if (User.IsInRole("SuperAdmin") || User.IsInRole("DoorCheckin"))
+                                {
+                                    if (!item.isCheckedIn)
+                                    {
+
+                                        @Html.ActionLink("CheckIn", "Check", new { guestID = item.GuestID, EventID = ViewBag.EventID }, new { @class = "redlink" })
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("UnCheck", "UnCheck", new { guestID = item.GuestID, EventID = ViewBag.EventID }, new { @class = "greenlink" })
+                                    }
+                                }
+                                else
+                                {
+                                    if (!item.isCheckedIn)
+                                    {
+
+                                        <p class ="redlink">Not Checked</p>
+                                    }
+                                    else
+                                    {
+                                        <p class ="greenlink" >Checked In</p>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            @item.FirstName
+                        </td>
+                        <td>
+                            @item.LastName
+
+                        </td>
+                        <td>
+                            @(@item.isDeacon ? "Yes" : "No")
+                        </td>
+                        <td>@count</td>
+                        <td>
+                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("DoorCheckin"))
+                            {
+                                if (!item.isCheckedIn)
+                                {
+
+                                    @Html.ActionLink("CheckIn", "Check", new { guestID = item.GuestID, EventID = ViewBag.EventID }, new { @class = "redlink" })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("UnCheck", "UnCheck", new { guestID = item.GuestID, EventID = ViewBag.EventID }, new { @class = "greenlink" })
+                                }
+                            }
+                            else
+                            {
+                                if (!item.isCheckedIn)
+                                {
+
+                                    <p class="redlink">Not Checked</p>
+                                }
+                                else
+                                {
+                                    <p class="greenlink">Checked In</p>
+                                }
+                            }
+
+                        </td>
+                    </tr>
+                    count++;
+                }
+            }
+
         }
     </table>
     <p>

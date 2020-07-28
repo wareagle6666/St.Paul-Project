@@ -41,17 +41,32 @@
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Panel<b class="caret"></b></a>
                             <ul class="dropdown-menu multi-level">
-                                <li>@Html.ActionLink("Check In Events", "Index", "EventsAdminPage", new { area = "" }, null)</li>
-                                @if (User.IsInRole("Priest"))
+                                @if (User.IsInRole("Priest") || User.IsInRole("SuperAdmin"))
                                 {
-                                    <li class="divider"></li>
-                                    <li>@Html.ActionLink("Second link", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+
+                                    <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
                                 }
                                 @if (User.IsInRole("SuperAdmin"))
                                 {
                                     <li class="divider"></li>
                                     <li>@Html.ActionLink("Add Images", "Index", "AddGalleryImages", new { area = "" }, null)</li>
                                     <li>@Html.ActionLink("Add Images", "Index", "AddGalleryImages", new { area = "" }, null)</li>
+                                }
+                                @if (User.IsInRole("Schedular") || User.IsInRole("SuperAdmin"))
+                                {
+                                    <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+                                }
+                                @if (User.IsInRole("Board") || User.IsInRole("SuperAdmin"))
+                                {
+                                    <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+                                    if (User.IsInRole("Treasury") || User.IsInRole("SuperAdmin"))
+                                    {
+
+                                    }
+                                }
+                                @if (User.IsInRole("Servant") || User.IsInRole("SuperAdmin"))
+                                {
+
                                 }
                             </ul>
                         </li>

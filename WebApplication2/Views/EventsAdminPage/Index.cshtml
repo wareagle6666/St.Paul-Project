@@ -43,8 +43,14 @@
                     @item.eventRSVP
                 </td>
                 <td>
-
-                    @Html.ActionLink("CheckIn Guests", "Edit", new { eventID = item.eventID })
+                    @if (User.IsInRole("SuperAdmin")|| User.IsInRole("DoorCheckin"))
+                    {
+                        @Html.ActionLink("CheckIn Guests", "Edit", new { eventID = item.eventID })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("View Guest List", "Edit", new { eventID = item.eventID })
+                    }
 
                 </td>
             </tr>

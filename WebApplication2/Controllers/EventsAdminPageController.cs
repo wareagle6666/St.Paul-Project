@@ -14,9 +14,17 @@ namespace WebApplication2.Controllers
         public ActionResult Index()
         {
             Events classEvent = new Events();
+             var list = new List<Events>();
 
-            var list = classEvent.GetCheckInEvents();
+            if (User.IsInRole("DoorCheckin"))
+            {
 
+                list = classEvent.GetCheckInEvents();
+            }
+            else
+            {
+                list = classEvent.GetAllEventsForAdmins();
+            }
             return View(list);
         }
 
@@ -52,19 +60,19 @@ namespace WebApplication2.Controllers
         public ActionResult Edit(Guid eventID)
         {
             GuestList GuestClass = new GuestList();
-            var list = GuestClass.GetEventGeustList(eventID);
             Events eventclass = new Events();
 
+            var list = GuestClass.GetEventGeustList(eventID);        
+    
             var currentevent = eventclass.getSingleEvent(eventID);
             var currenteventdetailslist = eventclass.GetGuestListForEvent(User.Identity.Name, eventID);
 
             var stringdate = currentevent.eventDate.ToString("dddd, dd MMMM hh:mm tt");
-
-
             ViewBag.EventTitle = currentevent.eventName + " " + stringdate;
             ViewBag.EventID = eventID;
+            var groupedlist = list.GroupBy(GuestList => GuestList.UserID);
 
-            return View(list);
+            return View(groupedlist);
         }
 
         public ActionResult Check(Guid guestID, Guid EventID)
