@@ -235,6 +235,7 @@
     <Compile Include="Controllers\ChurchFFController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\DEACONSController.cs" />
+    <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Controllers\EventsAdminPageController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -284,12 +285,18 @@
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
     <Content Include="Content\Images\crossicon.png" />
-    <Content Include="Content\Images\facebook2.jpg" />
+    <Content Include="Content\Images\donate-button.png" />
+    <Content Include="Content\Images\Donate.png" />
     <Content Include="Content\Images\facebook.jpg" />
+    <Content Include="Content\Images\Facebookround.jpg" />
+    <Content Include="Content\Images\Facebookround.svg" />
+    <Content Include="Content\Images\hand_heart_donate_icon.png" />
     <Content Include="Content\Images\ourfaith.jpg" />
+    <Content Include="Content\Images\paypal_mb8k.png" />
     <Content Include="Content\Images\priest.jpg" />
     <Content Include="Content\Images\stream.png" />
     <Content Include="Content\Images\unnamed.jpg" />
+    <Content Include="Content\Images\Zelle-logo-no-tagline-RGB-purple.png" />
     <Content Include="Content\regular.css" />
     <Content Include="Content\regular.min.css" />
     <Content Include="Content\Site.css" />
@@ -547,6 +554,7 @@
     <Content Include="Views\EventsAdminPage\Index.cshtml" />
     <Content Include="Views\EventsAdminPage\Edit.cshtml" />
     <Content Include="Views\AddGalleryImages\Index.cshtml" />
+    <Content Include="Views\Donations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
