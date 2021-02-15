@@ -34,7 +34,7 @@ namespace WebApplication2
 
                 using (MailMessage mail = new MailMessage())
                 {
-                    mail.From = new MailAddress("St-PaulChurch@stpaulatlanta.org");
+                    mail.From = new MailAddress("St-PaulChurch@stpaulatlanta.org", "St.Paul Coptic Orthodox Church");
                     mail.To.Add(message.Destination);
                     mail.Subject = message.Subject;
                     mail.Body = message.Body;
@@ -65,7 +65,7 @@ namespace WebApplication2
 
                 using (MailMessage mail = new MailMessage())
                 {
-                    mail.From = new MailAddress("St-PaulChurch@stpaulatlanta.org");
+                    mail.From = new MailAddress("St-PaulChurch@stpaulatlanta.org", "St.Paul Coptic Orthodox Church");
                     mail.To.Add(message.Destination);
                     mail.Subject = message.Subject;
                     mail.Body = message.Body;
