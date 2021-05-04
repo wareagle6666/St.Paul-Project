@@ -6,54 +6,58 @@
 
 <div class="pagesetup">
     <h1 class="pageheaders">Church Liturgy Schedule Registration</h1>
+    <h1 class="RedStatus">As of May 3rd 2021 We will return to normal Service as a Church ( No More Sign up )</h1>
+    <br />
+    <h1 class="RedStatus">
+        اعتبارًا من 3 مايو 2021 سنعود إلى الخدمة العادية ككنيسة (لا مزيد من الاشتراك)
+    </h1>
 
+    @*<table class="table">
+            <tr>
+                <th>
+                    Event Name
+                </th>
+                <th>
+                    Date & Time
+                </th>
+                <th>
+                    Total Spots
+                </th>
+                <th>
+                    Spots Reserved
+                </th>
+                <th></th>
+            </tr>
 
-    <table class="table">
-        <tr>
-            <th>
-                Event Name
-            </th>
-            <th>
-                Date & Time
-            </th>
-            <th>
-                Total Spots
-            </th>
-            <th>
-                Spots Reserved 
-            </th>
-            <th></th>
-        </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.eventName
+                    </td>
+                    <td>
+                        @item.eventDate.ToString("dddd, dd MMMM hh:mm tt")
 
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                @item.eventName
-            </td>
-            <td>
-                @item.eventDate.ToString("dddd, dd MMMM hh:mm tt")
+                    </td>
+                    <td>
+                        @item.eventCount
+                    </td>
+                    <td>
+                        @item.eventRSVP
+                    </td>
+                    <td>
+                        @if (item.eventRSVP < item.eventCount)
+                        {
+                            @Html.ActionLink("SignUp", "Create", new { eventID = item.eventID })
+                        }
+                        else
+                        {
+                            <p class="evenFull">Event is full</p>
+                        }
+                    </td>
+                </tr>
+            }
 
-            </td>
-            <td>
-                @item.eventCount
-            </td>
-            <td>
-                @item.eventRSVP
-            </td>
-            <td>
-                @if (item.eventRSVP < item.eventCount)
-                {
-                    @Html.ActionLink("SignUp", "Create", new { eventID = item.eventID })
-                }
-                else
-                {
-                    <p class="evenFull">Event is full</p>
-                }
-            </td>
-        </tr>
-        }
-
-    </table>
+        </table>*@
 
 </div>
