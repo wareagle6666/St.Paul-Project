@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Address";
+}
+
+<div class="pagesetup">
+    <h1 class="pageheaders">Member's Address</h1>
+
+    <div>
+        @if (ViewBag.AddressID == null) {
+            using (Html.BeginForm("AddressCreate", "Contacts", FormMethod.Post))
+            {
+            <div class="row ">
+
+                <div class="col-md-2 text-left">
+                    @Html.Label("Street 1: ")
+                    @Html.TextBox("Street1")
+                    @Html.Label("Street 2: ")
+                    @Html.TextBox("Street2")
+                    @Html.Label("City: ")
+                    @Html.TextBox("City")
+                    @Html.Label("State: ")
+                    @Html.TextBox("State")
+                    @Html.Label("Zipcode: ")
+                    @Html.TextBox("Zipcode")
+                    @Html.Hidden("UserID", (string)ViewBag.UserID )
+                    <br />
+                    <br />
+                    <input type="submit" value="Add" />
+                </div>
+            </div>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("AddressEdit", "Contacts", FormMethod.Post))
+            {
+            <div class="row reddivider">
+
+                <div class="col-md-2 text-left">
+                    @Html.Label("Street 1: ")
+                    @Html.TextBox("Street1", (string)Model.Street1)
+                    @Html.Label("Street 2: ")
+                    @Html.TextBox("Street2", (string)Model.Street2)
+                    @Html.Label("City: ")
+                    @Html.TextBox("City", (string)Model.City)
+                    @Html.Label("State: ")
+                    @Html.TextBox("State", (string)Model.State)
+                    @Html.Label("Zipcode: ")
+                    @Html.TextBox("Zipcode", (string)Model.Zipcode)
+                    @Html.Hidden("AddressID", (string)ViewBag.AddressID)
+                    @Html.Hidden("UserID", (string)ViewBag.UserID)
+                    <br />
+                    <br />
+                    <input type="submit" value="Update" />
+                </div>
+            </div>
+            }
+        }
+
+
+
+
+    </div>
+
+
+
+</div>  
+

@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="pagesetup">
+    <h1 class="pageheaders">Church Contact List</h1>
+
+    <div>
+        <h3>Member Informaiton</h3>
+        <div class="row reddivider">
+
+            <div class="col-md-2 text-left">
+
+                @Html.Label("First Name: ")
+                @Html.TextBox("userFirstName", (string)@ViewBag.FirstName, new { @disabled = "disabled" })
+                @Html.Label("Last Name: ")
+                @Html.TextBox("userLastName", (string)@ViewBag.LastName, new { @disabled = "disabled" })
+                @Html.Label("Email: ")
+                @Html.TextBox("userEmail", (string)@ViewBag.Email, new { @disabled = "disabled" })
+                @Html.Label("Phone Number: ")
+                @Html.TextBox("userNumber", (string)@ViewBag.PhoneNumber, new { @disabled = "disabled" })
+                <br />
+                <br />
+                @Html.ActionLink("Edit User", "Details", new { eventID = ViewBag.UserID })
+
+            </div>
+        </div>
+        <h3>Member Address</h3>
+        <div class="row reddivider">
+
+            <div class="col-md-2 text-left">
+                @Html.Label("Street 1: ")
+                @Html.TextBox("userStreet1", (string)@ViewBag.Street1, new { @disabled = "disabled" })
+                @Html.Label("Street 2: ")
+                @Html.TextBox("userStreet2", (string)@ViewBag.Street2, new { @disabled = "disabled" })
+                @Html.Label("City: ")
+                @Html.TextBox("userCity", (string)@ViewBag.City, new { @disabled = "disabled" })
+                @Html.Label("State: ")
+                @Html.TextBox("userState", (string)@ViewBag.State, new { @disabled = "disabled" })
+                @Html.Label("Zipcode: ")
+                @Html.TextBox("userZipcode", (string)@ViewBag.Zipcode, new { @disabled = "disabled" })
+                <br />
+                <br />
+                @Html.ActionLink("Add/Edit Address", "Address", new { AddressID = ViewBag.AddressID, UserID = ViewBag.UserID })
+            </div>
+        </div>
+    </div>
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Relation
+            </th>
+            <th>
+                Birthday
+            </th>
+            <th>
+                Grade
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var Member in Model)
+        {
+            <tr>
+                <td>
+                    @Member.FirstName
+                </td>
+                <td>
+                    @Member.LastName
+
+                </td>
+                <td>
+                    @Member.Relation
+                </td>
+                <td>
+                    @Member.BirthDay
+                </td>
+                <td>
+                    @Member.Grade
+                </td>
+                <td>
+                    @Member.Number
+                </td>
+                <td>
+                    @Html.ActionLink("Edit Member", "Details", new { eventID = Member.ID })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+</div>

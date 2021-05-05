@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="pagesetup">
+    <h1 class="pageheaders">Church Contact List</h1>
+    @using (@Html.BeginForm())
+    {
+    <p>
+        Search By Name:  @Html.TextBox("search") <input type="submit" value="Search" />
+    </p>
+      
+    }
+    <br />
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var Contact in Model)
+        {
+            <tr>
+                <td>
+                    @Contact.FirstName
+                </td>
+                <td>
+                    @Contact.LastName
+
+                </td>
+                <td>
+                    @Contact.PhoneNumber
+                </td>
+                <td>
+                    @Contact.Email
+                </td>
+                <td>
+                    @Html.ActionLink("View", "Details", new { id = Contact.Id })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+</div>
+
+

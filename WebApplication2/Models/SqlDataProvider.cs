@@ -247,6 +247,38 @@ namespace WebApplication2.Models
             var image = ExecuteScalarSpWithDapper<Image>("GetHomePageImage");
             return image;
         }
+
+        public List<Contacts> GetContacts()
+        {
+            var list = ExecuteSpWithDapper<Contacts>("GetContacts").ToList();
+            return list;
+        }
+        public List<Family> GetFamilies(string UserID)
+        {
+            var list = ExecuteSpWithDapper<Family>("GetUserDetails", new { UserID }).ToList();
+            return list;
+        }
+        public Address GetAddress(string UserID)
+        {
+            var address = ExecuteScalarSpWithDapper<Address>("GetUserAddress", new { UserID });
+            return address;
+        }
+        public Address GetAddressById(string AddressID)
+        {
+            var address = ExecuteScalarSpWithDapper<Address>("GetAddressById", new { AddressID });
+            return address;
+        }
+        public int CreateAddress(string UserID, string Street1, string Street2, string City, string State, string Zipcode)
+        {
+            var address = ExecuteScalarSpWithDapper<int>("AddUserAddress", new { UserID,Street1, Street2, City, State, Zipcode });
+            return address;
+        }
+
+        public int UpdateAddress(string AddressID, string Street1, string Street2, string City, string State, string Zipcode)
+        {
+            var address = ExecuteScalarSpWithDapper<int>("UpdateUserAddress", new { AddressID, Street1, Street2, City, State, Zipcode });
+            return address;
+        }
     }
 
 }
