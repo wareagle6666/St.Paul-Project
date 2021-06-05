@@ -8,218 +8,41 @@
 <div class="pagesetup">
     <h1 class="pageheaders">Deacons Schedule</h1>
     <div class="col-lg-12">
-        <p>
-            Three hymns classes are held every <strong>Saturday at 8:00 p.m.</strong>, following Vespers service. Hymns, rites and dogma are introduced in each class, as well as the spiritual conduct of deacons. Class attendance is required in order for the deacon to be placed on the altar  service rotation schedule.
+        <p >
+            Altar Deacons shoud be present by <strong class="scheduled">8:30 AM on Sunday, Tuesday, Thursday, Saturday and 6:30 AM on Monday</strong>.There will be NO crossing of tonyas after 8:55 AM on Sunday, Tuesday, Thursday and Saturday  or 6:55 AM on Monday
         </p>
     </div>
     <div class="col-lg-12">
         <table>
             <tr>
-                <th class="coltitle" colspan="9">
+                <th>Service</th>
+                <th>Date</th>
+                <th>Deacons</th>
             </tr>
-            <tr>
-                <td>3/3/2019</td>
-                <td>Jacob Abdelmassiah </td>
-                <td>John Abdelmassiah</td>
-                <td>Ehab Abdelmassiah </td>
-                <td>Carlos Ayob Botros </td>
-                <td>Mina Ayoub Botros </td>
-                <td>Basel Gobran </td>
-                <td>Yaser Hanna</td>
-                <td>Andrew Hanna</td>
+            @if (Model.Count != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>Divine Liturgy</td>
+                        <td>@item.date </td>
+                        <td>
+                            @for (int i = 0; i < item.deacons.Length; i++)
+                            {
+                                @( (i + 1).ToString() + "." + item.deacons[i])
+                                <br />
+                            }
+                        </td>
+                    </tr>
 
-            </tr>
-            <tr>
-                <td>3/10/2019</td>
-                <td>George Malik </td>
-                <td>Patrick Malik </td>
-                <td>Sobhy Yacoub </td>
-                <td>Mina Yacoub </td>
-                <td>Kirolos Yacoub </td>
-                <td>Peter Gobran </td>
-                <td>Ahdy Gobran </td>
-                <td>Ben Gordon </td>
-            </tr>
-            <tr>
-                <td>3/17/2019</td>
-                <td>Ashraf Farag </td>
-                <td>Peter Malk </td>
-                <td>Fady Bolous </td>
-                <td>David Hisham Hanna</td>
-                <td>Hisham Hanna </td>
-                <td>Elijah Hisham Hanna </td>
-                <td>Hany Nawer</td>
-                <td>Andrew Farag </td>
-            </tr>
-            <tr>
-                <td>3/24/2019</td>
-                <td>Peter Rezk </td>
-                <td>Michael Rezk </td>
-                <td>Hany Rezk </td>
-                <td>Tony Fahmy </td>
-                <td>Kevin Fahmy </td>
-                <td>Andrew Henry </td>
-                <td>Peter Samir Abdelmassiah </td>
-                <td>Abraam Marzok </td>
-            </tr>
-            <tr>
-                <td>3/31/2019</td>
-                <td>Ayman Fadllalh </td>
-                <td>Justin Fadllalh </td>
-                <td>Daniel Fadllalh </td>
-                <td>Alfred Luka</td>
-                <td>Mouris Hanna </td>
-                <td>Samy Hanna </td>
-                <td>Arsany Basily </td>
-                <td>Jack Boghdad </td>
-            </tr>
-            <tr>
-                <td>4/7/2019</td>
-                <td>Anis Ebrahim </td>
-                <td>Andrew Hany Lotfy </td>
-                <td>Hany Lotfy </td>
-                <td>Abanoub Hany Lotfy </td>
-                <td>Jermy Wassif </td>
-                <td>Tony Wassif </td>
-                <td>Bishoy A Ebrahim </td>
-                <td>Ebrahim A Ebrahim </td>
-            </tr>
-            <tr>
-                <td>4/14/2019</td>
-                <td>Youssef Said </td>
-                <td>Felopater Abdelnour</td>
-                <td>Ramy Mesriky</td>
-                <td>Fady Hanna </td>
-                <td>Akram Abdelmassiah </td>
-                <td>Hany Shenouda </td>
-                <td>Martin Shenouda </td>
-                <td>Paula Abdlemssih </td>
-            </tr>
-            <tr>
-                <td>4/21/2019</td>
-                <td>Mark Moheb </td>
-                <td>Moheb Abdelmalak </td>
-                <td>Steven Moheb </td>
-                <td>Samuel Beshay</td>
-                <td>Emad Beshay </td>
-                <td>Joseph Hanna </td>
-                <td>David Gerguis </td>
-                <td>Hany Gerguis </td>
-            </tr>
-            <tr>
-                <td>4/28/2019</td>
-                <td class="coltitle" colspan="8">Resurrection Sunday</td>
-            </tr>
-            <tr>
-                <td>5/5/2019</td>
-                <td>Mario Saad </td>
-                <td>Bishoy Samir Essa</td>
-                <td>Samir Essa </td>
-                <td>George Emile Metry </td>
-                <td>Emile Metry </td>
-                <td>Jaden Gobran </td>
-                <td>Adel Elmankabady</td>
-                <td>Jacob Houlob</td>
-            </tr>
-            <tr>
-                <td>5/12/2019</td>
-                <td>Peter Gerges</td>
-                <td>Joseph Gerges</td>
-                <td>Andrew Gerges</td>
-                <td>Ayman Tadros</td>
-                <td>Jovany Tadros</td>
-                <td>Martin Tadros</td>
-                <td>Micheal Bekheet </td>
-                <td>Jason Bekheet </td>
-            </tr>
-            <tr>
-                <td>5/19/2019</td>
-                <td>Phillip Boules </td>
-                <td>Mario Karras</td>
-                <td>Mina Abdelmassiah </td>
-                <td>Sameh Abdelmassiah </td>
-                <td>Abram Abdelnour</td>
-                <td>Pavly Khalil</td>
-                <td>Mario Khalil</td>
-                <td>Joka Khalil</td>
-            </tr>
-            <tr>
-                <td>5/26/2019</td>
-                <td>Wafik Assad</td>
-                <td>Osoriz Azer </td>
-                <td>Remon Abdelmassiah </td>
-                <td>Carlos Abdelmassiah </td>
-                <td>Steven Khalil</td>
-                <td>Ashraf Boules </td>
-                <td>Mark Bebawy </td>
-                <td>Albeeir Bebawy</td>
-            </tr>
-            <tr>
-                <td>6/2/2019</td>
-                <td>Matthew Karis</td>
-                <td>Micheal Karis</td>
-                <td>George Ramis </td>
-                <td>Antonious Ramis</td>
-                <td>Micheal Nawar</td>
-                <td>Zaki Hanna</td>
-                <td>Adel Zaki Hanna </td>
-                <td>Micheal Nessim</td>
-            </tr>
-            <tr>
-                <td>6/9/2019</td>
-                <td>Abanoub Whaba </td>
-                <td>Bishoy Wahba</td>
-                <td>Amir Malak Hanna </td>
-                <td>Alfred Sarwat</td>
-                <td>Youseff Magdi Henin</td>
-                <td>Hany Adel</td>
-                <td>Raafat Fahmy</td>
-                <td>John Fahmy</td>
-            </tr>
-            <tr>
-                <td>6/16/2019</td>
-                <td>Kyrillos Atef</td>
-                <td>Atef Hanna</td>
-                <td>Hossam Gerges </td>
-                <td>Ethan Gergin</td>
-                <td>Arsany William </td>
-                <td>Amir Hanna </td>
-                <td>Johnathan Hanna</td>
-                <td>Nader Aziz</td>
-            </tr>
-            <tr>
-                <td>6/23/2019</td>
-                <td>John Hanna</td>
-                <td>Tharwat Shihata</td>
-                <td>Fady Louka</td>
-                <td>Daniel Raafat Hanna</td>
-                <td>Gobran Gobran</td>
-                <td>Juvani Jo Gobran</td>
-                <td>Ralph Malak</td>
-                <td>Ralph Jacob</td>
-            </tr>
-            <tr>
-                <td>6/30/2019</td>
-                <td>Carlos Hanna </td>
-                <td>Mark Hanna </td>
-                <td>Rami Beshay</td>
-                <td>Jonathan Beshay </td>
-                <td>Jerome Behshay </td>
-                <td>Marcos Hanna </td>
-                <td>George Basily </td>
-                <td>Karas Marzok</td>
-            </tr>
-            <tr>
-                <td>7/7/2019</td>
-                <td>Mark Saad </td>
-                <td>Talat Hanna </td>
-                <td>Peter Hanna </td>
-                <td>Paul Hanna </td>
-                <td>Tewadros Yohannas </td>
-                <td>Adel Shenoda </td>
-                <td>Rafik Bekit </td>
-                <td>Tarek Moros</td>
-            </tr>
+                }
+
+            }
+            else
+            {
+                <td class="deacons"colspan="3"> NO DEACONS SCHEDULED</td>
+            }
+
 
         </table>
     </div>
