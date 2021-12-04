@@ -3,149 +3,185 @@
     ViewBag.Title = "Index";
 }
 
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Visiting an Orthodox Church</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Church Rules</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+        <br />
+        <br />
+        <div class="visitation">
+            <p>
+                Many people visiting a Coptic Orthodox Church or one of Her sister churches witness certain practices and customs that seem alien to someone coming from a non-Orthodox or even a non-Christian background. These practices and customs include, but are not limited to, clergy wearing black, believers wearing crosses around their necks, kissing the hands of bishop and priests, men and women standing on separate sides in the church, women wearing a head cover, and more.
+            </p>
+            <p>
+                To help clarify questions about these practices, we have prepared the following pages as a brief introduction to some of the common customs in Orthodoxy among the faithful.
+            </p>
+        </div>
+         <br />
+        
 
-<div class="pagesetup">
-    <h1 class="pageheaders">Visiting an Orthodox Church</h1>
-   <div class="visitation">
-       <p>
-           Many people visiting a Coptic Orthodox Church or one of Her sister churches witness certain practices and customs that seem alien to someone coming from a non-Orthodox or even a non-Christian background. These practices and customs include, but are not limited to, clergy wearing black, believers wearing crosses around their necks, kissing the hands of bishop and priests, men and women standing on separate sides in the church, women wearing a head cover, and more.
-       </p>
-       <p>
-           To help clarify questions about these practices, we have prepared the following pages as a brief introduction to some of the common customs in Orthodoxy among the faithful.
-       </p>
-   </div>
 
-   <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="false">
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading1">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion7401210" href="#collapse1" aria-expanded="false" aria-controls="collapse1">Are non-Orthodox vis­i­tors welcome?</a>
-               </h5>
-           </div>
-           <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
-               <div class="panel-body">
-                   <p>
-                       Yes, absolutely. We are a com­mu­nity made up of both cradle-born Ortho­dox Chris­tians and those who have con­verted to the faith. We are very com­fort­able with new­com­ers, inquir­ers, and vis­i­tors. Any­one who wishes to dis­cover ancient Cop­tic Ortho­dox Chris­tian­ity is welcome. If you have ques­tions, the parish priest will be happy to answer them. So don’t be afraid to ask ques­tions about what we do and why.
-                   </p>
-                   <p>
-                       We have books of our Divine Liturgy in Eng­lish, Coptic, and Ara­bic to every­one. In addition, we have a large Pow­er­Point pre­sen­ta­tion that updates continuously dur­ing the Liturgy with the prayers. You may fol­low the ser­vice text, or, if you pre­fer, sim­ply close your eyes and enter into the Church’s beau­ti­ful wor­ship of God.
-                   </p>
-               </div>
-           </div>
-       </div>
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading2">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion2" href="#collapse2" aria-expanded="false" aria-controls="collapse2">How long are the services?</a>
-               </h5>
-           </div>
-           <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-               <div class="panel-body"><p>On Sat­ur­day evenings, the Evening Rais­ing of Incense ser­vice (Ves­pers) is gen­er­ally 30–45 min­utes in length, includ­ing a short homily in Ara­bic or Eng­lish. On Sun­day morn­ings, a sim­i­lar ser­vice is cel­e­brated before the Divine Liturgy. After­wards, the Divine Liturgy is approx­i­mately 3 hours in length with an Eng­lish homily and the Dis­tri­b­u­tion of the Mystery of the Eucharist. We under­stand this may seem like a very long ser­vice, but we know that when you have par­tic­i­pated in an Ortho­dox ser­vice you will feel like you have truly wor­shipped the liv­ing God.</p></div>
-           </div>
-       </div>
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading3">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion3" href="#collapse3" aria-expanded="false" aria-controls="collapse3">Is there a dress code?</a>
-               </h5>
-           </div>
-           <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
-               <div class="panel-body">
-                   <p>
-                       The gen­eral rule for men and women is to dress appro­pri­ately, mod­estly and respect­fully, as before the liv­ing God. We ask that you not wear shorts, mini-skirts, tank tops, low-cut or strap­less dresses.
-                   </p>
-               </div>
-           </div>
-       </div>
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading4">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion4" href="#collapse4" aria-expanded="false" aria-controls="collapse4">Is child­care provided?</a>
-               </h5>
-           </div>
-           <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
-               <div class="panel-body">
-                   <p>
-                       Each par­ent is respon­si­ble to take care of their child. We encour­age chil­dren to be present in Church for the ser­vices. This par­tic­i­pa­tion is part of a child’s spir­i­tual for­ma­tion. How­ever, if your baby or child gets fussy, talk­a­tive, or has a melt-down, please take him or her out of the nave until he or she is ready to return quietly.
-                   </p>
-               </div>
-           </div>
-       </div>
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading5">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion5" href="#collapse5" aria-expanded="false" aria-controls="collapse5">Is Sun­day school for chil­dren available?</a>
-               </h5>
-           </div>
-           <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
-               <div class="panel-body">
-                   <p>
-                       On Sun­days, we pro­vide Sun­day school in small groups for chil­dren in grades Pre-K through 12. Sun­day school begins after the chil­dren have received the Mys­tery and lasts for 45 minutes.
-                   </p>
-               </div>
-           </div>
-       </div>
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading6">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion6" href="#collapse6" aria-expanded="false" aria-controls="collapse6">Stand­ing or sitting?</a>
-               </h5>
-           </div>
-           <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
-               <div class="panel-body">
-                   <p>
-                       The tra­di­tional pos­ture for prayer and wor­ship in the Ortho­dox Church is to stand, as before the King of the uni­verse! In many churches in Egypt, there are typ­i­cally no pews in the churches. Chairs or benches on the side walls are usu­ally reserved for the elderly and infirm. In Amer­ica, we build our churches with pews or chairs, so you may sit. However, it is appro­pri­ate to stand dur­ing the Gospel read­ing, the Anaphora through the Insti­tu­tion Nar­ra­tive, the dis­tri­b­u­tion of the Holy Mys­tery, when the priest gives a bless­ing, and at the Dismissal.
-                   </p>
-               </div>
-           </div>
-       </div>
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading7">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion7" href="#collapse7" aria-expanded="false" aria-controls="collapse7">Light­ing candles?</a>
-               </h5>
-           </div>
-           <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
-               <div class="panel-body">
-                   <p>
-                       Light­ing can­dles is an impor­tant part of Ortho­dox wor­ship and piety. We light can­dles as we pray, mak­ing an offer­ing to accom­pany our prayers. Ortho­dox typ­i­cally light candles when com­ing into the church, but there are certain times during the Divine Liturgy when can­dles should not be lit. You do not have to be an Ortho­dox Chris­t­ian to light a can­dle and pray!
-                   </p>
-               </div>
-           </div>
-       </div>
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading8">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion8" href="#collapse8" aria-expanded="false" aria-controls="collapse8">Can non-Orthodox receive the Holy Eucharist?</a>
-               </h5>
-           </div>
-           <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
-               <div class="panel-body">
-                   <p>
-                       Ortho­dox priests may only serve the Holy Eucharist to bap­tized mem­bers in good stand­ing of the canon­i­cal Ortho­dox Church, who have recently con­fessed, and fasted before par­tak­ing of the Holy Eucharist. This is the ancient tra­di­tion of the Holy Church for the 2,000 years of its his­tory. The Ortho­dox Church under­stands the Holy Eucharist as a mys­tery of the real pres­ence of Christ in the Eucharist, not sim­ply as a memo­r­ial, or merely in a spir­i­tual sense, as many other non-Orthodox Chris­tians do. Rather than try­ing to accom­mo­date to often vary­ing "inter­pre­ta­tions" or revi­sions of this and other doc­trines of the ancient faith, we sim­ply ask that you respect the ancient, apos­tolic tra­di­tion and join us in receiv­ing the Eulo­gia (blessed bread), at the end of the Divine Liturgy.
-                   </p>
-               </div>
-           </div>
-       </div>
-       <div class="panel panel-default">
-           <div class="panel-heading" role="tab" id="heading9">
-               <h5 class="panel-title">
-                   <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed" data-parent="#accordion3" href="#collapse9" aria-expanded="false" aria-controls="collapse9">What are Ortho­dox wor­ship hymns like?</a>
-               </h5>
-           </div>
-           <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
-               <div class="panel-body">
-                   <p>
-                       Between 65–75% of the tra­di­tional Cop­tic Liturgy involves con­gre­ga­tional singing. Cop­tic Chris­tians do not use musi­cal instru­ments with the excep­tion of the cym­bals and trian­gle, which are used sim­ply to keep musi­cal time. A choir of dea­cons leads the con­gre­ga­tion in har­mo­nious chant, usu­ally in Cop­tic, Eng­lish, and Arabic. Our hymns are solemn, prayer­ful and intended to lead the faith­ful to wor­ship the liv­ing God.
-                       New vis­i­tors will find
-                   </p>
-                   <p>
-                       New vis­i­tors will find there are many new things to expe­ri­ence in a Cop­tic Ortho­dox Church ser­vice. Feel free to go at your own pace, ask any ques­tions you want, and know you are most wel­come to "come and see."
-                   </p>
-               </div>
-           </div>
-       </div>
-   </div>
-</div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Are non-Orthodox vis­i­tors welcome?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            Yes, absolutely. We are a com­mu­nity made up of both cradle-born Ortho­dox Chris­tians and those who have con­verted to the faith. We are very com­fort­able with new­com­ers, inquir­ers, and vis­i­tors. Any­one who wishes to dis­cover ancient Cop­tic Ortho­dox Chris­tian­ity is welcome. If you have ques­tions, the parish priest will be happy to answer them. So don’t be afraid to ask ques­tions about what we do and why.
+                        </p>
+                        <p>
+                            We have books of our Divine Liturgy in Eng­lish, Coptic, and Ara­bic to every­one. In addition, we have a large Pow­er­Point pre­sen­ta­tion that updates continuously dur­ing the Liturgy with the prayers. You may fol­low the ser­vice text, or, if you pre­fer, sim­ply close your eyes and enter into the Church’s beau­ti­ful wor­ship of God.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        How long are the services?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>On Sat­ur­day evenings, the Evening Rais­ing of Incense ser­vice (Ves­pers) is gen­er­ally 30–45 min­utes in length, includ­ing a short homily in Ara­bic or Eng­lish. On Sun­day morn­ings, a sim­i­lar ser­vice is cel­e­brated before the Divine Liturgy. After­wards, the Divine Liturgy is approx­i­mately 3 hours in length with an Eng­lish homily and the Dis­tri­b­u­tion of the Mystery of the Eucharist. We under­stand this may seem like a very long ser­vice, but we know that when you have par­tic­i­pated in an Ortho­dox ser­vice you will feel like you have truly wor­shipped the liv­ing God.</p>                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Is there a dress code?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            The gen­eral rule for men and women is to dress appro­pri­ately, mod­estly and respect­fully, as before the liv­ing God. We ask that you not wear shorts, mini-skirts, tank tops, low-cut or strap­less dresses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Is child­care provided?
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse " aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            Each par­ent is respon­si­ble to take care of their child. We encour­age chil­dren to be present in Church for the ser­vices. This par­tic­i­pa­tion is part of a child’s spir­i­tual for­ma­tion. How­ever, if your baby or child gets fussy, talk­a­tive, or has a melt-down, please take him or her out of the nave until he or she is ready to return quietly.
+                        </p>                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingfive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                        Is Sun­day school for chil­dren available?
+                    </button>
+                </h2>
+                <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            On Sun­days, we pro­vide Sun­day school in small groups for chil­dren in grades Pre-K through 12. Sun­day school begins after the chil­dren have received the Mys­tery and lasts for 45 minutes.
+                        </p>                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        Stand­ing or sitting?
+                    </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            The tra­di­tional pos­ture for prayer and wor­ship in the Ortho­dox Church is to stand, as before the King of the uni­verse! In many churches in Egypt, there are typ­i­cally no pews in the churches. Chairs or benches on the side walls are usu­ally reserved for the elderly and infirm. In Amer­ica, we build our churches with pews or chairs, so you may sit. However, it is appro­pri­ate to stand dur­ing the Gospel read­ing, the Anaphora through the Insti­tu­tion Nar­ra­tive, the dis­tri­b­u­tion of the Holy Mys­tery, when the priest gives a bless­ing, and at the Dismissal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        Light­ing candles?
+                    </button>
+                </h2>
+                <div id="collapseSeven" class="accordion-collapse collapse " aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            Light­ing can­dles is an impor­tant part of Ortho­dox wor­ship and piety. We light can­dles as we pray, mak­ing an offer­ing to accom­pany our prayers. Ortho­dox typ­i­cally light candles when com­ing into the church, but there are certain times during the Divine Liturgy when can­dles should not be lit. You do not have to be an Ortho­dox Chris­t­ian to light a can­dle and pray!
+                        </p>                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingEight">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        Can non-Orthodox receive the Holy Eucharist?
+                    </button>
+                </h2>
+                <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            Ortho­dox priests may only serve the Holy Eucharist to bap­tized mem­bers in good stand­ing of the canon­i­cal Ortho­dox Church, who have recently con­fessed, and fasted before par­tak­ing of the Holy Eucharist. This is the ancient tra­di­tion of the Holy Church for the 2,000 years of its his­tory. The Ortho­dox Church under­stands the Holy Eucharist as a mys­tery of the real pres­ence of Christ in the Eucharist, not sim­ply as a memo­r­ial, or merely in a spir­i­tual sense, as many other non-Orthodox Chris­tians do. Rather than try­ing to accom­mo­date to often vary­ing "inter­pre­ta­tions" or revi­sions of this and other doc­trines of the ancient faith, we sim­ply ask that you respect the ancient, apos­tolic tra­di­tion and join us in receiv­ing the Eulo­gia (blessed bread), at the end of the Divine Liturgy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingNine">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        What are Ortho­dox wor­ship hymns like?
+                    </button>
+                </h2>
+                <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            Between 65–75% of the tra­di­tional Cop­tic Liturgy involves con­gre­ga­tional singing. Cop­tic Chris­tians do not use musi­cal instru­ments with the excep­tion of the cym­bals and trian­gle, which are used sim­ply to keep musi­cal time. A choir of dea­cons leads the con­gre­ga­tion in har­mo­nious chant, usu­ally in Cop­tic, Eng­lish, and Arabic. Our hymns are solemn, prayer­ful and intended to lead the faith­ful to wor­ship the liv­ing God.
+                            New vis­i­tors will find
+                        </p>
+                        <p>
+                            New vis­i­tors will find there are many new things to expe­ri­ence in a Cop­tic Ortho­dox Church ser­vice. Feel free to go at your own pace, ask any ques­tions you want, and know you are most wel­come to "come and see."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <br />
+        <br />
+
+ 
+
+    </div>
+</section>
+<!--Events Details End-->
+
+
 
 

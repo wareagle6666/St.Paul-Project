@@ -224,18 +224,19 @@ namespace WebApplication2.Models
             var list = ExecuteSpWithDapper<GuestList>("GetEventGuestList", new { eventID }).ToList();
             return list;
         }
-        public int SaveImage(Image image, int isHome)
+        public int SaveImage(Image image)
         {
-            var result = 0;
-            var Home = 0;
-            if (isHome == 1) {
-                result = ExecuteScalarSpWithDapper<int>("SaveGalleryImages", new { image.ImageTitle, image.ImageData, HomeImage = isHome });
-            }
-            else
+            try
             {
-                result = ExecuteScalarSpWithDapper<int>("SaveGalleryImages", new { image.ImageTitle, image.ImageData, HomeImage = Home });
+                var result = ExecuteScalarSpWithDapper<int>("SaveGalleryImages", new { image.ImageTitle, image.ImageData, ImageType = image.ImageType });
+                return result;
             }
-            return result;
+            catch (Exception e)
+            {
+                throw new Exception();
+            }
+
+
         }
         public List<Image> GetGalleryImages()
         {
@@ -279,6 +280,58 @@ namespace WebApplication2.Models
             var address = ExecuteScalarSpWithDapper<int>("UpdateUserAddress", new { AddressID, Street1, Street2, City, State, Zipcode });
             return address;
         }
+        public Guid SaveNewsImage(Image image)
+        {
+
+            var result = ExecuteScalarSpWithDapper<Guid>("SaveNewsImages", new { image.ImageTitle, image.ImageData });
+
+            return result;
+        }
+        public int SaveNews(News News)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("SaveNews", new { News.NewsTitle, News.Link, News.EnglishText, News.ArabicText, News.ImageID, News.Created, News.isSpotlight });
+            return result;
+        }
+
+        public List<News> GetAllNews()
+        {
+            var list = ExecuteSpWithDapper<News>("GetAllNews").ToList();
+            return list;
+        }
+        public List<News> GetSpotNews()
+        {
+            var list = ExecuteSpWithDapper<News>("GetAllSpotNews").ToList();
+            return list;
+        }
+        public News GetSingleNews(Guid NewsID)
+        {
+            var News = ExecuteScalarSpWithDapper<News>("GetSingleNews", new { NewsID });
+            return News;
+        }
+
+        public int DeleteNews(Guid NewsID)
+        {
+            var News = ExecuteScalarSpWithDapper<int>("DeleteNews", new { NewsID });
+            return News;
+        }
+
+        public int UpdateNews(News News)
+        {
+            News.Updated = DateTime.Now;
+            var result = ExecuteScalarSpWithDapper<int>("UpdateNews", new { News.ID, News.NewsTitle, News.Link, News.isSpotlight, News.EnglishText, News.ArabicText, News.Updated, News.ImageID, News.ImageTitle, News.ImageData });
+            return result;
+        }
+        public int MakeSpotlight(Guid NewsID)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("MakeSpotlight", new { NewsID });
+            return result;
+        }
+        public int RemoveMakeSpotlight(Guid NewsID)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("RemoveMakeSpotlight", new { NewsID });
+            return result;
+        }
+
     }
 
 }

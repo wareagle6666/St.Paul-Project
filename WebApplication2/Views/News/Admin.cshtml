@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+}
+<section class="navpages pagebackground">
+    <div class="container">
+        <h1>All News Articles</h1>
+        <br />
+        <br />
+        @Html.ActionLink("Create News Article", "Create", "News", new { area = "" }, null)
+        <table class="table">
+            <tr>
+                <th>
+                    News Title
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Is Spot News?
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.NewsTitle
+                    </td>
+                    <td>
+                        @item.Created
+                    </td>
+                    <td>
+                        @(@item.isSpotlight ? "Yes" : "No")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { NewsID = item.ID }) |
+
+                        @Html.ActionLink("Delete", "Delete", new { onclick = "return Submit();", confirm = true, NewsID = item.ID }, null)|
+                        @if (@item.isSpotlight == false)
+                        {
+
+                            @Html.ActionLink("Make Spotlight", "MakeSpotlight", new { NewsID = item.ID }, null)
+                        }
+                        else if (ViewBag.Count >= 3)
+                        {
+                            @Html.ActionLink("Remove Spotlight", "RemoveMakeSpotlight", new { NewsID = item.ID }, null)
+                        }
+
+
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <br />
+    </div>
+</section>
+
+<script type="text/javascript">
+function Submit() {
+        if (confirm("Are you should you want to Delete this person? ")) {
+            return true;
+        } else {
+            return false;
+        }
+    }</script>
+

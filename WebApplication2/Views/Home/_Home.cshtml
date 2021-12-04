@@ -1,32 +1,217 @@
-﻿<!-- ko with: home -->
-<div class="jumbotron">
+﻿
 
-    <div class="col-md-6 paypal">
-        <form action="/Donations/Index">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="image" src="~/Content/Images/hand_heart_donate_icon.png" width="50" height="47" />
-            <img alt="facebook" border="0" src="~/Content/Images/facebook.jpg" width="1" height="1" />
-        </form>
+<section class="main-slider main-slider-three">
+    <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, 
+"effect": "fade",
+ "pagination": {
+    "el": "#main-slider-pagination",
+    "type": "bullets",
+    "clickable": true
+  },
+"navigation": {
+    "nextEl": "#main-slider__swiper-button-next",
+    "prevEl": "#main-slider__swiper-button-prev"
+},
+"autoplay": {
+    "delay": 5000
+}}'>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide ">
+                <div class="image-layer">
+
+                    @{
+                        var getimage = Convert.ToBase64String(Model.Image.ImageData);
+                        var picture = string.Format("data:image/jpeg;base64,{0}", getimage);
+                        <img id="homeimage" src="@Url.Content(picture)" style="width:100%;" />
+                    }
+                </div>
+                <div class="image-layer-overlay"></div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="main-slider__content">
+                                <p>St. Paul Coptic Orthodox Church</p>
+                                <h2>We walk by faith, <br> not by sight</h2>
+                                <a href="@Url.Action("Index", "Calendar")" class="thm-btn">
+                                    <i class="fas fa-calendar"></i>Calendar
+                                </a>
+                                <div class="main-slider-three-shape">
+                                    <img src="~/Content/Images/cross.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6 facebook">
-        <form action="https://www.facebook.com/groups/199485506854969/" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="image" src="~/Content/Images/Facebookround.svg" width="147" height="47" />
-            <img alt="facebook" border="0" src="~/Content/Images/facebook.jpg" width="1" height="1" />
-        </form>
+</section>
+
+
+<!--Feature One Start-->
+<section class="feature-one">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-6 col-lg-4">
+                <!--Feature One Single-->
+                <div class="feature-one__single feature-one__single-1">
+                    <div class="feature-one__icon">
+                        <span class="fas fa-calendar"></span>
+                    </div>
+                    <div class="feature-one__content clanedarevent">
+                        <h3>Today's Event </h3>
+                        @if (Model.eventlist != null)
+                        {
+                            var counter2 = 0;
+                            foreach (var item in Model.eventlist)
+                            {
+                                if (item.startTime.Date == DateTime.Today.Date)
+                                {
+                                    counter2 = 1;
+                                    <div>
+                                        @if (item.eventName.Contains("Liturgy"))
+                                        {
+                                            <span class="fas fa-church"> &nbsp; @item.eventName</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="fas fa-calendar-alt"> &nbsp; @item.eventName</span>
+                                        }
+                                        <span class="fas fa-clock">&nbsp; @item.startTime.ToString("hh:mm tt") - @item.endTime.ToString("hh:mm tt") </span>
+                                    </div>
+                                }
+                            }
+                            if (counter2 == 0)
+                            {
+                                <div>
+                                    <span class="fas fa-calendar">  No Events</span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                <span class="fas fa-calendar">  No Events</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-4">
+                <!--Feature One Single-->
+                <div class="feature-one__single feature-one__single-2">
+                    <div class="feature-one__icon">
+                        <span class="fas fa-calendar"></span>
+                    </div>
+                    <div class="feature-one__content clanedarevent">
+                        <h3>Tomorrow Events </h3>
+                        @if (Model.eventlist != null)
+                        {
+                            var counter2 = 0;
+                            foreach (var item in Model.eventlist)
+                            {
+                                if (item.startTime.Date == DateTime.Today.AddDays(1).Date)
+                                {
+                                    counter2 = 1;
+                                    <div>
+                                        @if (item.eventName.Contains("Liturgy"))
+                                        {
+                                                <span class="fas fa-church"> &nbsp;  @item.eventName</span>
+                                        }
+                                        else { 
+                                                <span class="fas fa-calendar-alt">&nbsp;  @item.eventName</span>
+                                        }
+                                    
+                                        <span class="fas fa-clock">&nbsp; @item.startTime.ToString("hh:mm tt") - @item.endTime.ToString("hh:mm tt") </span>
+                                    </div>
+                                }
+                            }
+                            if (counter2 == 0)
+                            {
+                                <div>
+                                    <span class="fas fa-calendar">  No Events</span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                <span class="fas fa-calendar">  No Events</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
+</section>
+<!--Feature One End-->
 
+<!--News Three Start-->
+<section class="news-two news-three">
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="section-title__tagline">Get our Updates</span>
+            <h2 class="section-title__title">News & Announcements!</h2>
+        </div>
+        <div class="row">
+            @foreach (var news in Model.NewsList)
+            {
+                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                    <!--News Two Single-->
+                    <div class="news-two__single">
+                        <div class="news-two__img-box">
+                            <div class="news-two__img">
+                                @if (news.ImageID != null && news.ImageID != Guid.Empty)
+                                {
+                                    var newsgetimage = Convert.ToBase64String(news.ImageData);
+                                    var newspicture = string.Format("data:image/jpeg;base64,{0}", newsgetimage);
+                                    <img src="@Url.Content(newspicture)" style="width:370px; height:313px;" />
 
-<div class="col-lg-12 ">
-    @{ 
-           var getimage = Convert.ToBase64String(Model.ImageData);
-           var picture = string.Format("data:image/jpeg;base64,{0}", getimage);
-           <img src="@Url.Content(picture)" style="width:100%;" />
-     }
-</div>
+                                }
+                                else
+                                {
+                                    <img src="~/Content/Images/eventimage.jpg" alt="" style="width:370px; height:313px;" >
+                                }
 
+                                <a href="@Url.Action("Details", "News", new { NewsID = news.ID })">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                            <div class="news-two__date">
+                                <p>@news.Created.ToString("ddd, dd MMM yy")</p>
+                            </div>
+                        </div>
+                        <div class="news-two__content">
 
+                            <h3>
+                                <a href="@Url.Action("Details", "News", new { NewsID = news.ID })">@news.NewsTitle</a>
+                            </h3>
+                            @if (news.EnglishText.Length < 70)
+                            {
+                                <p class="news-two__text">
+                                    @news.EnglishText
+                                </p>
+                            }
+                            else
+                            {
+                                var text = @news.EnglishText.Substring(0, 70);
+                                text = text + ".....";
+                                <p class="news-two__text">
+                                    @text
+                                </p>
+                            }
 
+                        </div>
+                    </div>
+                </div>
 
-<!-- /ko -->
+            }
+      
+        </div>
+    </div>
+</section>
+<!--News Three End-->

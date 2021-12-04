@@ -3,139 +3,158 @@
     ViewBag.Title = "Index";
 }
 
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Coptic Fasts & Feasts</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Coptic Fasts & Feasts</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+        <br />
+        <br />
+        <h2 class="sectionheaders">2021 A.D. / 1737–1738 A.M</h2>
+        <table class="Tableclass">
+            <tbody>
+                <tr>
+                    <td class="tableheader">
+                        <b>Fast or Feast</b>
+                    </td>
+                    <td class="tableheader">
+                        <b>Date</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>The Holy Nativity Feast</td>
+                    <td> January 7-8</td>
+                </tr>
+                <tr>
+                    <td> The Circumcision Feast</td>
+                    <td> January 14</td>
+                </tr>
+                <tr>
+                    <td> The Holy Epiphany</td>
+                    <td> January 18</td>
+                </tr>
+                <tr>
+                    <td> Feast of the Wedding of Cana of Galilee</td>
+                    <td> January 21</td>
+                </tr>
+                <tr>
+                    <td> Presentation of the Lord into the Temple</td>
+                    <td> February 15</td>
+                </tr>
+                <tr>
+                    <td> Jonah's (Nineveh) Fast</td>
+                    <td> February 22-24</td>
+                </tr>
+                <tr>
+                    <td> Jonah's (Nineveh) Feast</td>
+                    <td> February 25</td>
+                </tr>
 
-<div class="pagesetup">
-    <h1 class="pageheaders">Fasts & Feasts Schedual</h1>
+                <tr>
+                    <td> Holy Great Fast</td>
+                    <td> March 8 – April 23</td>
+                </tr>
+                <tr>
+                    <td> The Feast of the Cross</td>
+                    <td> March 19</td>
+                </tr>
+                <tr>
+                    <td> Annunciation Feast</td>
+                    <td> April 7</td>
+                </tr>
+                <tr>
+                    <td> Lazarus Saturday</td>
+                    <td> April 24</td>
+                </tr>
+                <tr>
+                    <td> Entry of our Lord into Jerusalem (Hosanna Sunday)</td>
+                    <td> April 25</td>
+                </tr>
+                <tr>
+                    <td> Holy Pascha</td>
+                    <td> April 26-28</td>
+                </tr>
+                <tr>
+                    <td> Covenant Thursday</td>
+                    <td> April 29</td>
+                </tr>
+                <tr>
+                    <td> Good Friday</td>
+                    <td> April 30</td>
+                </tr>
+                <tr>
+                    <td> Glorious Feast of the Resurrection</td>
+                    <td style="width:190px;height:18px"> May 2</td>
+                </tr>
+                <tr>
+                    <td> Martyrdom of St. Mark the Evangelist</td>
+                    <td> May 8</td>
+                </tr>
+                <tr>
+                    <td> Thomas' Sunday</td>
+                    <td> May 9</td>
+                </tr>
+                <tr>
+                    <td> Entry of the Lord into Egypt</td>
+                    <td> June 1</td>
+                </tr>
+                <tr>
+                    <td> The Holy Feast of Ascension</td>
+                    <td>June 10</td>
+                </tr>
 
-    <h2 class="sectionheaders">Coptic Fasts & Feasts 2021 A.D. / 1737–1738 A.M</h2>
-    <table class="Tableclass">
-        <tbody>
-            <tr>
-                <td class="tableheader">
-                    <b>Fast or Feast</b>
-                </td>
-                <td class="tableheader">
-                    <b>Date</b>
-                </td>
-            </tr>
-            <tr>
-                <td>The Holy Nativity Feast</td>
-                <td> January 7-8</td>
-            </tr>
-            <tr>
-                <td> The Circumcision Feast</td>
-                <td> January 14</td>
-            </tr>
-            <tr>
-                <td> The Holy Epiphany</td>
-                <td> January 18</td>
-            </tr>
-            <tr>
-                <td> Feast of the Wedding of Cana of Galilee</td>
-                <td> January 21</td>
-            </tr>
-            <tr>
-                <td> Presentation of the Lord into the Temple</td>
-                <td> February 15</td>
-            </tr>
-            <tr>
-                <td> Jonah's (Nineveh) Fast</td>
-                <td> February 22-24</td>
-            </tr>
-            <tr>
-                <td> Jonah's (Nineveh) Feast</td>
-                <td> February 25</td>
-            </tr>
-
-            <tr>
-                <td> Holy Great Fast</td>
-                <td> March 8 – April 23</td>
-            </tr>
-            <tr>
-                <td> The Feast of the Cross</td>
-                <td> March 19</td>
-            </tr>
-            <tr>
-                <td> Annunciation Feast</td>
-                <td> April 7</td>
-            </tr>
-            <tr>
-                <td> Lazarus Saturday</td>
-                <td> April 24</td>
-            </tr>
-            <tr>
-                <td> Entry of our Lord into Jerusalem (Hosanna Sunday)</td>
-                <td> April 25</td>
-            </tr>
-            <tr>
-                <td> Holy Pascha</td>
-                <td> April 26-28</td>
-            </tr>
-            <tr>
-                <td> Covenant Thursday</td>
-                <td> April 29</td>
-            </tr>
-            <tr>
-                <td> Good Friday</td>
-                <td> April 30</td>
-            </tr>
-            <tr>
-                <td> Glorious Feast of the Resurrection</td>
-                <td style="width:190px;height:18px"> May 2</td>
-            </tr>
-            <tr>
-                <td> Martyrdom of St. Mark the Evangelist</td>
-                <td> May 8</td>
-            </tr>
-            <tr>
-                <td> Thomas' Sunday</td>
-                <td> May 9</td>
-            </tr>
-            <tr>
-                <td> Entry of the Lord into Egypt</td>
-                <td> June 1</td>
-            </tr>
-            <tr>
-                <td> The Holy Feast of Ascension</td>
-                <td>June 10</td>
-            </tr>
-
-            <tr>
-                <td> The Holy Pentecost Feast</td>
-                <td> June 20</td>
-            </tr>
-            <tr>
-                <td> The Apostles' Fast</td>
-                <td> June 21 – July 11</td>
-            </tr>
-            <tr>
-                <td> The Apostles' Feast (Martyrdom of St. Peter &amp; St. Paul)</td>
-                <td> July 12</td>
-            </tr>
-            <tr>
-                <td> St. Mary's Fast</td>
-                <td> August 7–21</td>
-            </tr>
-            <tr>
-                <td> Transfiguration Feast</td>
-                <td> August 19</td>
-            </tr>
-            <tr>
-                <td> Assumption of St. Mary's Body</td>
-                <td style="width:191px;height:18px"> August 22</td>
-            </tr>
-            <tr>
-                <td> The Nayrouz Feast (Coptic New Year)</td>
-                <td> September 11</td>
-            </tr>
-            <tr>
-                <td> The Feast of the Cross (Three days)</td>
-                <td> September 27–29</td>
-            </tr>
-            <tr>
-                <td> The Holy Nativity Fast</td>
-                <td> November 25 – January 6</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                <tr>
+                    <td> The Holy Pentecost Feast</td>
+                    <td> June 20</td>
+                </tr>
+                <tr>
+                    <td> The Apostles' Fast</td>
+                    <td> June 21 – July 11</td>
+                </tr>
+                <tr>
+                    <td> The Apostles' Feast (Martyrdom of St. Peter &amp; St. Paul)</td>
+                    <td> July 12</td>
+                </tr>
+                <tr>
+                    <td> St. Mary's Fast</td>
+                    <td> August 7–21</td>
+                </tr>
+                <tr>
+                    <td> Transfiguration Feast</td>
+                    <td> August 19</td>
+                </tr>
+                <tr>
+                    <td> Assumption of St. Mary's Body</td>
+                    <td style="width:191px;height:18px"> August 22</td>
+                </tr>
+                <tr>
+                    <td> The Nayrouz Feast (Coptic New Year)</td>
+                    <td> September 11</td>
+                </tr>
+                <tr>
+                    <td> The Feast of the Cross (Three days)</td>
+                    <td> September 27–29</td>
+                </tr>
+                <tr>
+                    <td> The Holy Nativity Fast</td>
+                    <td> November 25 – January 6</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <br />
+    </div>
+</section>
+<!--Events Details End-->

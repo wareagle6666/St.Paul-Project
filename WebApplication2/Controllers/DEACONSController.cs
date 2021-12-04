@@ -56,7 +56,7 @@ namespace WebApplication2.Controllers
                 foreach (var item in list)
                 {
                     var currentDate = DateTime.Parse(item.Start.Date);
-                    string Date = currentDate.ToString("dddd, dd MMMM yyyy");
+                    string Date = currentDate.ToString("ddd, dd MMM yy");
                     string[] names = item.Summary.Split(',');
 
                     eventlist.Add(new Calendar(names, Date));

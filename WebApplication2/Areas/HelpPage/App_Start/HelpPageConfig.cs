@@ -56,7 +56,7 @@ namespace WebApplication2.Areas.HelpPage
             // type, regardless of the body parameter or return type. The lines below avoid display of binary content.
             // The BsonMediaTypeFormatter (if available) is not used to serialize the TextSample object.
             config.SetSampleForMediaType(
-                new TextSample("Binary JSON content. See https://bsonspec.org for details."),
+                new TextSample("Binary JSON content. See http://bsonspec.org for details."),
                 new MediaTypeHeaderValue("application/bson"));
 
             //// Uncomment the following to use "[0]=foo&[1]=bar" directly as the sample for all actions that support form URL encoded format

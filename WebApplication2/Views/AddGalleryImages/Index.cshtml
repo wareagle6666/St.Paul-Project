@@ -4,33 +4,79 @@
 }
 
 
-<div class="pagesetup">
-    <h1 class="pageheaders">Upload Images </h1>
-    <div>
-        <h2> Upload Multi Images</h2>
-        <form action="UploadImage"
-              controller="AddGalleryImages"
-              method="post"
-              enctype="multipart/form-data">
-            <input type="file" id="file1"
-                   name="file1"
-                   multiple="multiple" />
-            <button type="submit">Upload File(s)</button>
-        </form>
-    </div>
-    <div>
-        <h2> Upload Single Images</h2>
-        <form action="UploadSingeImage"
-              controller="AddGalleryImages"
-              method="post"
-              enctype="multipart/form-data">
-            <input type="file" id="file1"
-                   name="file1"
-                   multiple="multiple" />
-            <button type="submit">Upload File(s)</button>
-        </form>
-    </div>
 
-</div>
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Image Admin Panel</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Image Uploads</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+
+        <h1 class="errormessage">@ViewBag.ErrorMessage </h1>
+
+        <h1 class="successmessage">@ViewBag.Message </h1>
+
+        <div class="row">
+
+
+            <h2>Upload Multiple Images </h2>
+
+
+            @using (Html.BeginForm("UploadImage", "AddGalleryImages", null, FormMethod.Post,
+                                      new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>Image</legend>
+
+                    <div class="editor-field">
+                        <input id="ImagePath" title="Upload a product image"
+                               type="file" name="file1" multiple="multiple" class="form-control custom-file-input" />
+                    </div>
+                    <p><input type="submit" value="Upload" class="btn btn-secondary btn-sm" /></p>
+                </fieldset>
+            }
+        </div>
+
+        <div class="row">
+            <h2>Upload Single Images </h2>
+
+            @using (Html.BeginForm("UploadSingeImage", "AddGalleryImages", null, FormMethod.Post,
+                                  new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>Image</legend>
+
+                    <div class="editor-field">
+                        <input id="ImagePath" title="Upload a product image"
+                               type="file" name="file1" multiple="multiple" class="form-control custom-file-input" />
+                    </div>
+                    <p><input type="submit" value="Upload" class="btn btn-secondary btn-sm" /></p>
+                </fieldset>
+            }
+
+        </div>
+
+
+
+    </div>
+</section>
+<!--Events Details End-->
+
+
 
 

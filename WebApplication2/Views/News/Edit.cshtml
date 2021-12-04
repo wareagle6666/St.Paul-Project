@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<section class="navpages pagebackground">
+    <div class="container">
+
+        @using (Html.BeginForm("Edit",
+                        "News",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <h1>Update News</h1>
+                <hr />
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.ImageID)
+                <div class="form-group">
+                    News Title
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NewsTitle)
+                        @Html.ValidationMessageFor(model => model.NewsTitle)
+                    </div>
+                </div>
+                <div class="form-group">
+                    Link
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Link)
+                        @Html.ValidationMessageFor(model => model.Link)
+                    </div>
+                </div>
+                <div class="form-group">
+                    English Text
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.EnglishText)
+                        @Html.ValidationMessageFor(model => model.EnglishText)
+                    </div>
+                </div>
+                <div class="form-group">
+                    Arabic Text
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.ArabicText)
+                        @Html.ValidationMessageFor(model => model.ArabicText)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Is Spotlight?
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.isSpotlight)
+                    </div>
+                </div>
+                @*<div class="blog-details__image">
+                    Image
+                        @{ var getnewsimage = Convert.ToBase64String(Model.ImageData);
+                            var Newspicture = string.Format("data:image/jpeg;base64,{0}", getnewsimage);
+
+                            <img src="@Url.Content(Newspicture)" alt="news">
+                        }
+                    </div>*@<!-- /.blog-details__image -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="input-box mt-20">
+                        <input type="file" id="file" name="file" multiple="multiple">
+                    </div>
+                </div>
+
+                @*Genre and Price removed for brevity.*@
+                <br />
+                <br />
+
+                <div class="col-lg-6">
+                    <div class="input-box mt-10 text-center">
+                        <button class="main-btn" type="submit" value="Upload Image">Update</button>
+                        <a href="@Url.Action("Index", "News")" class="main-btn">Cancel</a>
+                    </div>
+                </div>
+                <br />
+                <br />
+            </div>
+        }
+    </div>
+</section>
+
+

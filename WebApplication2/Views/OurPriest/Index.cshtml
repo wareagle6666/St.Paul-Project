@@ -2,32 +2,93 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<div class="pagesetup">
-    <h1 class="pageheaders">Our Priest</h1>
-
-    <div class="col-lg-12">
-        <img class="ourpriest" src="~/Content/Images/priest.jpg" />
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Fr.Steven Marzouk</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Our Priest</span></li>
+        </ul>
     </div>
-    <div class="col-lg-12 priesttext">
-        <p>
-            <strong>Fr. Steven Marzouk</strong> was ordained by H.G. Bishop Youssef on October 7, 2012, and he has been serving St. Paul's church since then. Fr. Steven grew up in Egypt, attending St. Anthony Coptic Orthodox Church in the district of Shoubra in Cairo. Fr. Steven earned a Bachelor of Science degree in Electrical Engineering from Zagazig University. He is married to Mariam and is a father of 4 lovely kids Kyria, Karas, Carol and Karen.
-        </p>
-        <p>
-            Fr. Steven also, serves St. Anthony The Great Coptic Orthodox Church, Peachtree City, GA!
-        </p>
-    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
 
-    <div class="col-lg-12">
-        <p class="sectionheaders">
-            Fr. Steven Contact:
-        </p>
-        <p class="glyphicon glyphicon-envelope">
-            Email:     <a href="mailto:fr.stevensaintpaul@gmail.com">fr.stevensaintpaul@gmail.com</a>
-        </p>
-        <br />
-        <p class="glyphicon glyphicon-phone">
-            Phone:   (404) 667 - 2578
-        </p>
+
+
+        <!--Events Details Start-->
+        <section class="event-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="events-details__img">
+                            <img src="~/Content/Images/priest.jpg" alt="">
+                            @*<div class="event-details__date-box">
+                                <p>20 <br> Jan</p>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="event-details__left">
+                            <div class="event-details__top-content">
+                                <h2 class="event-details__title">Fr. Steven Marzouk</h2>
+                                <p class="event-details__text-1">Our Priest was ordained by H.G. Bishop Youssef on October 7, 2012, and he has been serving St. Paul's church since then. Fr. Steven grew up in Egypt, attending St. Anthony Coptic Orthodox Church in the district of Shoubra in Cairo. Fr. Steven earned a Bachelor of Science degree in Electrical Engineering from Zagazig University. He is married to Mariam and is a father of 4 lovely kids Kyria, Karas, Carol and Karen.</p>
+                            </div>
+                            <div class="event-details__bottom-content">
+                                <h3 class="event-details__bottom-title">Other Service</h3>
+                                <p class="event-details__bottom-text-1">Fr. Steven also, serves St. Anthony The Great Coptic Orthodox Church, Peachtree City, GA!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="event-details__right">
+                            <div class="event-details__right-sidebar">
+                                <div class="event-details__right-sidebar-title">
+                                    <h4>Fr. Steven Contact:</h4>
+                                </div>
+                                <ul class="event-details__right-sidebar-list list-unstyled">
+                                    <li>
+                                        <div class="left">
+                                            <p> Email:  </p>
+                                        </div>
+                                        <div class="right">
+                                            <h4> <a href="mailto:fr.stevensaintpaul@gmail.com">fr.stevensaintpaul@gmail.com</a></h4>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <p>Phone:</p>
+                                        </div>
+                                        <div class="right">
+                                            <h4>(404) 667 - 2578</h4>
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Events Details End-->
+
+
+
     </div>
-</div>
+</section>
+<!--Events Details End-->

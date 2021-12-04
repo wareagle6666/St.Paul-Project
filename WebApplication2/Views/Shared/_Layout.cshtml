@@ -11,209 +11,496 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
+    <!-- MailerLite Universal -->
+    <script>
+        (function (m, a, i, l, e, r) {
+            m['MailerLiteObject'] = e; function f() {
+                var c = { a: arguments, q: [] }; var r = this.push(c); return "number" != typeof r ? r : f.bind(c.q);
+            }
+            f.q = f.q || []; m[e] = m[e] || f.bind(f.q); m[e].q = m[e].q || f.q; r = a.createElement(i);
+            var _ = a.getElementsByTagName(i)[0]; r.async = 1; r.src = l + '?v' + (~~(new Date().getTime() / 1000000));
+            _.parentNode.insertBefore(r, _);
+        })(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
+
+        var ml_account = ml('accounts', '3040402', 'd0e0n8f3j7', 'load');
+    </script>
+    <!-- End MailerLite Universal -->
 </head>
+
+
 <body>
+    <div class="preloader">
+        <img class="preloader__image" width="60" src="~/Content/images/cross.png" alt="" />
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <header class="main-header-three clearfix">
+            <div class="main-header-three__menu-box clearfix">
+                <nav class="main-menu main-menu-three clearfix">
+                    <div class="main-menu-three__container clearfix">
+                        <div class="main-menu-three__logo">
+                            <a href="@Url.Action("Index", "Home")">
+                                <img src="~/Content/Images/logo.png" alt="" class="logocustom">
+                            </a>
+                        </div>
+                        @using Microsoft.AspNet.Identity
+                        @if (Request.IsAuthenticated)
+                        {
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+                            <div class="main-menu-three__inner-upper clearfix">
 
-        <div class="container">
-            <img class="iconimage" src="~/Content/Images/crossicon.png" /><p class="title"> St.Paul Coptic Orthodox Church</p>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                                <div class="main-menu-three__inner clearfix">
+                                    <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+
+                                    <ul class="main-menu__list">
+
+                                        @if (!User.IsInRole("DoorCheckin"))
+                                        {
+                                            <li><a href="@Url.Action("Index", "Donations")" class="main-menu-three__donate-btn"><i class="fa fa-heart"></i>Donate </a> </li>
+                                            <li class="dropdown current">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                                            <li>@Html.ActionLink("Streaming", "Index", "Streaming", new { area = "" }, null)</li>
+
+
+                                        }
+                                        @if (User.IsInRole("DoorCheckin"))
+                                        {
+                                            <li>@Html.ActionLink("Check In Events", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+                                        }
+                                        @if (!User.IsInRole("User") && !User.IsInRole("DoorCheckin"))
+                                        {
+                                            <li class="dropdown">
+                                                <a href="@Url.Action("Index", "Home")">Admin </a>
+                                                <ul>
+                                                    @if (User.IsInRole("Priest") || User.IsInRole("Board") || User.IsInRole("SuperAdmin"))
+                                                    {
+                                                        <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+
+                                                        <li>@Html.ActionLink("Church List", "Index", "Contacts", new { area = "" }, null)</li>
+                                                        if (User.IsInRole("Treasury") || User.IsInRole("SuperAdmin"))
+                                                        {
+                                                            //nothing yet
+                                                        }
+                                                    }
+                                                    @if (User.IsInRole("SuperAdmin"))
+                                                    {
+
+                                                        <li>@Html.ActionLink("Add Images", "Index", "AddGalleryImages", new { area = "" }, null)</li>
+                                                        <li>@Html.ActionLink("Add Images", "Index", "AddGalleryImages", new { area = "" }, null)</li>
+                                                    }
+                                                    @if (User.IsInRole("NewsAdmin") || User.IsInRole("SuperAdmin"))
+                                                    {
+
+                                                        <li>@Html.ActionLink("News Config", "Admin", "News", new { area = "" }, null)</li>
+                                                    }
+                                                    @if (User.IsInRole("Schedular") || User.IsInRole("SuperAdmin"))
+                                                    {
+
+                                                        <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+                                                    }
+                                                    @if (User.IsInRole("ChurchList") || User.IsInRole("SuperAdmin"))
+                                                    {
+
+                                                        <li>@Html.ActionLink("Church List", "Index", "Contacts", new { area = "" }, null)</li>
+                                                    }
+                                                    @if (User.IsInRole("Servant") || User.IsInRole("SuperAdmin"))
+                                                    {
+                                                        //nothingyet
+                                                    }
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="@Url.Action("Index", "Home")"> Schedule</a>
+                                                <ul>
+                                                    <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                    <li><a href="@Url.Action("Index", "News")">News Updates</a></li>
+                                                    <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Service Registration", "Index", "ChurchEventPages", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("My Registration", "Index", "RegistrationPage", new { area = "" }, null)</li>
+                                                </ul>
+                                            </li>
+                                        }
+                                        else if (User.IsInRole("DoorCheckin"))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            <li class="dropdown">
+                                                <a href="@Url.Action("Index", "Home")">Schedule</a>
+                                                <ul>
+                                                    <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
+                                                </ul>
+                                            </li>
+                                        }
+                                        @if (!User.IsInRole("DoorCheckin"))
+                                        {
+                                            <li class="dropdown">
+                                                <a href="@Url.Action("Index", "Home")">Sunday School</a>
+                                                <ul>
+                                                    <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="@Url.Action("Index", "Home")">Schedule</a>
+                                                <ul>
+                                                    <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="@Url.Action("Index", "Home")">About Us & Resources</a>
+                                                <ul>
+                                                    <li>@Html.ActionLink("Our Priest", "Index", "OurPriest", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Our Faith", "Index", "OurFaith", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Ministries", "Index", "Ministries", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Church Board", "Index", "ChurchBoard", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Visiting An Orthodox Church", "Index", "VisitinganOrthodoxChurch", new { area = "" }, null)</li>
+                                                    <li><a href="https://suscopts.org">Our Diocese</a></li>
+                                                    <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
+                                                </ul>
+                                            </li>
+                                        }
+
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                            <div class="main-menu__right main-menu__right-three">
+
+                                <div class="main-menu__right-social">
+
+                                    <a href="https://www.facebook.com/groups/199485506854969/"><i class="fab fa-facebook-square"></i></a>
+                                    <a href="@Url.Action("Index", "Streaming")"><i class="fas fa-tv"></i></a>
+                                    <a href="https://www.youtube.com/c/StPaulCopticOrthodoxChurchAtlantaGa"><i class="fab fa-youtube"></i></a>
+
+                                </div>
+                                @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+                                    @Html.ActionLink("Hello " + User.Identity.Name.Split('@')[0] + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage", @class = "main-menu__search " })
+
+                                    <a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();" class="main-menu__cart fas fa-unlock"></a>
+
+                                }
+
+                            </div>
+
+                        }
+                        else
+                        {
+
+                            <div class="main-menu-three__inner-upper clearfix">
+
+                                <div class="main-menu-three__inner clearfix">
+                                    <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                                    <ul class="main-menu__list">
+                                        <li><a href="@Url.Action("Index", "Donations")" class="main-menu-three__donate-btn"><i class="fa fa-heart"></i>Donate </a> </li>
+                                        <li class="dropdown current">
+                                            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)
+                                        </li>
+                                        <li>@Html.ActionLink("Streaming", "Index", "Streaming", new { area = "" }, null)</li>
+
+                                        <li>
+                                            <a href="@Url.Action("Index", "Home")">Sunday School</a>
+                                            <ul>
+                                                <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
+                                                <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="@Url.Action("Index", "Home")">Schedule</a>
+                                            <ul>
+                                                <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                <li><a href="@Url.Action("Index", "News")">News Updates</a></li>
+                                                <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
+                                                <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="@Url.Action("Index", "Home")">About Us & Resources</a>
+                                            <ul>
+                                                <li>@Html.ActionLink("Our Priest", "Index", "OurPriest", new { area = "" }, null)</li>
+                                                <li>@Html.ActionLink("Our Faith", "Index", "OurFaith", new { area = "" }, null)</li>
+                                                <li>@Html.ActionLink("Ministries", "Index", "Ministries", new { area = "" }, null)</li>
+                                                <li>@Html.ActionLink("Church Board", "Index", "ChurchBoard", new { area = "" }, null)</li>
+                                                <li>@Html.ActionLink("Visiting An Orthodox Church", "Index", "VisitinganOrthodoxChurch", new { area = "" }, null)</li>
+                                                <li><a href="https://suscopts.org">Our Diocese</a></li>
+                                                <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="main-menu__right main-menu__right-three">
+
+                                <div class="main-menu__right-social">
+
+                                    <a href="https://www.facebook.com/groups/199485506854969/"><i class="fab fa-facebook-square"></i></a>
+                                    <a href="@Url.Action("Index", "Streaming")"><i class="fas fa-tv"></i></a>
+                                    <a href="https://www.youtube.com/c/StPaulCopticOrthodoxChurchAtlantaGa"><i class="fab fa-youtube"></i></a>
+
+                                </div>
+                                <a href="@Url.Action("Login", "Account")" id="registerLink"><i class=" main-menu__search fas fa-user-lock"></i></a>
+                                <a href="@Url.Action("Register", "Account")" class="main-menu__cart fas fa-pen"></a>
+                            </div>
+                        }
+                    </div>
+                </nav>
             </div>
-            <div class="navbar-collapse collapse">
-                @using Microsoft.AspNet.Identity
-                @if (Request.IsAuthenticated)
-                {
-                <ul class="nav navbar-nav">
-                    @if (!User.IsInRole("DoorCheckin")) {
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Live Streaming", "Index", "Streaming", new { area = "" }, null)</li>
-                    }
-                    @if (User.IsInRole("DoorCheckin"))
-                    {
-                        <li>@Html.ActionLink("Check In Events", "Index", "EventsAdminPage", new { area = "" }, null)</li>
-                    }
-                    @if (!User.IsInRole("User") && !User.IsInRole("DoorCheckin"))
-                    {
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Panel<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-level">
-                                @if (User.IsInRole("Priest") || User.IsInRole("Board") || User.IsInRole("SuperAdmin"))
-                                {
-                                    <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
-                                    <li class="divider"></li>
-                                    <li>@Html.ActionLink("Church List", "Index", "Contacts", new { area = "" }, null)</li>
-                                    if (User.IsInRole("Treasury") || User.IsInRole("SuperAdmin"))
-                                    {
-                                        <li class="divider"></li>
-                                    }
-                                }
-                                @if (User.IsInRole("SuperAdmin"))
-                                {
-                                    <li class="divider"></li>
-                                    <li>@Html.ActionLink("Add Images", "Index", "AddGalleryImages", new { area = "" }, null)</li>
-                                    <li>@Html.ActionLink("Add Images", "Index", "AddGalleryImages", new { area = "" }, null)</li>
-                                }
-                                @if (User.IsInRole("Schedular") || User.IsInRole("SuperAdmin"))
-                                {
-                                    <li class="divider"></li>
-                                    <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
-                                }
-                                @if (User.IsInRole("ChurchList") || User.IsInRole("SuperAdmin"))
-                                {
-                                    <li class="divider"></li>
-                                    <li>@Html.ActionLink("Church List", "Index", "Contacts", new { area = "" }, null)</li>
-                                }
-                                @if (User.IsInRole("Servant") || User.IsInRole("SuperAdmin"))
-                                {
-                                    <li class="divider"></li>
-                                }
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-level">
-                                <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Service Registration", "Index", "ChurchEventPages", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("My Registration", "Index", "RegistrationPage", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                    }
-                    else if(User.IsInRole("DoorCheckin"))
-                    {
+        </header>
 
-                    }
-                    else
-                    {
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-level">
-                                <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Service Registration", "Index", "ChurchEventPages", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("My Registration", "Index", "RegistrationPage", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                    }
-                    @if (!User.IsInRole("DoorCheckin")) {
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sunday School<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-level">
-                            <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
-                            <li class="divider"></li>
-                            <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us & Resources<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-level">
-                            <li>@Html.ActionLink("Our Priest", "Index", "OurPriest", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Our Faith", "Index", "OurFaith", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Ministries", "Index", "Ministries", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Church Board", "Index", "ChurchBoard", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Gallery", "Index", "Gallery", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Visiting An Orthodox Church", "Index", "VisitinganOrthodoxChurch", new { area = "" }, null)</li>
-                            <li class="divider"></li>
-                            <li><a href="https://suscopts.org">Our Diocese</a></li>
-                            <li class="divider"></li>
-                            <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
-                        </ul>
-                    </li>
-                    }
-                </ul>
-                    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                    {
-                        @Html.AntiForgeryToken()
+        <div class="stricky-header stricked-menu main-menu main-menu-three">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
 
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage" })
-                            </li>
-                            <li><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a></li>
-                        </ul>
-                    }
-
-                }
-                else
-                {
-
-                    <ul class="nav navbar-nav">
-
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("Live Streaming", "Index", "Streaming", new { area = "" }, null)</li>
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sunday School<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-level">
-                                <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-level">
-                                <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                        <li>@Html.ActionLink("Gallery", "Index", "Gallery", new { area = "" }, null)</li>
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us & Resources<b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-level">
-                                <li>@Html.ActionLink("Our Priest", "Index", "OurPriest", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Our Faith", "Index", "OurFaith", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Ministries", "Index", "Ministries", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Church Board", "Index", "ChurchBoard", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Visiting An Orthodox Church", "Index", "VisitinganOrthodoxChurch", new { area = "" }, null)</li>
-                                <li class="divider"></li>
-                                <li><a href="https://suscopts.org">Our Diocese</a></li>
-                                <li class="divider"></li>
-                                <li>@Html.ActionLink("Contact Us", "Index", "ContactUs", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
-                        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
-                    </ul>
-                }
-            </div>
-        </div>
-
-        </div>
-    <div class="container body-content">
         @RenderBody()
         @RenderSection("SPAViews", required: false)
-        <br />
-        &nbsp;
-        <br />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - St.Paul Coptic Orthodox Church  | 655 Satellite Blvd, Suwanee, GA 30024 | Phone (706) 524-4741 </p>
-            <p>P.O. Box 3424 Suwanee, GA 30024 </p>
+
+
+
+
+
+
+        <!--Become Volunteer Start-->
+        <!--<section class="become-volunteer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="become-volunteer__inner">
+                            <div class="become-volunteer__left">
+                                <h2>Join your hand with us for <br> a better life and future</h2>
+                                <div class="become-volunteer__big-text">
+                                    <h2>Become a Volunteers</h2>
+                                </div>
+                            </div>
+                            <div class="become-volunteer__btn-box">
+                                <a href="#" class="become-volunteer__btn thm-btn">
+                                    <i class="fas fa-arrow-circle-right"></i>Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+        <!--Become Volunteer End-->
+        <!--Site Footer One Start-->
+        <footer class="site-footer">
+            <div class="site-footer-bg" style="background-image: url(/Content/images/crossicon.png)"></div>
+            <div class="container">
+                <div class="site-footer__top">
+                    <div class="row">
+
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="footer-widget__column footer-widget__explore clearfix">
+                                <h3 class="footer-widget__title">Explore</h3>
+                                <ul class="footer-widget__explore-list list-unstyled">
+                                    <li><a href="@Url.Action("Index", "Donations")">Donate</a></li>
+                                    <li><a href="#">Announcements</a></li>
+                                    <li><a href="@Url.Action("Index", "Calendar")">Schedule</a></li>
+
+                                </ul>
+                                <ul class="footer-widget__explore-list footer-widget__explore-list-two list-unstyled">
+                                    <li><a href="@Url.Action("Index", "Calendar")">Contact</a></li>
+                                    <li><a href="https://suscopts.org">Diocese</a></li>
+                                    <li><a href="@Url.Action("Index", "VisitinganOrthodoxChurch")">Our Rules</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="footer-widget__column footer-widget__contact">
+                                <h3 class="footer-widget__title">Contact</h3>
+                                <ul class="list-unstyled footer-widget__contact-list">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="icon-chat"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>
+                                                <span>Call Anytime</span>
+                                                <a href="tel:706 524 4741">+1 706 524 4741</a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="icon-message"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>
+                                                <span>Send Email</span>
+                                                <a href="mailto:fr.stevensaintpaul@gmail.com">fr.stevensaintpaul@gmail.com</a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="icon-address"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p><span>Location</span>655 Satellite Blvd, Suwanee, GA 30024</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                            <div id="mlb2-5028800" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-5028800">
+                                <div class="ml-form-align-center">
+                                    <div class="ml-form-embedWrapper embedForm">
+                                        <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                                            <div class="ml-form-embedContent" style="">
+                                                <h4>Newsletter</h4>
+
+                                            </div>
+                                            <form class="ml-block-form" action="https://static.mailerlite.com/webforms/submit/l3p2p8" data-code="l3p2p8" method="post" target="_blank">
+                                                <div class="ml-form-formContent">
+                                                    <div class="ml-form-fieldRow ml-last-item">
+                                                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                                            <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ml-form-recaptcha ml-validate-required" style="float:left">
+                                                    <script src="https://www.google.com/recaptcha/api.js"></script>
+                                                    <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                                                </div>
+                                                <input type="hidden" name="ml-submit" value="1">
+                                                <div class="ml-form-embedSubmit">
+                                                    <button type="submit" class="main-menu-three__donate-bt">Subscribe</button>
+                                                    <button disabled="disabled" style="display:none" type="button" class="loading"> <div class="ml-form-embedSubmitLoad"></div> <span class="sr-only">Loading...</span> </button>
+                                                </div>
+                                                <input type="hidden" name="anticsrf" value="true">
+                                            </form>
+                                        </div>
+                                        <div class="ml-form-successBody row-success" style="display:none">
+                                            <div class="ml-form-successContent">
+                                                <h4>Thank you!</h4>
+                                                <p>You have successfully joined our subscriber list.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="site-footer__bottom">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="site-footer__bottom-inner">
+                                <div class="site-footer__bottom-logo-social">
+                                    <div class="site-footer__bottom-logo">
+                                        <a href="index.html">
+                                            <img src="~/Content/images/footer-logo.jpg"
+                                                 alt="" class="logocustomfooter">
+                                        </a>
+                                    </div>
+                                    <div class="site-footer__bottom-social">
+                                        <a href="https://www.facebook.com/groups/199485506854969/"><i class="fab fa-facebook-square"></i></a>
+                                        <a href="@Url.Action("Index", "Streaming")"><i class="fas fa-tv"></i></a>
+                                        <a href="https://www.youtube.com/c/StPaulCopticOrthodoxChurchAtlantaGa"><i class="fab fa-youtube"></i></a>
+                                    </div>
+                                </div>
+                                <div class="site-footer__bottom-copy-right">
+                                    <p>P.O. Box 3424 Suwanee, GA 30024</p>
+                                </div>
+                                <div class="site-footer__bottom-copy-right">
+                                    <p>© Copyright @DateTime.Now.Year by <a href="@Url.Action("Index", "Home")">St.Paul Coptic Orthodox Church</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
+        <!--Site Footer One End-->
+
+    </div><!-- /.page-wrapper -->
+
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+        <!-- /.mobile-nav__overlay -->
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image">
+                    <img src="~/Content/Images/logo.png" width="155"
+                         alt="" />
+                </a>
+            </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container"></div>
+            <!-- /.mobile-nav__container -->
+
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:needhelp@packageName__.com">fr.stevensaintpaul@gmail.com</a>
+                </li>
+                <li>
+                    <i class="fa fa-phone-alt"></i>
+                    <a href="tel:706-524-4741">706 524 4741</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__social">
+                    <a href="https://www.facebook.com/groups/199485506854969/"><i class="fab fa-facebook-square"></i></a>
+                    <a href="@Url.Action("Index", "Streaming")"><i class="fas fa-tv"></i></a>
+                    <a href="https://www.youtube.com/c/StPaulCopticOrthodoxChurchAtlantaGa"><i class="fab fa-youtube"></i></a>
+                </div><!-- /.mobile-nav__social -->
+            </div><!-- /.mobile-nav__top -->
+
+
+
+        </div>
+        <!-- /.mobile-nav__content -->
     </div>
+    <!-- /.mobile-nav__wrapper -->
+
+    <div class="search-popup">
+        <div class="search-popup__overlay search-toggler"></div>
+        <!-- /.search-popup__overlay -->
+        <div class="search-popup__content">
+            <form action="#">
+                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+                <input type="text" id="search" placeholder="Search Here..." />
+                <button type="submit" aria-label="search submit" class="thm-btn">
+                    <i class="icon-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+        <!-- /.search-popup__content -->
+    </div>
+    <!-- /.search-popup -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+    @Scripts.Render("~/bundles/Theme")
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/knockout")
+
     @*@Scripts.Render("~/bundles/app")*@
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>
+<script>
+    function ml_webform_success_5028800() { var r = ml_jQuery || jQuery; r(".ml-subscribe-form-5028800 .row-success").show(), r(".ml-subscribe-form-5028800 .row-form").hide() }
+</script>
+<img src="https://track.mailerlite.com/webforms/o/5028800/l3p2p8?v1637242211" width="1" height="1" style="max-width:1px;max-height:1px;visibility:hidden;padding:0;margin:0;display:block" alt="." border="0">
+<script src="https://static.mailerlite.com/js/w/webforms.min.js?v0c75f831c56857441820dcec3163967c" type="text/javascript"></script>

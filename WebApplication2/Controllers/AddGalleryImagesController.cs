@@ -26,6 +26,11 @@ namespace WebApplication2.Controllers
             try
             {
                 var files = Request.Files;
+                if (files[0].FileName == "")
+                {
+                    ViewBag.ErrorMessage = "You didn't add an image";
+                    return View("Index");
+                }
                 for (var i = 0; i < Request.Files.Count; i++)
                 {
                     Image img = new Image();
@@ -34,8 +39,8 @@ namespace WebApplication2.Controllers
                     MemoryStream ms = new MemoryStream();
                     files[i].InputStream.CopyTo(ms);
                     img.ImageData = ms.ToArray();
-
-                    img.SaveImage(img, 0);
+                    img.ImageType = 0;
+                    img.SaveImage(img);
                 }
                 ViewBag.Message = "Image(s) stored in atabase!";
                 return View("Index");
@@ -52,16 +57,20 @@ namespace WebApplication2.Controllers
 
             try
             {
-                var files = Request.Files;
 
+                var files = Request.Files;
+                if(files[0].FileName == "") {
+                    ViewBag.ErrorMessage = "You didn't add an image";
+                    return View("Index");
+                }
                 Image img = new Image();
                 img.ImageTitle = files[0].FileName;
 
                 MemoryStream ms = new MemoryStream();
                 files[0].InputStream.CopyTo(ms);
                 img.ImageData = ms.ToArray();
-
-                img.SaveImage(img, 1);
+                img.ImageType = 1;
+                img.SaveImage(img);
 
                 ViewBag.Message = "Image(s) stored in atabase!";
                 return View("Index");

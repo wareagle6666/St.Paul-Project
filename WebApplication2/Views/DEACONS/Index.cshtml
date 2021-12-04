@@ -3,75 +3,74 @@
     ViewBag.Title = "Index";
 
 }
-
-
-<div class="pagesetup">
-    <h1 class="pageheaders">Deacons Schedule</h1>
-    <div class="col-lg-12">
-        <p >
-            Altar Deacons shoud be present by <strong class="scheduled">8:30 AM on Sunday</strong>.There will be NO crossing of tonyas after 8:55 AM.
-        </p>
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Deacons Schedule</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Deacons</span></li>
+        </ul>
     </div>
-    <div class="col-lg-12">
-        <table>
-            <tr>
-                <th>Service</th>
-                <th>Date</th>
-                <th>Deacons</th>
-            </tr>
+</section>
+<!--Page Header End-->
+<!--Events Page Start-->
+<section class="events-page">
+    <div class="container">
+        <div class="row">
             @if (Model.Count != 0)
             {
                 foreach (var item in Model)
                 {
-                    <tr>
-                        <td>Divine Liturgy</td>
-                        <td>@item.date </td>
-                        <td>
-                            @for (int i = 0; i < item.deacons.Length; i++)
-                            {
-                                @( (i + 1).ToString() + "." + item.deacons[i])
-                                <br />
-                            }
-                        </td>
-                    </tr>
+
+
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <!--Events One Single-->
+                        <div class="events-one__single">
+                            <div class="events-one__img">
+
+                                <img src="Content/Images/events-page-img-5.jpg" alt="">
+                      
+                                <div class="events-one__date-box">
+                                    <p>@item.date </p>
+                                </div>
+                                <div class="events-one__bottom">
+                                    <h2>Divine Liturgy</h2>
+                                    <p><i class="far fa-clock"></i>8:30 pm</p>
+                                    <h3 class="events-one__bottom-title">
+
+                                        <ul>
+                                            @for (int i = 0; i < item.deacons.Length; i++)
+                                            {
+                                                <li>
+                                                    @( (i + 1).ToString() + "." + item.deacons[i])
+
+                                                </li>
+
+                                            }
+                                        </ul>
+
+
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 }
 
             }
             else
             {
-                <td class="deacons"colspan="3"> NO DEACONS SCHEDULED</td>
+                <td class="deacons" colspan="3"> NO DEACONS SCHEDULED</td>
             }
 
 
-        </table>
+        </div>
     </div>
-</div>
-<style>
-    table {
-        font-family: arial, sans-serif;
-        width: 100%;
-    }
+</section>
+<!--Events Page End-->
 
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 5px;
-    }
-
-    h2, h3 {
-        text-align: center;
-    }
-
-    .coltitle {
-        text-align: center;
-    }
-
-    h2 {
-        margin-bottom: 5px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>

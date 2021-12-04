@@ -3,33 +3,94 @@
     ViewBag.Title = "Index";
 }
 
-<div class="pagesetup">
-    <h1 class="pageheaders">Contact Us</h1>
 
-    <div class="col-lg-12">
-        <p class="contactus">
-            Whether you're moving to our side of Atlanta, visiting the area, or curious to learn more about the Coptic Orthodox Church, we'd love to see you at our church.
-        </p>
-    </div>
-    <br />
 
-    <div class="col-lg-6 contacuslist">
-        <p class="fas fa-church">
-            Physical Address:
-        <p>655 Satellite Blvd NW, Suwanee, GA 30024</p>
-        </p>
-        <p class="fas fa-envelope-open-text">
-            Mailing Address:
-        <p>P.O. Box 3424 Suwanee, GA 30024</p>
-        </p>
-        <p class="fas fa-user-shield">
-            @*Dr. Ralph Malek*@
-        <p>(706) 524 - 4741</p>
-        </p>
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>St.Paul Church Details</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Contact Us</span></li>
+        </ul>
     </div>
-    <div class="col-lg-6 embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13226.852117702647!2d-84.0664127!3d34.0255764!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1b98a2e241645ff0!2sSt%20Paul%20Orthodox%20Church!5e0!3m2!1sen!2sus!4v1586895812170!5m2!1sen!2sus" width="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+
+
+        <!--Contact page Start-->
+        <section class="contact-page">
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">Contact Us</span>
+                    <h2 class="section-title__title">We love to hear from you!</h2>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="contact-page__left">
+                            <div class="contact-page__img">
+                                <img src="assets/images/resources/contact-page-img-1.jpg" alt="">
+                            </div>
+                            <p class="contact-page__text">There are many variations of passages of available but the majority have suffered alteration in some form, by injected humou or randomised words even slightly believable.</p>
+                            <div class="contact-page__contact-info">
+                                <ul class="contact-page__contact-list list-unstyled">
+                                    <li>
+                                        <div class="icon">
+                                            <span class="icon-chat"></span>
+                                        </div>
+                                        <div class="text">
+                                            <p>Call Anytime</p>
+                                            <a href="tel:706 524 4741">+1 (706) 524 - 4741</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <span class="icon-message"></span>
+                                        </div>
+                                        <div class="text">
+                                            <p>Mailing</p>
+                                            <h5>P.O. Box 3424 Suwanee, GA 30024</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <span class="icon-address"></span>
+                                        </div>
+                                        <div class="text">
+                                            <p>Our Location</p>
+                                            <h5>655 Satellite Blvd NW, Suwanee, GA 30024</h5>
+                                     
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--Contact page End-->
+
+
+
+
+
     </div>
-</div>
+</section>
+<!--Events Details End-->
+<!--Contact Page Google Map Start-->
+<section class="contact-page-google-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13226.852117702647!2d-84.0664127!3d34.0255764!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1b98a2e241645ff0!2sSt%20Paul%20Orthodox%20Church!5e0!3m2!1sen!2sus!4v1586895812170!5m2!1sen!2sus" class="contact-page-google-map__one" allowfullscreen></iframe>
+
+</section>
+<!--Contact Page Google Map End-->
 
 

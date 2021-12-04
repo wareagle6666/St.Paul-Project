@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>News & Updates</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>News Update</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+
+
+        <!--News Page Start-->
+        <section class="news-page">
+            <div class="container">
+                <div class="row">
+                    @if ( Model.Count != 0)
+                    {
+                        foreach (var News in Model)
+                        {
+                            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
+                                <!--News Two Single-->
+                                <div class="news-two__single">
+                                    <div class="news-two__img-box">
+                                        @if (News.ImageTitle != null && News.ImageTitle != "")
+                                        {
+                                            <div class="news-two__img">
+                                                @{ var getnewsimage = Convert.ToBase64String(News.ImageData);
+                                                    var Newspicture = string.Format("data:image/jpeg;base64,{0}", getnewsimage);
+
+                                                    <img src="@Url.Content(Newspicture)" alt="news">
+                                                    <a href="@Url.Action("Details", "News", new { NewsID = News.ID })"><i class="flaticon-next"></i></a>
+                                                }
+
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="news-two__img">
+                                                <img src="~/content/images/eventimage.jpg" alt="">
+                                                <a href="@Url.Action("Details", "News", new { NewsID = News.ID })"><i class="flaticon-next"></i></a>
+                                            </div>
+
+                                        }
+                                        <div class="news-two__date">
+                                            <p>@News.Created.ToString("dddd, dd MMMM yyyy")</p>
+                                        </div>
+                                    </div>
+                                    <div class="news-two__content">
+
+                                        <h3>
+                                            <a href="news-details.html">@News.NewsTitle</a>
+                                        </h3>
+                                        @if (News.EnglishText.Length < 70)
+                                        {
+                                            <p class="news-two__text">
+                                                @News.EnglishText
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            var text = @News.EnglishText.Substring(0, 70);
+                                            text = text + ".....";
+                                            <p class="news-two__text">
+                                                @text
+                                            </p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="600ms">
+                            <h4> NO EVENTS</h4>
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+</section>

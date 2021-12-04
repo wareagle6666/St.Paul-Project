@@ -3,45 +3,61 @@
     ViewBag.Title = "Donatations";
 }
 
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Donations</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Donations</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
 
-<div class="pagesetup">
-    <h2 class="pageheaders">Donatations</h2>
+        <h3 class="donation">"As every man purposeth in his heart, so let him give, not grudgingly or out of compulsion; for God loveth the cheerful giver"</h3>
 
-    <h3 class="donation">"As every man purposeth in his heart, so let him give, not grudgingly or out of compulsion; for God loveth the cheerful giver"</h3>
+        <h3 class="sectionheaderswithred">Option 1 Zelle:</h3>
 
-    <h3 class="sectionheaderswithred">Option 1 Zelle:</h3>
-
-    <img src="~/Content/Images/Zelle-logo-no-tagline-RGB-purple.png" width="100" height="50" />
-    <ol class="boardlist">
-        <li>
-            If your bank support Zelle <a href="https://www.zellepay.com/get-started">(You can click here to find out)</a> then you are good.
-        </li>
-        <li>
-            If your bank does not support Zelle <a href="https://www.zellepay.com/get-started?gclid=EAIaIQobChMIiPar1aTn7gIViIrICh29bALaEAAYBCAAEgKLrvD_BwE">click here</a> to get going.
-        </li>
-        <li>
-            Zelle account is : stpaul.coptic.suwanee@gmail.com
-        </li>
-    </ol>
+        <img src="~/Content/Images/Zelle-logo-no-tagline-RGB-purple.png" width="100" height="50" />
+        <ol class="boardlist">
+            <li>
+                If your bank support Zelle <a href="https://www.zellepay.com/get-started">(You can click here to find out)</a> then you are good.
+            </li>
+            <li>
+                If your bank does not support Zelle <a href="https://www.zellepay.com/get-started?gclid=EAIaIQobChMIiPar1aTn7gIViIrICh29bALaEAAYBCAAEgKLrvD_BwE">click here</a> to get going.
+            </li>
+            <li>
+                Zelle account is : stpaul.coptic.suwanee@gmail.com
+            </li>
+        </ol>
 
 
-    <h3 class="sectionheaderswithred">Option 2 PayPal:</h3>
-    <ol class="boardlist">
-        <li>
-            Weather or not you have PayPal. Simply click on the button below.
-        </li>
-        <li>
-            Be advised PayPal takes 2% off your donation to make this transation.
-        </li>
-        <li>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="UJM2VHZULXGZA" />
-                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-            </form>
-        </li>
+        <h3 class="sectionheaderswithred">Option 2 PayPal:</h3>
+        <ol class="boardlist">
+            <li>
+                Weather or not you have PayPal. Simply click on the button below.
+            </li>
+            <li>
+                Be advised PayPal takes 2% off your donation to make this transation.
+            </li>
+            <li>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <input type="hidden" name="cmd" value="_s-xclick" />
+                    <input type="hidden" name="hosted_button_id" value="UJM2VHZULXGZA" />
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                </form>
+            </li>
 
-    </ol>
+        </ol>
+    </div>
+</section>
+<!--Events Details End-->
 
-</div>

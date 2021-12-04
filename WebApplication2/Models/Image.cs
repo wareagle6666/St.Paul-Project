@@ -15,13 +15,26 @@ namespace WebApplication2.Models
         public string ImageTitle { get; set; }
         public byte[] ImageData { get; set; }
         public DateTime DateTime { get; set; }
+        public int ImageType { get; set; }
 
-        public int SaveImage(Image image, int isHome)
+        public int SaveImage(Image image)
         {
-            var result= _dataProvider.SaveImage(image, isHome);
+            var result= _dataProvider.SaveImage(image);
             return result;
         }
+        public Guid SaveNewsImage(Image image)
+        {
+            try {
+                var result = _dataProvider.SaveNewsImage(image);
+                return result;
+            }
+            catch(Exception e)
+            {
+                var error = e;
+                throw new Exception();
+            }
 
+        }
         public List<Image> GetGalleryImages()
         {
             var result = _dataProvider.GetGalleryImages();

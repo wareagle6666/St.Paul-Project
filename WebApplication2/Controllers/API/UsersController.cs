@@ -23,7 +23,7 @@ namespace WebApplication2.Controllers.API
 
             _dataProvider = dataProvider;
         }
-
+       
         public IEnumerable<Users> Get()
         {
             return _dataProvider.GetAllUsers();

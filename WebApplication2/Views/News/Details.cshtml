@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>@Model.NewsTitle</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Event Details</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+
+
+
+        <!--News Details Start-->
+        <section class="news-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-7">
+                        <div class="news-details__left">
+                            @if (Model.ImageTitle != null && Model.ImageTitle != "")
+                            {
+                            <div class="news-details__img">
+                                @{ var getnewsimage = Convert.ToBase64String(Model.ImageData);
+                                    var Newspicture = string.Format("data:image/jpeg;base64,{0}", getnewsimage);
+
+                                    <img src="@Url.Content(Newspicture)" alt="news">
+                                }
+                            </div>
+
+                            }
+
+                            <div class="news-details__content">
+
+                                <h3 class="news-details__title">@Model.NewsTitle</h3>
+
+
+                                <p class="news-details__text-one">@Model.EnglishText </p>
+                                <p class="news-details__text-two">@Model.ArabicText</p>
+                                <div class="news-details__bottom">
+                                    <p class="news-details__tags">
+                                        <span>Tags:</span>
+                                        @if (Model.Link != null && Model.Link != "")
+                                        {
+                                            if (Model.Link.Contains("http"))
+                                            {
+
+                                                <a href="@Model.Link">
+                                                    @Model.Link
+                                                </a>
+
+                                            }
+                                            else
+                                            {
+
+                                                <a href="https://@Model.Link">
+                                                    @Model.Link
+                                                </a>
+
+                                            }
+
+                                        }
+                                        else {
+                                            <p>No Link</p>
+                                        }
+                                    </p>
+                                </div>
+
+                            </div>
+                            @*<div class="news-details__bottom">
+            <p class="news-details__tags">
+                <span>Tags:</span>
+                <a href="#">Donation</a>
+                <a href="#">Charity</a>
+                <a href="#">Poor</a>
+            </p>
+            <div class="news-details__social-list">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="author-one">
+            <div class="author-one__image">
+                <img src="assets/images/blog/author-1-1.jpg" alt="">
+            </div>
+            <div class="author-one__content">
+                <h3>Kevin Martin</h3>
+                <p>Cursus massa at urnaaculis estie. Sed aliquamellus vitae ultrs condmentum lightly believable. If you are going to use a of you need to be sure there isn't anything embarrassing.</p>
+            </div>
+        </div>
+        <div class="comment-one">
+            <h3 class="comment-one__title">Comments</h3>
+            <div class="comment-one__single">
+                <div class="comment-one__image">
+                    <img src="assets/images/blog/comment-1-1.jpg" alt="">
+                </div>
+                <div class="comment-one__content">
+                    <h3>David Marks <span>3 hours ago</span></h3>
+                    <p>Sending love. My nephews Nick and Anthony Salaber are your teammates, so I know the caliber person you are. Our whole family is sending our best to you and your family.</p>
+                    <a href="#" class="comment-one__btn thm-btn"><i class="fas fa-arrow-circle-right"></i>Reply</a>
+                </div>
+            </div>
+            <div class="comment-one__single">
+                <div class="comment-one__image">
+                    <img src="assets/images/blog/comment-1-2.jpg" alt="">
+                </div>
+                <div class="comment-one__content">
+                    <h3>Christine Eve <span>3 hours ago</span></h3>
+                    <p>Sending love. My nephews Nick and Anthony Salaber are your teammates, so I know the caliber person you are. Our whole family is sending our best to you and your family.</p>
+                    <a href="#" class="comment-one__btn thm-btn"><i class="fas fa-arrow-circle-right"></i>Reply</a>
+                </div>
+            </div>
+        </div>
+        <div class="comment-form">
+            <h3 class="comment-form__title">Leave a Comment</h3>
+            <form action="assets/inc/sendemail.php" class="comment-one__form contact-form-validated">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="comment-form__input-box">
+                            <input type="text" placeholder="Your name" name="name">
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="comment-form__input-box">
+                            <input type="email" placeholder="Email address" name="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="comment-form__input-box">
+                            <textarea name="message" placeholder="Write message"></textarea>
+                        </div>
+                        <button type="submit" class="thm-btn comment-form__btn"><i class="fas fa-arrow-circle-right"></i>Submit Comment</button>
+                    </div>
+                </div>
+            </form>
+        </div>*@
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--News Details End-->
+
+
+    </div>
+</section>
+<!--Events Details End-->
+
+
+
+

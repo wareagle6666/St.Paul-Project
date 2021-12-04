@@ -3,7 +3,29 @@
     ViewBag.Title = "Index";
 }
 
-<div class="pagesetup">
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Calendar</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Calendar</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+        <div class="pagesetup">
+            <iframe class="Calendar" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=OGsyNGwwdGI5Z2hmc2dtZjhhMnR1bzNidG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23F4511E&amp;mode=MONTH&amp;showNav=0&amp;showPrint=0&amp;showDate=1&amp;showTabs=0&amp;showTz=0&amp;showCalendars=0" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+        </div>
 
-    <iframe class="Calendar" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=OGsyNGwwdGI5Z2hmc2dtZjhhMnR1bzNidG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23F4511E&amp;mode=MONTH&amp;showNav=0&amp;showPrint=0&amp;showDate=1&amp;showTabs=0&amp;showTz=0&amp;showCalendars=0" style="border-width:0" frameborder="0" scrolling="no"></iframe>
-</div>
+
+    </div>
+</section>
+<!--Events Details End-->
+
