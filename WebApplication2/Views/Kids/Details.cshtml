@@ -1,0 +1,190 @@
+﻿@model WebApplication2.Models.Kids
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2> @Model.FirstName Records</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Details</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Page Start-->
+<section class="events-page">
+    <div class="container">
+        <div class="row">
+            <div class="row Cleardivider">
+                <span class="col-3">
+                    @Html.Label("First Name ")
+                    @Html.TextBox("FirstName", (string)Model.FirstName, new { @disabled = "disabled" })
+                </span>
+                <span class="col-3">
+                    @Html.Label("Last Name ")
+                    @Html.TextBox("LastName", (string)Model.LastName, new { @disabled = "disabled" })
+
+                </span>
+                <span class="col-3">
+                    @Html.Label("Date of Birth ")
+                    @Html.TextBox("Mother", String.Format("{0:d}", Model.DateOfBirth), new { @disabled = "disabled" })
+
+                </span>
+                <span class="col-3">
+                    @Html.Label("Class ")
+                    @Html.TextBox("ClassName", (string)Model.ClassName, new { @disabled = "disabled" })
+
+                </span>
+                <br />
+                <br />
+                <br />
+                <span class="col-3">
+                    @Html.Label("Grade ")
+                    @Html.TextBox("userStreet1", (string)Model.Grade, new { @disabled = "disabled" })
+
+                </span>
+                <span class="col-3">
+                    @Html.Label("Primary Number")
+                    @Html.TextBox("Phone1", (string)Model.Phone1, new { @disabled = "disabled" })
+                </span>
+
+                <span class="col-3">
+                    @Html.Label("Secondary Number")
+                    @Html.TextBox("Phone2", (string)Model.Phone2, new { @disabled = "disabled" })
+
+                </span>
+            </div>
+            <div class="row Cleardivider">
+                <span class="col-3">
+                    @Html.Label("Father Name ")
+                    @Html.TextBox("Father", (string)Model.Father, new { @disabled = "disabled" })
+                </span>
+
+                <span class="col-3">
+                    @Html.Label("Mother Name ")
+                    @Html.TextBox("Mother", (string)Model.Mother, new { @disabled = "disabled" })
+
+                </span>
+            </div>
+            <div class="row Cleardivider">
+                <span class="col-3">
+                    @Html.Label("Streed Address")
+                    @Html.TextBox("Address", (string)Model.Address, new { @disabled = "disabled" })
+                </span>
+
+                <span class="col-3">
+                    @Html.Label("City")
+                    @Html.TextBox("City", (string)Model.City, new { @disabled = "disabled" })
+
+                </span>
+                <span class="col-3">
+                    @Html.Label("State ")
+                    @Html.TextBox("State", (string)Model.State, new { @disabled = "disabled" })
+
+                </span>
+                <span class="col-3">
+                    @Html.Label("Zip Code")
+                    @Html.TextBox("Zip", (string)Model.Zip, new { @disabled = "disabled" })
+                </span>
+            </div>
+
+            <div class="row ">
+                <span class="col-3">
+                    @Html.Label("Creator")
+                    @Html.TextBox("CreatedBy", (string)Model.CreatedBy, new { @disabled = "disabled" })
+                </span>
+
+                <span class="col-3">
+                    @Html.Label("Date Created")
+                    @Html.TextBox("CreatedDate", (DateTime)Model.CreatedDate, new { @disabled = "disabled" })
+
+                </span>
+
+                <span class="col-3">
+                    @Html.Label("Last Updated By ")
+                    @Html.TextBox("UpdatedBy", (string)Model.UpdatedBy, new { @disabled = "disabled" })
+
+                </span>
+                <span class="col-3">
+                    @Html.Label("Last Update Date ")
+                    @Html.TextBox("UpdatedDate", (DateTime)Model.UpdatedDate, new { @disabled = "disabled" })
+
+                </span>
+            </div>
+
+            <div class="reddivider">
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { Model.ID }, new { @class = "buttonEdit" }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+
+            <a class="buttonCreate" href="@Url.Action("Create", "Notes", new { Model.ID})">Add New Note</a>
+            @if (ViewBag.Notes.Count != 0)
+            {
+
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Note
+                            </th>
+                            <th>
+                                Created By
+                            </th>
+                            <th>
+                                Created Date
+                            </th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Notes)
+                        {
+
+                            <tr>
+                                <td>
+                                    @item.Note
+
+                                </td>
+                                <td>
+                                    @item.CreatedBy
+                                </td>
+                                <td>
+                                    @item.CreateDate
+                                </td>
+
+                                <td>
+                                    <a class="buttonEdit" href="@Url.Action("Delete", "Notes", new {  item.ID, item.StudentID})">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+
+
+                </table>
+                <br />
+            }
+            else
+            {
+                <td class="deacons" colspan="3"> No Notes for the current student</td>
+            }
+        </div>
+    </div>
+</section>
+<!--Events Page End-->

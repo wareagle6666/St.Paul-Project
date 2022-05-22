@@ -1,4 +1,5 @@
-﻿
+﻿@model WebApplication2.Models.News
+
 @{
     ViewBag.Title = "Edit";
 }
@@ -7,10 +8,7 @@
 <section class="navpages pagebackground">
     <div class="container">
 
-        @using (Html.BeginForm("Edit",
-                        "News",
-                        FormMethod.Post,
-                        new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             <div class="form-horizontal">
@@ -54,21 +52,13 @@
                         @Html.EditorFor(model => model.isSpotlight)
                     </div>
                 </div>
-                @*<div class="blog-details__image">
-                    Image
-                        @{ var getnewsimage = Convert.ToBase64String(Model.ImageData);
-                            var Newspicture = string.Format("data:image/jpeg;base64,{0}", getnewsimage);
 
-                            <img src="@Url.Content(Newspicture)" alt="news">
-                        }
-                    </div>*@<!-- /.blog-details__image -->
                 <div class="col-lg-6 col-md-6">
                     <div class="input-box mt-20">
                         <input type="file" id="file" name="file" multiple="multiple">
                     </div>
                 </div>
 
-                @*Genre and Price removed for brevity.*@
                 <br />
                 <br />
 

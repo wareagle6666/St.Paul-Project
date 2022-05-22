@@ -250,12 +250,15 @@
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IntroToChurchController.cs" />
+    <Compile Include="Controllers\KidsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\API\MeController.cs" />
     <Compile Include="Controllers\MinistriesController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\OurFaithController.cs" />
     <Compile Include="Controllers\OurPriestController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\RegistrationPageController.cs" />
     <Compile Include="Controllers\StreamingController.cs" />
     <Compile Include="Controllers\SundaySchoolClassController.cs" />
@@ -264,6 +267,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003251644314_InitialCreate.cs" />
+    <Compile Include="Migrations\202003251644314_InitialCreate.designer.cs">
+      <DependentUpon>202003251644314_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205132052299_firstname.cs" />
+    <Compile Include="Migrations\202205132052299_firstname.designer.cs">
+      <DependentUpon>202205132052299_firstname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Calendar.cs" />
@@ -275,12 +287,16 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Interface\IDataProvider.cs" />
+    <Compile Include="Models\Kids.cs" />
+    <Compile Include="Models\KidsAttendance.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
     <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Notes.cs" />
     <Compile Include="Models\QueryMonitor.cs" />
     <Compile Include="Models\SingleSqlCommandConnection.cs" />
     <Compile Include="Models\SqlDataProvider.cs" />
+    <Compile Include="Models\SundaySchool.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -843,6 +859,14 @@
     <Content Include="Views\News\Details.cshtml" />
     <Content Include="Views\News\Create.cshtml" />
     <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\PayPal\Index.cshtml" />
+    <Content Include="Views\Kids\Index.cshtml" />
+    <Content Include="Views\Kids\Create.cshtml" />
+    <Content Include="Views\Kids\Edit.cshtml" />
+    <Content Include="Views\Kids\Details.cshtml" />
+    <Content Include="Views\Notes\Create.cshtml" />
+    <Content Include="Views\Notes\Edit.cshtml" />
+    <Content Include="Views\Kids\Attendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -856,6 +880,14 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003251644314_InitialCreate.resx">
+      <DependentUpon>202003251644314_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205132052299_firstname.resx">
+      <DependentUpon>202205132052299_firstname.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

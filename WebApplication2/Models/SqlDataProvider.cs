@@ -331,7 +331,155 @@ namespace WebApplication2.Models
             var result = ExecuteScalarSpWithDapper<int>("RemoveMakeSpotlight", new { NewsID });
             return result;
         }
+        public List<Kids> GetAllKids()
+        {
+            var list = ExecuteSpWithDapper<Kids>("GetAllStudent").ToList();
+            return list;
+        }
+        public List<Kids> GetKidsByClassID(int ClassID)
+        {
+            var list = ExecuteSpWithDapper<Kids>("GetStudentByClass", new {ClassID}).ToList();
+            return list;
+        }
+        public Kids GetSingleKidByID(int ID)
+        {
+            var result = ExecuteScalarSpWithDapper<Kids>("GetSingleKidByID", new { ID });
+            return result;
+        }
+        public List<int> GetServantClass(string UserName)
+        {
+            var ServantID = GetUserIdByUserName(UserName);
+            var result = ExecuteSpWithDapper<int>("GetClassForServant", new { ServantID }).ToList();
+            return result;
+        }
+        public int GetServantClassSingle(string UserName)
+        {
+            var ServantID = GetUserIdByUserName(UserName);
+            var result = ExecuteScalarSpWithDapper<int>("GetClassForServant", new { ServantID });
+            return result;
+        }
+        public int CreateKid(Kids Kid, string Username)
+        {
+            var ServantID = GetUserIdByUserName(Username);
+            Kid.CreatedBy = ServantID;
+            var result = ExecuteScalarSpWithDapper<int>("CreateKid", new { 
+            Kid.FirstName,
+            Kid.LastName,
+            Kid.Father,
+            Kid.Mother,
+            Kid.DateOfBirth,
+            Kid.Address,
+            Kid.City,
+            Kid.Zip,
+            Kid.State,
+            Kid.Phone1,
+            Kid.Phone2,
+            Kid.CreatedBy,
+            Kid.ClassID,
 
+            });
+            return result;
+        }
+
+        public int UpdateKid(Kids Kid, string Username)
+        {
+            var ServantID = GetUserIdByUserName(Username);
+            Kid.UpdatedBy = ServantID;
+            var result = ExecuteScalarSpWithDapper<int>("UpdateKid", new
+            {
+                Kid.ID,
+                Kid.FirstName,
+                Kid.LastName,
+                Kid.Father,
+                Kid.Mother,
+                Kid.DateOfBirth,
+                Kid.Address,
+                Kid.City,
+                Kid.Zip,
+                Kid.State,
+                Kid.Phone1,
+                Kid.Phone2,
+                Kid.UpdatedBy,
+                Kid.ClassID
+
+            });
+            return result;
+        }
+        public int AddKidsAttendance(int StudentId, string Username)
+        {
+            var CreatedBy = GetUserIdByUserName(Username);
+            var Attended = true;
+            var Attend = ExecuteScalarSpWithDapper<int>("CreateAttendance", new {
+                StudentId,
+                Attended,
+                CreatedBy
+            });
+            return Attend;
+        }
+        public int AddKidsNote(string Note, int StudentId, string Username)
+        {
+            var CreatedBy = GetUserIdByUserName(Username);
+            var Attend = ExecuteScalarSpWithDapper<int>("CreateKidNote", new
+            {
+                Note,
+                StudentId,
+                CreatedBy
+            });
+            return Attend;
+        }
+        public bool GetKidAttendance(int StudentId)
+        {
+            var Attend = ExecuteScalarSpWithDapper<bool>("GetKidAttendance", new
+            {
+                StudentId
+            });
+            return Attend;
+        }
+        public List<Notes> GetKidsNotes(int StudentId)
+        {
+            var result = ExecuteSpWithDapper<Notes>("GetKidsNotes", new { StudentId }).ToList();
+            return result;
+        }
+        public Notes GetsingleNote(int ID)
+        {
+            var result = ExecuteScalarSpWithDapper<Notes>("GetKidsNotes", new { ID });
+            return result;
+        }
+
+        public string GetUserFirstname(string Email)
+        {
+            var result = ExecuteScalarSpWithDapper<string>("GetFirstNameByEmail", new { Email });
+            return result;
+        }
+        public List<SundaySchool> GetAllClasses()
+        {
+            var result = ExecuteSpWithDapper<SundaySchool>("GetSundaySchoolClass").ToList();
+            return result;
+        }
+
+
+        public string GetUserNameById(string UserID)
+        {
+            var result = ExecuteScalarSpWithDapper<string>("GetUserNameById", new { UserID });
+            return result;
+        }
+
+        public List<KidsAttendance> DeleteKidsNote(int ID)
+        {
+            var result = ExecuteSpWithDapper<KidsAttendance>("GetStudentAttenance", new { ID }).ToList();
+            return result;
+        }
+        //public int UpdateNote(string Note, int StudentId, string Username)
+        //{
+        //    var CreatedBy = GetUserIdByUserName(Username);
+        //    var Attend = ExecuteScalarSpWithDapper<int>("CreateKidNote", new
+        //    {
+        //        Note,
+        //        StudentId,
+        //        CreatedBy
+        //    });
+        //    return Attend;
+        //}
     }
 
 }

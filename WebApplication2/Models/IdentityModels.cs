@@ -10,11 +10,15 @@ namespace WebApplication2.Models
     public class ApplicationUser : IdentityUser
     {
         public string Hometown { get; set; }
-
+        public string FirstName { get; set; }
+ 
+        //Add registration fields 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+             var user =  manager.FindById(userIdentity.GetUserId());
+            userIdentity.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName));
             // Add custom user claims here
             return userIdentity;
         }

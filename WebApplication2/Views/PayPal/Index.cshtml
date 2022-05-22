@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Payment Page</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Payment</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+        <br />
+        <br />
+
+        <h1>Instructions:</h1>
+        <ul>
+            <li>
+                <h3>1. Click on the below button to pay first for the event</h3>
+            </li>
+            <li>
+                <h3>2. You can use your credit card or login in to use PayPal</h3>
+            </li>
+            <li>
+                <h3>3. Once you make the payment <span style="color:red">DO NOT CLOSE THE WINDOW </span>. You will see a button at the bottom says "Return to Merchant"</h3>
+            </li>
+            <li>
+                <h3>4. You will then be taken to a form to fill out with your information. Once you are done. You are good to go :)!</h3>
+            </li>
+        </ul>
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="VNNELYCJEWY98">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+        <br />
+        <br />
+    </div>
+</section>
+<!--Events Details End-->

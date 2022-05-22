@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@using System.Security.Claims; 
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -106,7 +107,7 @@
                                                     }
                                                     @if (User.IsInRole("Servant") || User.IsInRole("SuperAdmin"))
                                                     {
-                                                        //nothingyet
+                                                        <li>@Html.ActionLink("Sunday School Class", "Index", "Kids", new { area = "" }, null)</li>
                                                     }
                                                 </ul>
                                             </li>
@@ -126,18 +127,7 @@
                                         {
 
                                         }
-                                        else
-                                        {
-                                            <li class="dropdown">
-                                                <a href="@Url.Action("Index", "Home")">Schedule</a>
-                                                <ul>
-                                                    <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
-                                                    <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
-                                                    <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
-                                                </ul>
-                                            </li>
-                                        }
-                                        @if (!User.IsInRole("DoorCheckin"))
+                                        @if (!User.IsInRole("DoorCheckin") && User.IsInRole("User"))
                                         {
                                             <li class="dropdown">
                                                 <a href="@Url.Action("Index", "Home")">Sunday School</a>
@@ -147,11 +137,14 @@
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="@Url.Action("Index", "Home")">Schedule</a>
+                                                <a href="@Url.Action("Index", "Home")"> Schedule</a>
                                                 <ul>
                                                     <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                    <li><a href="@Url.Action("Index", "News")">News Updates</a></li>
                                                     <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
                                                     <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Service Registration", "Index", "ChurchEventPages", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("My Registration", "Index", "RegistrationPage", new { area = "" }, null)</li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
@@ -186,8 +179,8 @@
                                 {
                                     @Html.AntiForgeryToken()
 
-
-                                    @Html.ActionLink("Hello " + User.Identity.Name.Split('@')[0] + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage", @class = "main-menu__search " })
+                                    var firstname = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.GivenName).Select(c => c.Value).SingleOrDefault();
+                                    @Html.ActionLink("Hello " + firstname + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage", @class = "main-menu__search " })
 
                                     <a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();" class="main-menu__cart fas fa-unlock"></a>
 

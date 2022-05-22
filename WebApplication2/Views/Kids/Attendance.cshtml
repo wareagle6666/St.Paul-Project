@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Attendance";
+}
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2> @ViewBag.Name Attendance</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Student Attendance</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Page Start-->
+<section class="events-page">
+    <div class="container-lg">
+        <div class="row">
+
+            @if (Model.Count != 0)
+            {
+
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Student Name
+                            </th>
+                            <th>
+                                Checked In By
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>
+                                    @item.Student
+
+                                </td>
+                                <td>
+                                    @item.ServantName
+                                </td>
+                                <td>
+                                    @String.Format("{0:dddd, dd MMMM yyyy}", item.CreatedDate)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+
+
+                </table>
+                <br />
+            }
+            else
+            {
+                <td class="deacons" colspan="3"> No Attendance for current student</td>
+            }
+
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</section>
+<!--Events Page End-->

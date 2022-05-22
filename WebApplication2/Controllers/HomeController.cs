@@ -20,6 +20,7 @@ namespace WebApplication2.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        private SqlDataProvider _datarepo = new SqlDataProvider();
         public ActionResult Index()
         {
             var imageList = new Image();
