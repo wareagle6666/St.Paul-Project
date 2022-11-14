@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using WebApplication2.Models.Interface;
 
@@ -24,9 +25,10 @@ namespace WebApplication2.Models
             return list;
         }
 
-        public void UserCreationUpdate (string userId, string FirstName, string LastName, string PhoneNumber)
+        public async Task<int> UserCreationUpdate (string userId, string FirstName, string LastName, string PhoneNumber)
         {
-            _dataProvider.CreateUserProfile( userId,  FirstName,  LastName,  PhoneNumber);
+            var result = _dataProvider.CreateUserProfile( userId,  FirstName,  LastName,  PhoneNumber);
+            return result;
         }
 
         public Guid Id { get; set; }

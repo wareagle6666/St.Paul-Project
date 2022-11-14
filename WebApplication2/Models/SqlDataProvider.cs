@@ -149,9 +149,9 @@ namespace WebApplication2.Models
             var Result = ExecuteScalarSpWithDapper<string>("GetUserIDbyUserName", new { UserName });
             return Result;
         }
-        public void CreateUserProfile(string userId, string FirstName, string LastName, string PhoneNumber)
+        public int CreateUserProfile(string userId, string FirstName, string LastName, string PhoneNumber)
         {
-            ExecuteVoidSpWithDapper("CreateUser",
+            var result  = ExecuteScalarSpWithDapper<int>("CreateUser",
                new
                {
                    userId,
@@ -159,6 +159,7 @@ namespace WebApplication2.Models
                    LastName,
                    PhoneNumber
                });
+            return result;
         }
 
         public List<Events> GetAllEventsForUser(string userName )

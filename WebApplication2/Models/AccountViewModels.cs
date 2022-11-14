@@ -13,6 +13,14 @@ namespace WebApplication2.Models
         [Required]
         [Display(Name = "Hometown")]
         public string Hometown { get; set; }
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ExternalLoginListViewModel

@@ -53,16 +53,16 @@ namespace WebApplication2.Controllers
                 _userManager = value;
             }
         }
-        public string FirstName
-        {
-            get
-            {
-                var claims = new ClaimsPrincipal(User).Claims.ToArray();
-                //claims?.FirstOrDefault(x=> x.)
-                return "";
-            }
+        //public string FirstName
+        //{
+        //    get
+        //    {
+        //        var claims = new ClaimsPrincipal(User).Claims.ToArray();
+        //        var result = claims?.FirstOrDefault(x => x.FirstName);
+        //        return result;
+        //    }
 
-        }
+        //}
         // The Authorize Action is the end point which gets called when you access any
         // protected Web API. If the user is not logged in then they will be redirected to 
         // the Login page. After a successful login you can call a Web API.
@@ -180,17 +180,18 @@ namespace WebApplication2.Controllers
                 bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "true" ? true : false);
                 if (IsCaptchaValid)
                 {
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName =model.LastName, PhoneNumber = model.PhoneNumber };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
+                       //await new Users().UserCreationUpdate(user.Id, model.FirstName, model.LastName, model.PhoneNumber);
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
 
                         ///INJECT HERE THE USER DETAILS AND INFORMATION 
 
 
-                        new Users().UserCreationUpdate(user.Id, model.FirstName, model.LastName, model.PhoneNumber);
+
 
                         //For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                         //Send an email with this link
@@ -403,7 +404,8 @@ namespace WebApplication2.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown, FirstName = model.FirstName, LastName = model.LastName, 
+                PhoneNumber = model.PhoneNumber};
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
