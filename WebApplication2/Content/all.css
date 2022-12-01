@@ -4614,3 +4614,15 @@ readers do not read off random characters that represent icons */
 .fas {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
+.mobileName {
+    float: left !important;
+    font-size: 16px !important;
+    color: var(--thm-primary) !important;
+    transition: 500ms !important;
+}
+
+    .mobileName a {
+        font-size: 16px !important;
+        color: var(--thm-primary) !important;
+        transition: 500ms !important;
+    }

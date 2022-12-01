@@ -417,6 +417,19 @@ namespace WebApplication2.Models
             });
             return Attend;
         }
+        public int RemoveKidsAttendance(int StudentId, string Username, int ID)
+        {
+            var CreatedBy = GetUserIdByUserName(Username);
+            var Attended = false;
+            var Attend = ExecuteScalarSpWithDapper<int>("UpdateAttendance", new
+            {
+                ID,
+                StudentId,
+                Attended,
+                CreatedBy
+            });
+            return Attend;
+        }
         public int AddKidsNote(string Note, int StudentId, string Username)
         {
             var CreatedBy = GetUserIdByUserName(Username);
@@ -428,9 +441,9 @@ namespace WebApplication2.Models
             });
             return Attend;
         }
-        public bool GetKidAttendance(int StudentId)
+        public AttendanceClass GetKidAttendance(int StudentId)
         {
-            var Attend = ExecuteScalarSpWithDapper<bool>("GetKidAttendance", new
+            var Attend = ExecuteScalarSpWithDapper<AttendanceClass>("GetKidAttendance", new
             {
                 StudentId
             });

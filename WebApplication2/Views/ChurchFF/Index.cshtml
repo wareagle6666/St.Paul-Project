@@ -1,4 +1,4 @@
-﻿
+﻿@model WebApplication2.Models.Feasts
 @{
     ViewBag.Title = "Index";
 }
@@ -22,7 +22,7 @@
     <div class="container">
         <br />
         <br />
-        <h2 class="sectionheaders">2021 A.D. / 1737–1738 A.M</h2>
+        <h2 class="sectionheaders"> @ViewBag.FeastTitle </h2>
         <table class="Tableclass">
             <tbody>
                 <tr>
@@ -33,9 +33,17 @@
                         <b>Date</b>
                     </td>
                 </tr>
+
+                @foreach (var item in ViewBag.List)
+                {
+                    <tr>
+                        <td> @item.FeastName</td>
+                        <td> @item.FeastDate</td>
+                    </tr>
+                }
                 <tr>
-                    <td>The Holy Nativity Feast</td>
-                    <td> January 7-8</td>
+                    <td> item.FeastName</td>
+                    <td> item.FeastDate</td>
                 </tr>
                 <tr>
                     <td> The Circumcision Feast</td>
@@ -152,7 +160,7 @@
                     <td> November 25 – January 6</td>
                 </tr>
             </tbody>
-        </table>
+            </table>
         <br />
         <br />
     </div>

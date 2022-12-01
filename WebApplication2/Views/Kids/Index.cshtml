@@ -22,7 +22,7 @@
     <div class="container-lg">
         <div class="row">
 
-                <a class="buttonCreate" href="@Url.Action("Create", "Kids")">Create New Record</a>
+            <a class="buttonCreate" href="@Url.Action("Create", "Kids")">Create New Record</a>
 
 
             @if (Model.Count != 0)
@@ -56,37 +56,77 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
+                            if (item.Attendance.Attended != true)
+                            {
 
-                            <tr>
-                                <td>
-                                    @item.FirstName
+                                <tr>
+                                    <td>
+                                        @item.FirstName
 
-                                </td>
-                                <td>
-                                    @item.LastName
-                                </td>
-                                <td>
-                                    @item.Mother
-                                </td>
-                                <td>
-                                    @item.Father
-                                </td>
-                                <td>
-                                    @String.Format("{0:d}", item.DateOfBirth)
-                                </td>
-                                <td>
-                                    @item.ClassName
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { item.ID }, new { @class = "buttonEdit" })
-                                    @Html.ActionLink("Details", "Details", new { item.ID }, new { @class = "buttonDetails" })
-                                    @if (item.Attended == false)
-                                    {
-                                        @Html.ActionLink("CheckIn", "CheckIn", new { item.ID }, new { @class = "buttonCheckIn" })
-                                    }
-                                    @Html.ActionLink("Attendance", "Attendance", new { item.ID }, new { @class = "buttonAttendance" })
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        @item.LastName
+                                    </td>
+                                    <td>
+                                        @item.Mother
+                                    </td>
+                                    <td>
+                                        @item.Father
+                                    </td>
+                                    <td>
+                                        @String.Format("{0:d}", item.DateOfBirth)
+                                    </td>
+                                    <td>
+                                        @item.ClassName
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { item.ID }, new { @class = "buttonEdit" })
+                                        @Html.ActionLink("Details", "Details", new { item.ID }, new { @class = "buttonDetails" })
+                                        @if (item.Attendance.Attended == false)
+                                        {
+                                            @Html.ActionLink("CheckIn", "CheckIn", new { item.ID }, new { @class = "buttonCheckIn" })
+                                        }
+                                        @Html.ActionLink("Attendance", "Attendance", new { item.ID }, new { @class = "buttonAttendance" })
+                                    </td>
+                                </tr>
+
+                            }
+                            else
+                            {
+
+                                <tr class="trbackgroundAttendance">
+                                    <td>
+                                        @item.FirstName
+
+                                    </td>
+                                    <td>
+                                        @item.LastName
+                                    </td>
+                                    <td>
+                                        @item.Mother
+                                    </td>
+                                    <td>
+                                        @item.Father
+                                    </td>
+                                    <td>
+                                        @String.Format("{0:d}", item.DateOfBirth)
+                                    </td>
+                                    <td>
+                                        @item.ClassName
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { item.ID }, new { @class = "buttonEdit" })
+                                        @Html.ActionLink("Details", "Details", new { item.ID }, new { @class = "buttonDetails" })
+                                        @if (item.Attendance.CreatedDate <= DateTime.Now && item.Attendance.CreatedDate >= DateTime.Now.AddDays(-1))
+                                        {
+                                            @Html.ActionLink("UnChecK", "UnCheckIn", new { ID = item.ID, AttendanceID = item.Attendance.ID }, new { @class = "buttonAttendanceUncheck" })
+                                        }
+                                        @Html.ActionLink("Attendance", "Attendance", new { item.ID }, new { @class = "buttonAttendance" })
+                                    </td>
+                                </tr>
+
+                            }
+
                         }
                     </tbody>
 

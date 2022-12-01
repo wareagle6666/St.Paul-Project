@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-@using System.Security.Claims; 
+@using System.Security.Claims;
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -454,11 +454,31 @@
                     <a href="https://www.facebook.com/groups/199485506854969/"><i class="fab fa-facebook-square"></i></a>
                     <a href="@Url.Action("Index", "Streaming")"><i class="fas fa-tv"></i></a>
                     <a href="https://www.youtube.com/c/StPaulCopticOrthodoxChurchAtlantaGa"><i class="fab fa-youtube"></i></a>
+
+
+                </div><!-- /.mobile-nav__social -->
+
+            </div><!-- /.mobile-nav__top -->
+            <span class="mobileName">
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        var firstname = ((ClaimsIdentity)User.Identity).Claims.Where(c => c.Type == ClaimTypes.GivenName).Select(c => c.Value).SingleOrDefault();
+                        @Html.ActionLink("Hello " + firstname + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage", @class = "" })
+                    
+                        <a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();" class="main-menu__cart fas fa-unlock"></a>
+
+                    }
+                }
+                else
+                {
                     <a href="@Url.Action("Login", "Account")" class="fas fa-user-lock"></a>
                     <a href="@Url.Action("Register", "Account")" class="main-menu__cart fas fa-pen"></a>
-                </div><!-- /.mobile-nav__social -->
-            </div><!-- /.mobile-nav__top -->
-
+                }
+            </span>
 
 
         </div>

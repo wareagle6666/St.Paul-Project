@@ -29,7 +29,7 @@ namespace WebApplication2.Models
         public string UpdatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-        public bool Attended { get; set; } = false;
+        public AttendanceClass Attendance { get; set; } = new AttendanceClass();
         public List<Notes> Notes { get; set; }
 
     }

@@ -19,9 +19,21 @@ namespace WebApplication2.Controllers
                 var kids = _datarepo.GetAllKids();
                 foreach(var kid in kids)
                 {
-                    kid.Attended = _datarepo.GetKidAttendance(kid.ID);
+                    var result =  _datarepo.GetKidAttendance(kid.ID);
+                    if(result != null)
+                    {
+                        kid.Attendance = result;
+                    }
+                    else
+                    {
+                        kid.Attendance = new AttendanceClass();
+                    }
+                   
                 }
-                return View(kids);
+                var orderList = kids.OrderBy(x => x.Attendance.Attended).ToList();
+                var orderList2 = (from x in kids orderby x.Attendance.Attended ascending select x).ToList();
+
+                return View(orderList2);
             }
             else
             {
@@ -37,7 +49,7 @@ namespace WebApplication2.Controllers
                
                 foreach (var kid in kids)
                 {
-                    kid.Attended = _datarepo.GetKidAttendance(kid.ID);
+                    kid.Attendance = _datarepo.GetKidAttendance(kid.ID);
                 }
                 ViewBag.ClassCount = classID.Count();
                 return View(kids);
@@ -110,6 +122,11 @@ namespace WebApplication2.Controllers
         public ActionResult CheckIn(int ID)
         {
             var result = _datarepo.AddKidsAttendance(ID, User.Identity.Name);
+            return RedirectToAction("Index");
+        }
+        public ActionResult UnCheckIn(int ID,int AttendanceID)
+        {
+            var result = _datarepo.RemoveKidsAttendance(ID, User.Identity.Name, AttendanceID);
             return RedirectToAction("Index");
         }
         // POST: Kids/Create

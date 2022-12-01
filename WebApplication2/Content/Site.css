@@ -1498,3 +1498,31 @@ h1, h2, h3, h4, h5, h6 {
     height: 40px !important;
     width: 200px !important;
 }
+.mobileName {
+    float: left !important;
+    font-size: 16px !important;
+    color: var(--thm-primary) !important;
+    transition: 500ms !important;
+}
+    .mobileName a {
+        font-size: 16px !important;
+        color: var(--thm-primary) !important;
+        transition: 500ms !important;
+        padding-right:10px;
+    }
+
+.trbackgroundAttendance {
+    background-color: yellow;
+}
+.buttonAttendanceUncheck {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
