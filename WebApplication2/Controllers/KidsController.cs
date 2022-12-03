@@ -49,7 +49,15 @@ namespace WebApplication2.Controllers
                
                 foreach (var kid in kids)
                 {
-                    kid.Attendance = _datarepo.GetKidAttendance(kid.ID);
+                    var result = _datarepo.GetKidAttendance(kid.ID);
+                    if (result != null)
+                    {
+                        kid.Attendance = result;
+                    }
+                    else
+                    {
+                        kid.Attendance = new AttendanceClass();
+                    }
                 }
                 ViewBag.ClassCount = classID.Count();
                 return View(kids);
