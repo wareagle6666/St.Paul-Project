@@ -17,10 +17,11 @@ namespace WebApplication2.Models
             startTime = startime;
             endTime = endtime;
         }
-        public Calendar(string[] name, string startime)
+        public Calendar(string[] name, string startime, string disc)
         {
             deacons = name;
             date = startime;
+            Disc = disc;
         }
         public string[] deacons { get; set; }
         public string date { get; set; }
@@ -28,5 +29,6 @@ namespace WebApplication2.Models
 
         public string eventName { get; set; }
         public DateTime startTime { get; set; }
+        public string Disc { get; set; }
     }
 }

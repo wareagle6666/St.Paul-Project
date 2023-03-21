@@ -57,9 +57,10 @@ namespace WebApplication2.Controllers
                 {
                     var currentDate = DateTime.Parse(item.Start.Date);
                     string Date = currentDate.ToString("ddd, dd MMM yy");
+                    string disc = item.Description.ToString();
                     string[] names = item.Summary.Split(',');
 
-                    eventlist.Add(new Calendar(names, Date));
+                    eventlist.Add(new Calendar(names, Date, disc));
                 }
             }
 

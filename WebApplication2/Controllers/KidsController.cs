@@ -60,7 +60,9 @@ namespace WebApplication2.Controllers
                     }
                 }
                 ViewBag.ClassCount = classID.Count();
-                return View(kids);
+                var orderList = kids.OrderBy(x => x.Attendance.Attended).ToList();
+                var orderList2 = (from x in kids orderby x.Attendance.Attended ascending select x).ToList();
+                return View(orderList2);
             }
            
         }
