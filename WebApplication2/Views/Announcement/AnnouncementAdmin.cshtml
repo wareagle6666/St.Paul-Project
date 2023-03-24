@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "AnnouncementAdmin";
+}
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Weekly Announcements Admin</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Weekly Announcements Admin</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+
+        <!--News Page Start-->
+
+        <div class="row">
+
+
+            @if (Model != null)
+            {
+                <section class="news-page">
+
+                    <a class="buttonCreate" href="@Url.Action("Create", "Announcement")">Add Announcements</a>
+                    <br />
+                    <div class="container">
+                        <div class="row">
+                            <table class="styled-table">
+                                <tr class="announcementTH">
+                                    <th>
+                                        Annoucment Date
+                                    </th>
+                                    <th>
+                                        Announcement Button
+                                    </th>
+                                    <th>
+                                        Created Date
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @item.DisplayDate
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("View Announcement", "RenderFile", new { item.Id }, new { @class = "buttonEditAnnoun" })
+                                        </td>
+                                        <td>
+                                            @item.CreateDate
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteFiles", new { item.Id }, new { @class = "buttonDeleteAnnouncement" })
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+
+                        </div>
+                    </div>
+                </section>
+
+                @*<div>
+                @item.DisplayDate
+                @Html.ActionLink("View", "RenderFile", new { item.Id }, new { @class = "buttonEdit" })
+            </div>*@
+
+            }
+
+
+        </div>
+
+
+    </div>
+</section>
+
+

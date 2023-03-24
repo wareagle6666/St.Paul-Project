@@ -483,17 +483,38 @@ namespace WebApplication2.Models
             var result = ExecuteSpWithDapper<KidsAttendance>("GetStudentAttenance", new { ID }).ToList();
             return result;
         }
-        //public int UpdateNote(string Note, int StudentId, string Username)
-        //{
-        //    var CreatedBy = GetUserIdByUserName(Username);
-        //    var Attend = ExecuteScalarSpWithDapper<int>("CreateKidNote", new
-        //    {
-        //        Note,
-        //        StudentId,
-        //        CreatedBy
-        //    });
-        //    return Attend;
-        //}
+        public int SaveFiles(PdfFiles File, string Username)
+        {
+            try
+            {
+                var CreatedBy = "TESTING";//GetUserIdByUserName(Username);
+                var result = ExecuteScalarSpWithDapper<int>("SaveFiles", new { File.FileTitle, File.FileData, File.FileType, File.DisplayDate, CreatedBy });
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception();
+            }
+
+
+        }
+        public List<PdfFiles> GetAllAnnouncementFiles()
+        {
+            try {
+                var list = ExecuteSpWithDapper<PdfFiles>("GetAllAnnouncementFiles").ToList();
+                return list;
+            }
+            catch(Exception e)
+            {
+                throw new Exception();
+            }
+      
+        }
+        public int DeleteAnnouncementFile(int Id)
+        {
+            var News = ExecuteScalarSpWithDapper<int>("DeleteFile", new { Id });
+            return News;
+        }
     }
 
 }

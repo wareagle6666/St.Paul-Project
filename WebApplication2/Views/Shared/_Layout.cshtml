@@ -109,6 +109,10 @@
                                                     {
                                                         <li>@Html.ActionLink("Sunday School Class", "Index", "Kids", new { area = "" }, null)</li>
                                                     }
+                                                    @if (User.IsInRole("Announcement") || User.IsInRole("SuperAdmin"))
+                                                    {
+                                                        <li>@Html.ActionLink("Announcement Admin", "AnnouncementAdmin", "Announcement", new { area = "" }, null)</li>
+                                                    }
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
@@ -140,6 +144,7 @@
                                                 <a href="@Url.Action("Index", "Home")"> Schedule</a>
                                                 <ul>
                                                     <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                    <li>@Html.ActionLink("Weekly Announcements", "Index", "Announcement", new { area = "" }, null)</li>
                                                     <li><a href="@Url.Action("Index", "News")">News Updates</a></li>
                                                     <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
                                                     <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>
@@ -215,6 +220,7 @@
                                             <a href="@Url.Action("Index", "Home")">Schedule</a>
                                             <ul>
                                                 <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                <li>@Html.ActionLink("Weekly Announcements", "Index", "Announcement", new { area = "" }, null)</li>
                                                 <li><a href="@Url.Action("Index", "News")">News Updates</a></li>
                                                 <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
                                                 <li>@Html.ActionLink("Church Feast & Fasts", "Index", "ChurchFF", new { area = "" }, null)</li>

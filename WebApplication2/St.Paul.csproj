@@ -240,6 +240,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddGalleryImagesController.cs" />
+    <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\API\UsersController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChurchBoardController.cs" />
@@ -298,6 +299,7 @@
     <Compile Include="Models\MeViewModels.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Notes.cs" />
+    <Compile Include="Models\PdfFiles.cs" />
     <Compile Include="Models\QueryMonitor.cs" />
     <Compile Include="Models\SingleSqlCommandConnection.cs" />
     <Compile Include="Models\SqlDataProvider.cs" />
@@ -872,6 +874,9 @@
     <Content Include="Views\Notes\Create.cshtml" />
     <Content Include="Views\Notes\Edit.cshtml" />
     <Content Include="Views\Kids\Attendance.cshtml" />
+    <Content Include="Views\Announcement\Index.cshtml" />
+    <Content Include="Views\Announcement\AnnouncementAdmin.cshtml" />
+    <Content Include="Views\Announcement\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
