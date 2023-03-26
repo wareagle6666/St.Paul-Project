@@ -483,11 +483,12 @@ namespace WebApplication2.Models
             var result = ExecuteSpWithDapper<KidsAttendance>("GetStudentAttenance", new { ID }).ToList();
             return result;
         }
+
         public int SaveFiles(PdfFiles File, string Username)
         {
             try
             {
-                var CreatedBy = "TESTING";//GetUserIdByUserName(Username);
+                var CreatedBy = GetUserIdByUserName(Username);
                 var result = ExecuteScalarSpWithDapper<int>("SaveFiles", new { File.FileTitle, File.FileData, File.FileType, File.DisplayDate, CreatedBy });
                 return result;
             }
@@ -514,6 +515,50 @@ namespace WebApplication2.Models
         {
             var News = ExecuteScalarSpWithDapper<int>("DeleteFile", new { Id });
             return News;
+        }
+        public PdfFiles GetAnnouncementById(int Id)
+        {
+            var result = ExecuteScalarSpWithDapper<PdfFiles>("GetAnnouncementFile", new { Id });
+            return result;
+        }
+
+        public int SaveHymnsFiles(Hymns File, string Username)
+        {
+            try
+            {
+                var CreatedBy = "test"; //GetUserIdByUserName(Username);
+                var result = ExecuteScalarSpWithDapper<int>("SaveHymnsFiles", new { File.FileTitle, File.FileData, File.FileType, File.DisplayTitle, CreatedBy });
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception();
+            }
+
+
+        }
+        public List<Hymns> GetAllHymnsFiles()
+        {
+            try
+            {
+                var list = ExecuteSpWithDapper<Hymns>("GetAllHymnsFiles").ToList();
+                return list;
+            }
+            catch (Exception e)
+            {
+                throw new Exception();
+            }
+
+        }
+        public int DeleteHymnsFile(int Id)
+        {
+            var News = ExecuteScalarSpWithDapper<int>("DeleteHymnsFile", new { Id });
+            return News;
+        }
+        public Hymns GetHymnsById(int Id)
+        {
+            var result = ExecuteScalarSpWithDapper<Hymns>("GetHymnsFile", new { Id });
+            return result;
         }
     }
 

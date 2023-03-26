@@ -1,0 +1,101 @@
+﻿
+
+@{
+    ViewBag.Title = "Hymns Admin";
+}
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Hymns Admin</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Hymns Admin</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+
+        <!--News Page Start-->
+
+        <div class="row">
+
+
+            @if (Model != null)
+            {
+                <section class="news-page">
+
+                    <a class="buttonCreate" href="@Url.Action("Create", "Hymns")">Add Hymns</a>
+                    <br />
+                    <div class="container">
+                        <div class="row">
+                            <table class="styled-table">
+                                <tr class="announcementTH">
+                                    <th>
+                                        Hymns Title
+                                    </th>
+                                    <th>
+                                        Hymns Sound
+                                    </th>
+                                    <th>
+                                        Created Date
+                                    </th>
+                                    <th>
+                                        Created By
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @item.DisplayTitle
+                                        </td>
+                                        <td>
+                                            <audio controls>
+                                                <source src="/Hymns/Audio/@item.Id" type="audio/mp3" />
+                                            </audio>
+
+                                        </td>
+                                        <td>
+                                            @item.CreateDate
+                                        </td>
+                                        <td>
+                                            @item.CreatedBy
+
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteFiles", new { item.Id }, new { @class = "buttonDeleteAnnouncement" })
+
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+
+                        </div>
+                    </div>
+                </section>
+
+                @*<div>
+                        @item.DisplayDate
+                        @Html.ActionLink("View", "RenderFile", new { item.Id }, new { @class = "buttonEdit" })
+                    </div>*@
+
+            }
+
+
+        </div>
+
+
+    </div>
+</section>
+
+

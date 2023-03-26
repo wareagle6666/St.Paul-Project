@@ -2,46 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication2.Models.Interface;
 
 namespace WebApplication2.Models
 {
-    public class PdfFiles
+    public class Hymns
     {
         private SqlDataProvider _dataProvider;
-        public PdfFiles()
+        public Hymns()
         {
             _dataProvider = new SqlDataProvider();
         }
+
         public int Id { get; set; }
-        public string DisplayDate { get; set; }
+        public string DisplayTitle { get; set; }
         public string FileTitle { get; set; }
         public byte[] FileData { get; set; }
         public string FileType { get; set; }
         public DateTime CreateDate { get; set; }
         public string CreatedBy { get; set; }
 
-
-        public int SaveFile(PdfFiles file, string Username)
+        public int SaveFile(Hymns file, string Username)
         {
-            var result = _dataProvider.SaveFiles(file, Username);
+            var result = _dataProvider.SaveHymnsFiles(file, Username);
             return result;
         }
 
-        public List<PdfFiles> GetFiles()
+        public List<Hymns> GetFiles()
         {
-            var result = _dataProvider.GetAllAnnouncementFiles();
+            var result = _dataProvider.GetAllHymnsFiles();
             return result;
         }
 
-        public int DeleteAnnouncementFile(int Id)
+        public int DeleteHymnsFile(int Id)
         {
-            var restult = _dataProvider.DeleteAnnouncementFile(Id);
+            var restult = _dataProvider.DeleteHymnsFile(Id);
             return restult;
         }
-        public PdfFiles GetAnnouncementById(int Id)
+        public Hymns GetHymnsById (int Id)
         {
-            var result = _dataProvider.GetAnnouncementById(Id);
+            var result = _dataProvider.GetHymnsById(Id);
             return result;
         }
     }

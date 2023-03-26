@@ -113,6 +113,10 @@
                                                     {
                                                         <li>@Html.ActionLink("Announcement Admin", "AnnouncementAdmin", "Announcement", new { area = "" }, null)</li>
                                                     }
+                                                    @if (User.IsInRole("HymnsAdmin") || User.IsInRole("SuperAdmin"))
+                                                    {
+                                                        <li>@Html.ActionLink("Hymns Admin", "HymnsAdmin", "Hymns", new { area = "" }, null)</li>
+                                                    }
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
@@ -134,16 +138,23 @@
                                         @if (!User.IsInRole("DoorCheckin") && User.IsInRole("User"))
                                         {
                                             <li class="dropdown">
-                                                <a href="@Url.Action("Index", "Home")">Sunday School</a>
+                                                <a href="@Url.Action("Index", "Home")">Library</a>
                                                 <ul>
-                                                    <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
-                                                    <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
+                                                    <li class="dropdown">
+                                                        <a href="@Url.Action("Index", "Home")">Sunday School</a>
+                                                        <ul>
+                                                            <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
+                                                            <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>@Html.ActionLink("Hymns", "Index", "Hymns", new { area = "" }, null)</li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
                                                 <a href="@Url.Action("Index", "Home")"> Schedule</a>
                                                 <ul>
-                                                    <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                 
+                                                    <li>@Html.ActionLink("Deacons Calendar", "Index", "Deacons", new { area = "" }, null)</li>
                                                     <li>@Html.ActionLink("Weekly Announcements", "Index", "Announcement", new { area = "" }, null)</li>
                                                     <li><a href="@Url.Action("Index", "News")">News Updates</a></li>
                                                     <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
@@ -210,16 +221,22 @@
                                         <li>@Html.ActionLink("Streaming", "Index", "Streaming", new { area = "" }, null)</li>
 
                                         <li class="dropdown">
-                                            <a href="@Url.Action("Index", "Home")">Sunday School</a>
+                                            <a href="@Url.Action("Index", "Home")">Library</a>
                                             <ul>
-                                                <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
-                                                <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
+                                                <li class="dropdown">
+                                                    <a href="@Url.Action("Index", "Home")">Sunday School</a>
+                                                    <ul>
+                                                        <li>@Html.ActionLink("Sunday School Class Structure", "Index", "SundaySchoolClass", new { area = "" }, null)</li>
+                                                        <li>@Html.ActionLink("Sunday School Library", "Index", "SundaySchoolLibrary", new { area = "" }, null)</li>
+                                                    </ul>
+                                                </li>
+                                                <li>@Html.ActionLink("Hymns", "Index", "Hymns", new { area = "" }, null)</li>
                                             </ul>
                                         </li>
                                         <li class="dropdown">
                                             <a href="@Url.Action("Index", "Home")">Schedule</a>
                                             <ul>
-                                                <li>@Html.ActionLink("Deacons", "Index", "DEACONS", new { area = "" }, null)</li>
+                                                <li>@Html.ActionLink("Deacons Calendar", "Index", "Deacons", new { area = "" }, null)</li>
                                                 <li>@Html.ActionLink("Weekly Announcements", "Index", "Announcement", new { area = "" }, null)</li>
                                                 <li><a href="@Url.Action("Index", "News")">News Updates</a></li>
                                                 <li>@Html.ActionLink("Calendar", "Index", "Calendar", new { area = "" }, null)</li>
@@ -306,7 +323,7 @@
                                 <h3 class="footer-widget__title">Explore</h3>
                                 <ul class="footer-widget__explore-list list-unstyled">
                                     <li><a href="@Url.Action("Index", "Donations")">Donate</a></li>
-                                    <li><a href="#">Announcements</a></li>
+                                    <li><a href="@Url.Action("Index", "Announcement")">Announcements</a></li>
                                     <li><a href="@Url.Action("Index", "Calendar")">Schedule</a></li>
 
                                 </ul>

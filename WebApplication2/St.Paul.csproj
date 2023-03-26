@@ -253,6 +253,7 @@
     <Compile Include="Controllers\EventsAdminPageController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HymnsController.cs" />
     <Compile Include="Controllers\IntroToChurchController.cs" />
     <Compile Include="Controllers\KidsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -290,6 +291,7 @@
     <Compile Include="Models\Family.cs" />
     <Compile Include="Models\Feasts.cs" />
     <Compile Include="Models\GuestList.cs" />
+    <Compile Include="Models\Hymns.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Interface\IDataProvider.cs" />
@@ -877,6 +879,9 @@
     <Content Include="Views\Announcement\Index.cshtml" />
     <Content Include="Views\Announcement\AnnouncementAdmin.cshtml" />
     <Content Include="Views\Announcement\Create.cshtml" />
+    <Content Include="Views\Hymns\Index.cshtml" />
+    <Content Include="Views\Hymns\HymnsAdmin.cshtml" />
+    <Content Include="Views\Hymns\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

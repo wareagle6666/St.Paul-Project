@@ -32,7 +32,7 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-
+        [Authorize]
         // GET: Announcement/Create
         public ActionResult Create()
         {
@@ -77,23 +77,16 @@ namespace WebApplication2.Controllers
    
         public ActionResult RenderFile(int Id)
         {
-            byte[] fileContent = new byte[0];
-            string contentType = string.Empty;
-            string fileName = string.Empty;
-
+           
             var fIles = new PdfFiles();
-            var list = fIles.GetFiles();
-            var file = list.Select(x => x.Id == Id).ToList();
-            foreach (var fileValue in list)
-            {
-                if(fileValue.Id == Id)
-                {
-                    fileContent = fileValue.FileData;
-                    contentType = fileValue.FileType;
-                }
+            var Announcement = fIles.GetAnnouncementById(Id);
 
+            if(Announcement.FileType.Length == 0)
+            {
+                throw new Exception();
             }
-            return new FileContentResult(fileContent, contentType);
+      
+            return new FileContentResult(Announcement.FileData, Announcement.FileType);
         }
         public ActionResult DeleteFiles(int Id)
         {
