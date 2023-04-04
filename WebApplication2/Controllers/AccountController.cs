@@ -175,7 +175,7 @@ namespace WebApplication2.Controllers
 
             if (ModelState.IsValid)
             {
-               
+
                 string EncodedResponse = Request.Form["g-Recaptcha-Response"];
                 bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "true" ? true : false);
                 if (IsCaptchaValid)
