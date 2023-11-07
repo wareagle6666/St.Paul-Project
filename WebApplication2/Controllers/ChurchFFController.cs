@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using Elmah;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -54,7 +55,7 @@ namespace WebApplication2.Controllers
             }
             catch (Exception ex)
             {
-                // handle error
+                ErrorSignal.FromCurrentContext().Raise(ex);
                 var test = ex.Message;
             }
             Title = Title.Replace("&amp;", " & ");

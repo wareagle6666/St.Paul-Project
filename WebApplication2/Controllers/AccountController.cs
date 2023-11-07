@@ -1,11 +1,13 @@
 ﻿
+using System;
+using ElmahCore;
 using System.Collections.Generic;
-
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Elmah;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -28,6 +30,7 @@ namespace WebApplication2.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -91,24 +94,29 @@ namespace WebApplication2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            var modelJson = JsonConvert.SerializeObject(model);
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
+           
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            ErrorSignal.FromCurrentContext().Raise(new Exception("failed to login  1-1"));
             switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
+                    ErrorSignal.FromCurrentContext().Raise(new Exception(modelJson + " " + " account is lockedout"));
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
+                    ErrorSignal.FromCurrentContext().Raise(new Exception(modelJson + " " + " failed"));
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
@@ -122,6 +130,7 @@ namespace WebApplication2.Controllers
             // Require that the user has already logged in via username/password or external login
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
+                ErrorSignal.FromCurrentContext().Raise(new Exception("Code Verify ERROR"));
                 return View("Error");
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
@@ -134,6 +143,7 @@ namespace WebApplication2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
+            var modelJson = JsonConvert.SerializeObject(model);
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -149,10 +159,13 @@ namespace WebApplication2.Controllers
                 case SignInStatus.Success:
                     return RedirectToLocal(model.ReturnUrl);
                 case SignInStatus.LockedOut:
+                    ErrorSignal.FromCurrentContext().Raise(new Exception(modelJson + " " + " account is lockedout"));
+
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid code.");
+                    ErrorSignal.FromCurrentContext().Raise(new Exception(modelJson + " " + "Invalid state"));
                     return View(model);
             }
         }
@@ -172,7 +185,7 @@ namespace WebApplication2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-
+            var modelJson = JsonConvert.SerializeObject(model);
             if (ModelState.IsValid)
             {
 
@@ -201,9 +214,11 @@ namespace WebApplication2.Controllers
 
                         return RedirectToAction("Index", "Home");
                     }
+                    ErrorSignal.FromCurrentContext().Raise(new Exception(modelJson + " " + "Failed to create account"));
                     AddErrors(result);
                 }
             }
+            ErrorSignal.FromCurrentContext().Raise(new Exception(modelJson + " " + "Can't create account"));
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -216,6 +231,8 @@ namespace WebApplication2.Controllers
         {
             if (userId == null || code == null)
             {
+                ErrorSignal.FromCurrentContext().Raise(new Exception(userId + " " + "Error Logging in"));
+
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);

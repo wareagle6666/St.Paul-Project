@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Elmah;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using WebApplication2.Models;
@@ -113,8 +115,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -143,8 +146,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -165,8 +169,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }

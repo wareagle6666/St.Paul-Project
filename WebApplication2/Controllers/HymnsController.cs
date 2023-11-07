@@ -119,8 +119,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -141,8 +142,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -163,8 +165,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }

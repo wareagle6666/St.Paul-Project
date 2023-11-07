@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Elmah;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -157,9 +158,9 @@ namespace WebApplication2.Controllers
 
 
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                var test = ex.Message;
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -200,9 +201,9 @@ namespace WebApplication2.Controllers
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                var test = ex.Message;
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }

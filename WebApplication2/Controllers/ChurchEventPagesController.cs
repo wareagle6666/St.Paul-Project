@@ -24,14 +24,23 @@ namespace WebApplication2.Controllers
         // GET: ChurchEventPages/Create/ID
         public ActionResult Create(Guid eventID)
         {
+            try
+            {
+                Events eventDetails = new Events().getSingleEvent(eventID);
+                var stringdate = eventDetails.eventDate.ToString("dddd, dd MMMM hh:mm tt");
+                ViewBag.EventTitle = eventDetails.eventName + " " + stringdate;
 
-            Events eventDetails = new Events().getSingleEvent(eventID);
-            var stringdate = eventDetails.eventDate.ToString("dddd, dd MMMM hh:mm tt");
-            ViewBag.EventTitle = eventDetails.eventName + " " + stringdate;
+                ViewBag.CurrentCount = eventDetails.eventCount - eventDetails.eventRSVP;
+                ViewBag.currentEventID = eventID;
+                return View(eventDetails);
+            }
+            catch (Exception e)
+            {
+                ErrorSignal.FromCurrentContext().Raise(e);
+                return View(new Events());
+            }
 
-            ViewBag.CurrentCount = eventDetails.eventCount - eventDetails.eventRSVP;
-            ViewBag.currentEventID = eventID;
-            return View(eventDetails);
+
         }
 
         // POST: ChurchEventPages/Create

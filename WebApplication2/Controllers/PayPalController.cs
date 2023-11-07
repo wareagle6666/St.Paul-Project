@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Elmah;
+using System;
+using System.Web.Mvc;
 
 namespace WebApplication2.Controllers
 {
@@ -32,8 +34,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -54,8 +57,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -76,8 +80,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }

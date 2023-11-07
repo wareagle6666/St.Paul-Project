@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Elmah;
+using System;
+using System.Web.Mvc;
 using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
@@ -37,8 +39,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Details", "Kids", new { Not.ID });
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -59,8 +62,9 @@ namespace WebApplication2.Controllers
          
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
@@ -83,8 +87,9 @@ namespace WebApplication2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
+                ErrorSignal.FromCurrentContext().Raise(e);
                 return View();
             }
         }
