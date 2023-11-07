@@ -13,6 +13,7 @@ namespace WebApplication2.Controllers
     [Authorize]
     public class AddGalleryImagesController : Controller
     {
+        private SqlDataProvider _datarepo = new SqlDataProvider();
         // GET: AddGalleryImages
         public ActionResult Index()
         {
@@ -83,7 +84,90 @@ namespace WebApplication2.Controllers
         }
 
 
+        public ActionResult EventScreen()
+        {
+            var list = _datarepo.GetListOfImageEvents();
+            return View(list);
+        }
 
+        public ActionResult CreateImageEvent()
+        {
+            return View();
+        }
+
+        public ActionResult EditImageEvent()
+        {
+            return View();
+        }
+
+        // POST: Kids/Create
+        [HttpPost]
+        public ActionResult Create(ImageEvent Kid)
+        {
+            try
+            {
+                var result = 1;//_datarepo.CreateKid(Kid, User.Identity.Name);
+
+                if (result == 1)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    throw new Exception("Couldn't Save Record");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var test = ex.Message;
+                return View();
+            }
+        }
+
+        // GET: Kids/Edit/5
+        public ActionResult Edit(int ID)
+        {
+            var kid = _datarepo.GetSingleKidByID(ID);
+            var classes = GetClasses(kid.ClassID);
+
+            foreach (var c in classes)
+            {
+                if (c.Value == kid.ClassID.ToString())
+                {
+                    ViewBag.DefaultID = c.Text;
+                }
+            }
+            ViewData["Classes"] = classes;
+            ViewBag.Classes = classes;
+            return View(kid);
+        }
+
+        // POST: Kids/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int Id, ImageEvent Kid)
+        {
+            try
+            {
+                var result = _datarepo.UpdateKid(Kid, User.Identity.Name);
+
+                if (result == 1)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    throw new Exception("Couldn't Save Record");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var test = ex.Message;
+                return View();
+            }
+        }
 
 
     }

@@ -126,7 +126,7 @@ namespace WebApplication2.Models
             var list = ExecuteScalarSpWithDapper<Events>("GetSinglEvent", new { eventID });
             return list;
         }
-        public int addGuest( string userName, Guid eventID, string firstName, string lastName, bool isDeacon)
+        public int addGuest(string userName, Guid eventID, string firstName, string lastName, bool isDeacon)
         {
 
             var userID = GetUserIdByUserName(userName);
@@ -151,7 +151,7 @@ namespace WebApplication2.Models
         }
         public int CreateUserProfile(string userId, string FirstName, string LastName, string PhoneNumber)
         {
-            var result  = ExecuteScalarSpWithDapper<int>("CreateUser",
+            var result = ExecuteScalarSpWithDapper<int>("CreateUser",
                new
                {
                    userId,
@@ -162,7 +162,7 @@ namespace WebApplication2.Models
             return result;
         }
 
-        public List<Events> GetAllEventsForUser(string userName )
+        public List<Events> GetAllEventsForUser(string userName)
         {
             var userID = GetUserIdByUserName(userName);
             var list = ExecuteSpWithDapper<Events>("GetEventsForUser", new { userID }).ToList();
@@ -210,7 +210,7 @@ namespace WebApplication2.Models
             var list = ExecuteSpWithDapper<Events>("GetallEventsforAdmins").ToList();
             return list;
         }
-        public int CheckInGuest (Guid guestID)
+        public int CheckInGuest(Guid guestID)
         {
             var result = ExecuteScalarSpWithDapper<int>("CheckGuest", new { guestID });
             return result;
@@ -220,7 +220,7 @@ namespace WebApplication2.Models
             var result = ExecuteScalarSpWithDapper<int>("UnCheckGuest", new { guestID });
             return result;
         }
-        public List<GuestList> GetGuestFullListForEvent( Guid eventID)
+        public List<GuestList> GetGuestFullListForEvent(Guid eventID)
         {
             var list = ExecuteSpWithDapper<GuestList>("GetEventGuestList", new { eventID }).ToList();
             return list;
@@ -272,7 +272,7 @@ namespace WebApplication2.Models
         }
         public int CreateAddress(string UserID, string Street1, string Street2, string City, string State, string Zipcode)
         {
-            var address = ExecuteScalarSpWithDapper<int>("AddUserAddress", new { UserID,Street1, Street2, City, State, Zipcode });
+            var address = ExecuteScalarSpWithDapper<int>("AddUserAddress", new { UserID, Street1, Street2, City, State, Zipcode });
             return address;
         }
 
@@ -339,7 +339,7 @@ namespace WebApplication2.Models
         }
         public List<Kids> GetKidsByClassID(int ClassID)
         {
-            var list = ExecuteSpWithDapper<Kids>("GetStudentByClass", new {ClassID}).ToList();
+            var list = ExecuteSpWithDapper<Kids>("GetStudentByClass", new { ClassID }).ToList();
             return list;
         }
         public Kids GetSingleKidByID(int ID)
@@ -363,20 +363,21 @@ namespace WebApplication2.Models
         {
             var ServantID = GetUserIdByUserName(Username);
             Kid.CreatedBy = ServantID;
-            var result = ExecuteScalarSpWithDapper<int>("CreateKid", new { 
-            Kid.FirstName,
-            Kid.LastName,
-            Kid.Father,
-            Kid.Mother,
-            Kid.DateOfBirth,
-            Kid.Address,
-            Kid.City,
-            Kid.Zip,
-            Kid.State,
-            Kid.Phone1,
-            Kid.Phone2,
-            Kid.CreatedBy,
-            Kid.ClassID,
+            var result = ExecuteScalarSpWithDapper<int>("CreateKid", new
+            {
+                Kid.FirstName,
+                Kid.LastName,
+                Kid.Father,
+                Kid.Mother,
+                Kid.DateOfBirth,
+                Kid.Address,
+                Kid.City,
+                Kid.Zip,
+                Kid.State,
+                Kid.Phone1,
+                Kid.Phone2,
+                Kid.CreatedBy,
+                Kid.ClassID,
 
             });
             return result;
@@ -410,7 +411,8 @@ namespace WebApplication2.Models
         {
             var CreatedBy = GetUserIdByUserName(Username);
             var Attended = true;
-            var Attend = ExecuteScalarSpWithDapper<int>("CreateAttendance", new {
+            var Attend = ExecuteScalarSpWithDapper<int>("CreateAttendance", new
+            {
                 StudentId,
                 Attended,
                 CreatedBy
@@ -501,15 +503,16 @@ namespace WebApplication2.Models
         }
         public List<PdfFiles> GetAllAnnouncementFiles()
         {
-            try {
+            try
+            {
                 var list = ExecuteSpWithDapper<PdfFiles>("GetAllAnnouncementFiles").ToList();
                 return list;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception();
             }
-      
+
         }
         public int DeleteAnnouncementFile(int Id)
         {
@@ -560,6 +563,101 @@ namespace WebApplication2.Models
             var result = ExecuteScalarSpWithDapper<Hymns>("GetHymnsFile", new { Id });
             return result;
         }
+
+
+
+        public List<ImageEvent> GetListOfImageEvents()
+        {
+            try
+            {
+
+                var result = ExecuteSpWithDapper<ImageEvent>("GetImageEvents", new { }).ToList();
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new List<ImageEvent>();
+            }
+        }
+
+        public ImageEvent GetSingleImageEvent(int Id)
+        {
+            try
+            {
+
+                var result = ExecuteScalarSpWithDapper<ImageEvent>("GetSingleImageEvant", new { Id });
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new ImageEvent();
+
+            }
+        }
+
+        public int CreateImageEvent(ImageEvent imageEvent)
+        {
+            try
+            {
+
+                var result = ExecuteScalarSpWithDapper<int>("CreateImageEvent", new
+                {
+                    imageEvent.Name,
+                    imageEvent.Location,
+                    imageEvent.EventDate
+
+                });
+                return result;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+        public int UpdateImageEvent(ImageEvent imageEvent, string userName)
+        {
+            try
+            {
+                var userID = GetUserIdByUserName(userName);
+                var result = ExecuteScalarSpWithDapper<int>("UpdateImageEvent", new
+                {
+                    imageEvent.Name,
+                    imageEvent.Location,
+                    imageEvent.EventDate,
+                    imageEvent.Id
+
+                });
+                return result;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+        }
+
+        public int DeleteImageEvent(int Id)
+        {
+            try
+            {
+
+                var result = ExecuteScalarSpWithDapper<int>("GetImageEvents", new
+                {
+                   Id
+
+                });
+                return result;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+        }
+
+
+
+
     }
 
 }

@@ -34,7 +34,7 @@ namespace WebApplication2
 
                 using (MailMessage mail = new MailMessage())
                 {
-                    mail.From = new MailAddress("St-PaulChurch@stpaulatlanta.org", "St.Paul Coptic Orthodox Church");
+                    mail.From = new MailAddress("st.paulchurch@stpaulatlanta.org", "St.Paul Coptic Orthodox Church");
                     mail.To.Add(message.Destination);
                     mail.Subject = message.Subject;
                     mail.Body = message.Body;
@@ -43,10 +43,11 @@ namespace WebApplication2
                     using (SmtpClient smtp = new SmtpClient())
                     {
                         smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new NetworkCredential("St-PaulChurch@stpaulatlanta.org", "Emad0425@");
-                        smtp.Host = "mail.stpaulatlanta.org";
-                        smtp.Port = 25;
-                        smtp.EnableSsl = false;
+                        smtp.Credentials = new NetworkCredential("st.paulchurch@stpaulatlanta.org", "jelkknhgslegwcey");
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.Port = 587;
+                        smtp.Timeout = 400000;
+                        smtp.EnableSsl = true;
                         smtp.Send(mail);
                     }
                 }
@@ -65,7 +66,7 @@ namespace WebApplication2
 
                 using (MailMessage mail = new MailMessage())
                 {
-                    mail.From = new MailAddress("St-PaulChurch@stpaulatlanta.org", "St.Paul Coptic Orthodox Church");
+                    mail.From = new MailAddress("st.paulchurch@stpaulatlanta.org", "St.Paul Coptic Orthodox Church");
                     mail.To.Add(message.Destination);
                     mail.Subject = message.Subject;
                     mail.Body = message.Body;
@@ -74,10 +75,11 @@ namespace WebApplication2
                     using (SmtpClient smtp = new SmtpClient())
                     {
                         smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new NetworkCredential("St-PaulChurch@stpaulatlanta.org", "Emad0425@");
-                        smtp.Host = "mail.stpaulatlanta.org";
-                        smtp.Port = 25;
-                        smtp.EnableSsl = false;
+                        smtp.Credentials = new NetworkCredential("st.paulchurch@stpaulatlanta.org", "jelkknhgslegwcey");
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.Port = 587;
+                        smtp.Timeout = 400000;
+                        smtp.EnableSsl = true;
                         smtp.Send(mail);
                     }
                 }
