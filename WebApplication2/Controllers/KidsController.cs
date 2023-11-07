@@ -97,7 +97,7 @@ namespace WebApplication2.Controllers
             ViewBag.Classes = classes;
             return View();
         }
-        private List<SelectListItem> GetClasses(int ID)
+        public List<SelectListItem> GetClasses(int ID)
         {
             var Values = _datarepo.GetAllClasses();
             List<SelectListItem> Classes = new List<SelectListItem>();

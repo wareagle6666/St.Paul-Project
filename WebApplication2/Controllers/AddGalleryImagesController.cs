@@ -100,74 +100,76 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        // POST: Kids/Create
-        [HttpPost]
-        public ActionResult Create(ImageEvent Kid)
-        {
-            try
-            {
-                var result = 1;//_datarepo.CreateKid(Kid, User.Identity.Name);
+        //// POST: Kids/Create
+        //[HttpPost]
+        //public ActionResult Create(ImageEvent Kid)
+        //{
+        //    try
+        //    {
+        //        var result = 1;//_datarepo.CreateKid(Kid, User.Identity.Name);
 
-                if (result == 1)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    throw new Exception("Couldn't Save Record");
-                }
+        //        if (result == 1)
+        //        {
+        //            return RedirectToAction("Index");
+        //        }
+        //        else
+        //        {
+        //            throw new Exception("Couldn't Save Record");
+        //        }
 
 
-            }
-            catch (Exception ex)
-            {
-                var test = ex.Message;
-                return View();
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var test = ex.Message;
+        //        return View();
+        //    }
+        //}
 
-        // GET: Kids/Edit/5
-        public ActionResult Edit(int ID)
-        {
-            var kid = _datarepo.GetSingleKidByID(ID);
-            var classes = GetClasses(kid.ClassID);
+        //// GET: Kids/Edit/5
+        //public ActionResult Edit(int ID)
+        //{
+        //    var kidsClasses = new KidsController();
 
-            foreach (var c in classes)
-            {
-                if (c.Value == kid.ClassID.ToString())
-                {
-                    ViewBag.DefaultID = c.Text;
-                }
-            }
-            ViewData["Classes"] = classes;
-            ViewBag.Classes = classes;
-            return View(kid);
-        }
+        //    var kid = _datarepo.GetSingleKidByID(ID);
+        //    var classes = kidsClasses.GetClasses(kid.ClassID);
 
-        // POST: Kids/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int Id, ImageEvent Kid)
-        {
-            try
-            {
-                var result = _datarepo.UpdateKid(Kid, User.Identity.Name);
+        //    foreach (var c in classes)
+        //    {
+        //        if (c.Value == kid.ClassID.ToString())
+        //        {
+        //            ViewBag.DefaultID = c.Text;
+        //        }
+        //    }
+        //    ViewData["Classes"] = classes;
+        //    ViewBag.Classes = classes;
+        //    return View(kid);
+        //}
 
-                if (result == 1)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    throw new Exception("Couldn't Save Record");
-                }
+        //// POST: Kids/Edit/5
+        //[HttpPost]
+        //public ActionResult Edit(int Id, ImageEvent Kid)
+        //{
+        //    try
+        //    {
+        //        var result = _datarepo.UpdateKid(Kid, User.Identity.Name);
 
-            }
-            catch (Exception ex)
-            {
-                var test = ex.Message;
-                return View();
-            }
-        }
+        //        if (result == 1)
+        //        {
+        //            return RedirectToAction("Index");
+        //        }
+        //        else
+        //        {
+        //            throw new Exception("Couldn't Save Record");
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var test = ex.Message;
+        //        return View();
+        //    }
+        //}
 
 
     }
