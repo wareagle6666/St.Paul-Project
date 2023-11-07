@@ -532,6 +532,7 @@
     <Content Include="Content\Images\help-them-two__donation-icon.png" />
     <Content Include="Content\Images\helping-one-left-img.jpg" />
     <Content Include="Content\Images\introduction-img-1.jpg" />
+    <Content Include="Content\Images\John-The-Baptist.png" />
     <Content Include="Content\Images\join-one-bg.jpg" />
     <Content Include="Content\Images\loader.png" />
     <Content Include="Content\Images\logo-1.png" />
@@ -568,12 +569,18 @@
     <Content Include="Content\Images\ourfaith.jpg" />
     <Content Include="Content\Images\page-header-bg-1-1.jpg" />
     <Content Include="Content\Images\paypal_mb8k.png" />
+    <Content Include="Content\Images\Philopateer-Mercurius.png" />
+    <Content Include="Content\Images\Pope-Kyrillos.png" />
     <Content Include="Content\Images\priest.jpg" />
     <Content Include="Content\Images\qoute-1-1.png" />
     <Content Include="Content\Images\recent-donation-img-1.jpg" />
     <Content Include="Content\Images\recent-donation-img-2.jpg" />
     <Content Include="Content\Images\recent-donation-img-3.jpg" />
     <Content Include="Content\Images\recent-donation-img-4.jpg" />
+    <Content Include="Content\Images\St-Augustine.png" />
+    <Content Include="Content\Images\St-George.png" />
+    <Content Include="Content\Images\St-Marina-The-Martyr.png" />
+    <Content Include="Content\Images\St-Nopher-The-Anachorite.png" />
     <Content Include="Content\Images\stream.png" />
     <Content Include="Content\Images\team-one-img-1.jpg" />
     <Content Include="Content\Images\team-one-img-2.jpg" />
