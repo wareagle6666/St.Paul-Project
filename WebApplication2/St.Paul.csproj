@@ -448,6 +448,7 @@
     <Content Include="Content\halpes-responsive.css" />
     <Content Include="Content\halpes.css" />
     <Content Include="Content\Images\about-page-img-1.jpg" />
+    <Content Include="Content\Images\Anba-Wannas.png" />
     <Content Include="Content\Images\android-chrome-192x192.png" />
     <Content Include="Content\Images\android-chrome-512x512.png" />
     <Content Include="Content\Images\apple-touch-icon.png" />
@@ -577,9 +578,13 @@
     <Content Include="Content\Images\recent-donation-img-2.jpg" />
     <Content Include="Content\Images\recent-donation-img-3.jpg" />
     <Content Include="Content\Images\recent-donation-img-4.jpg" />
+    <Content Include="Content\Images\St-Abanoub.png" />
     <Content Include="Content\Images\St-Augustine.png" />
     <Content Include="Content\Images\St-George.png" />
+    <Content Include="Content\Images\St-Joseph-The-Carpenter.png" />
+    <Content Include="Content\Images\St-Karas.png" />
     <Content Include="Content\Images\St-Marina-The-Martyr.png" />
+    <Content Include="Content\Images\St-Mark.png" />
     <Content Include="Content\Images\St-Nopher-The-Anachorite.png" />
     <Content Include="Content\Images\stream.png" />
     <Content Include="Content\Images\team-one-img-1.jpg" />
