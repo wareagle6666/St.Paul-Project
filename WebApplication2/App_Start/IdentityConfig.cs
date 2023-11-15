@@ -43,11 +43,12 @@ namespace WebApplication2
                     using (SmtpClient smtp = new SmtpClient())
                     {
                         smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new NetworkCredential("st.paulchurch@stpaulatlanta.org", "jelkknhgslegwcey");
+                        smtp.Credentials = new NetworkCredential("st.paulchurch@stpaulatlanta.org", "qdlc kzjb nopj lywy");
                         smtp.Host = "smtp.gmail.com";
                         smtp.Port = 587;
                         smtp.Timeout = 400000;
                         smtp.EnableSsl = true;
+                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                         smtp.Send(mail);
                     }
                 }
