@@ -10,9 +10,13 @@ using System.Web.Mvc;
 using Elmah;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Owin.Security;
 using Newtonsoft.Json;
 using WebApplication2.Models;
+using ActionResult = System.Web.Mvc.ActionResult;
+using ControllerContext = System.Web.Mvc.ControllerContext;
+using EmptyResult = System.Web.Mvc.EmptyResult;
 
 namespace WebApplication2.Controllers
 {
@@ -69,7 +73,7 @@ namespace WebApplication2.Controllers
         // The Authorize Action is the end point which gets called when you access any
         // protected Web API. If the user is not logged in then they will be redirected to 
         // the Login page. After a successful login you can call a Web API.
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public ActionResult Authorize()
         {
             var claims = new ClaimsPrincipal(User).Claims.ToArray();
@@ -89,7 +93,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/Login
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
@@ -122,6 +126,7 @@ namespace WebApplication2.Controllers
             }
         }
 
+
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -138,7 +143,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/VerifyCode
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
@@ -180,7 +185,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/Register
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
@@ -249,7 +254,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/ForgotPassword
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
@@ -293,7 +298,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/ResetPassword
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
@@ -327,7 +332,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/ExternalLogin
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
@@ -353,7 +358,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/SendCode
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
@@ -403,7 +408,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
@@ -442,7 +447,7 @@ namespace WebApplication2.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {

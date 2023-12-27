@@ -28,6 +28,7 @@ namespace WebApplication2
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Routes.MapHttpRoute(name: "DefaultApiWithAction", routeTemplate: "Api/{controller}/{action}");
         }
     }
 }
