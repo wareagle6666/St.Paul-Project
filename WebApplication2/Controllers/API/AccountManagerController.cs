@@ -16,6 +16,7 @@ using WebApplication2.Models;
 using Microsoft.Owin.Security;
 using System.Web.Mvc;
 using System.Web;
+using Microsoft.Ajax.Utilities;
 
 namespace WebApplication2.Controllers.API
 {
@@ -97,10 +98,10 @@ namespace WebApplication2.Controllers.API
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return "Success";
         }
-        public async Task<string> Register(RegisterViewModel model)
+        public async Task<string> Register(RegisterViewModel model, string secret)
         {
             var modelJson = JsonConvert.SerializeObject(model);
-            if (ModelState.IsValid)
+            if (secret == "STMOBILE")
             {
 
                 //string EncodedResponse = Request.Form["g-Recaptcha-Response"];
