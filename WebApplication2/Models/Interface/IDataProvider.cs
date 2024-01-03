@@ -9,5 +9,10 @@ namespace WebApplication2.Models.Interface
     public interface IDataProvider
     {
         List<Users> GetAllUsers();
+        List<Mobile> GetAllMobileTokens();
+         int CreateMobileRecord(string UserId, string Token, string DeviceType);
+         int UpdateLastLogin(string Token);
+         string GetUserIdByUserEmail(string Email);
+         List<UserRoles> GetUserRolesByUserId(string UserId);
     }
 }

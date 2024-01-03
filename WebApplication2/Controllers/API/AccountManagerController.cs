@@ -61,6 +61,20 @@ namespace WebApplication2.Controllers.API
             }
         }
 
+        public async Task<string> GetUserIdWithEmail(string Email)
+        {
+            var _dataprovider = new SqlDataProvider();
+
+            var result = _dataprovider.GetUserIdByUserEmail(Email);
+            return result;
+        }
+        public async Task<List<UserRoles>> GetUserRoles(string UserId)
+        {
+            var _dataprovider = new SqlDataProvider();
+
+            var result = _dataprovider.GetUserRolesByUserId(UserId);
+            return result;
+        }
         public async Task<string> Login(LoginViewModel model)
         {
             var modelJson = JsonConvert.SerializeObject(model);

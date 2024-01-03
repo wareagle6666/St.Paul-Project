@@ -655,9 +655,66 @@ namespace WebApplication2.Models
 
         }
 
+        public List<Mobile> GetAllMobileTokens()
+        {
+            try
+            {
+
+                var result = ExecuteSpWithDapper<Mobile>("GetAllMobileTokens", new { }).ToList();
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new List<Mobile>();
+            }
+        }
+
+        public int CreateMobileRecord(string UserId, string Token, string DeviceType)
+        {
+
+            var result = ExecuteScalarSpWithDapper<int>("AddMobiletoTable ", new
+            {
+                UserId,
+                Token,
+                DeviceType
+            });
+            return result;
+        }
+        public int UpdateLastLogin(string Token)
+        {
+
+            var result = ExecuteScalarSpWithDapper<int>("UpdateMobileLoginDate ", new
+            {
+                Token
+            });
+            return result;
+        }
 
 
 
+        public string GetUserIdByUserEmail(string Email)
+        {
+            var UserId = GetUserIdByUserName(Email);
+            return UserId;
+        }
+
+
+        public List<UserRoles> GetUserRolesByUserId(string UserId)
+        {
+            try
+            {
+
+                var result = ExecuteSpWithDapper<UserRoles>("GetUserRolesByUserId", new
+                {
+                    UserId
+                }).ToList();
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new List<UserRoles>();
+            }
+        }
     }
 
 }
