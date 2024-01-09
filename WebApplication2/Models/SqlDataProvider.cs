@@ -715,6 +715,52 @@ namespace WebApplication2.Models
                 return new List<UserRoles>();
             }
         }
+
+
+
+
+
+        public List<NotificationsModel> GetAllNotifications()
+        {
+            try
+            {
+
+                var result = ExecuteSpWithDapper<NotificationsModel>("GetNotificationList", new { }).ToList();
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new List<NotificationsModel>();
+            }
+        }
+
+
+        public int SaveNotification(string Description,string Title,string Subtitle,  string UserId, string Token)
+        {
+            try
+            {
+
+                var result = ExecuteScalarSpWithDapper<int>("SaveNotifications", new
+                {
+                    Description,
+                    Title,
+                    Subtitle,
+                    UserId  ,
+                    Token
+                });
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new int();
+            }
+        }
+
+
     }
+
+
+
+
 
 }

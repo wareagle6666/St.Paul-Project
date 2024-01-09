@@ -458,6 +458,9 @@
     <Compile Include="Models\Mobile.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Notes.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationRequest.cs" />
+    <Compile Include="Models\NotificationsModel.cs" />
     <Compile Include="Models\PdfFiles.cs" />
     <Compile Include="Models\QueryMonitor.cs" />
     <Compile Include="Models\SingleSqlCommandConnection.cs" />

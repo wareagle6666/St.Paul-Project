@@ -14,5 +14,7 @@ namespace WebApplication2.Models.Interface
          int UpdateLastLogin(string Token);
          string GetUserIdByUserEmail(string Email);
          List<UserRoles> GetUserRolesByUserId(string UserId);
+          List<NotificationsModel> GetAllNotifications();
+          int SaveNotification(string Description, string Title, string Subtitle, string UserId, string Token);
     }
 }
