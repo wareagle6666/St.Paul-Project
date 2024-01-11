@@ -69,7 +69,7 @@ namespace WebApplication2.Controllers.API
             var _dataprovider = new SqlDataProvider();
 
             var result = _dataprovider.SaveNotification(Message, Title, "", "", "");
-
+            var NoticiationCount = _dataprovider.GetAllNotifications().Count + 1;
             if (result == 1)
             {
                 try
@@ -85,8 +85,9 @@ namespace WebApplication2.Controllers.API
                             {
                                 body = Message,
                                 title = Title,
-                                click_action = "NEW_MESSAGE_CATEGORY",
-                                sound = "default"
+                                click_action = "HANDLE_BREAKING_NEWS",
+                                sound = "default",
+                                badge = 1 
                             } ,
                             priority = "High",
                             data = new NotificationData()
