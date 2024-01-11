@@ -7,6 +7,7 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
+    [Authorize]
     public class KidsController : Controller
     {
         private SqlDataProvider _datarepo = new SqlDataProvider();

@@ -111,6 +111,8 @@
                                                     }
                                                     @if (User.IsInRole("Announcement") || User.IsInRole("SuperAdmin"))
                                                     {
+                                                        <li>@Html.ActionLink("Mobile Notifications", "Index", "MobileNotification", new { area = "" }, null)</li>
+
                                                         <li>@Html.ActionLink("Announcement Admin", "AnnouncementAdmin", "Announcement", new { area = "" }, null)</li>
                                                     }
                                                     @if (User.IsInRole("HymnsAdmin") || User.IsInRole("SuperAdmin"))

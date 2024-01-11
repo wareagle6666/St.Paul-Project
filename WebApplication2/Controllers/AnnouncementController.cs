@@ -6,6 +6,7 @@ using Elmah;
 
 namespace WebApplication2.Controllers
 {
+
     public class AnnouncementController : Controller
     {
         // GET: Announcement

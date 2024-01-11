@@ -5,6 +5,7 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
+    [Authorize]
     public class NotesController : Controller
     {
         private SqlDataProvider _datarepo = new SqlDataProvider();

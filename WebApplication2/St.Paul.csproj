@@ -414,6 +414,7 @@
     <Compile Include="Controllers\KidsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MinistriesController.cs" />
+    <Compile Include="Controllers\MobileNotificationController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\OurFaithController.cs" />
@@ -456,6 +457,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
     <Compile Include="Models\Mobile.cs" />
+    <Compile Include="Models\MobileNotificationModel.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Notes.cs" />
     <Compile Include="Models\Notification.cs" />
@@ -1060,6 +1062,7 @@
     <Content Include="Views\Hymns\Create.cshtml" />
     <Content Include="Views\AddGalleryImages\EditImageEvent.cshtml" />
     <Content Include="Views\AddGalleryImages\CreateImageEvent.cshtml" />
+    <Content Include="Views\MobileNotification\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
