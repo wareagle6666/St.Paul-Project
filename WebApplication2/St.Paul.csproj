@@ -459,6 +459,7 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Notes.cs" />
     <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationData.cs" />
     <Compile Include="Models\NotificationRequest.cs" />
     <Compile Include="Models\NotificationsModel.cs" />
     <Compile Include="Models\PdfFiles.cs" />

@@ -85,7 +85,13 @@ namespace WebApplication2.Controllers.API
                             {
                                 body = Message,
                                 title = Title,
-                                click_action = "HANDLE_BREAKING_NEWS",
+                                click_action = "NEW_MESSAGE_CATEGORY",
+                                sound = "default"
+                            } ,
+                            priority = "High",
+                            data = new NotificationData()
+                            {
+                                story_id = new Guid().ToString()
                             }
                         };
 

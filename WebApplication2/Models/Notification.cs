@@ -7,8 +7,9 @@ namespace WebApplication2.Models
 {
     public class Notification
     {
-        public string body { get; set; }
-        public string title { get; set; }
-        public string click_action { get; set; }
+        public string body { get; set; } = String.Empty;
+        public string title { get; set; } = String.Empty;
+        public string click_action { get; set; } = String.Empty;
+        public string sound { get; set; } = String.Empty;
     }
 }
