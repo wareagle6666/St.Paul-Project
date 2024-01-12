@@ -16,5 +16,6 @@ namespace WebApplication2.Models.Interface
          List<UserRoles> GetUserRolesByUserId(string UserId);
           List<NotificationsModel> GetAllNotifications();
           int SaveNotification(string Description, string Title, string Subtitle, string UserId, string Token);
+          int DeleteUserAccount(string UserId);
     }
 }

@@ -17,6 +17,7 @@ using Microsoft.Owin.Security;
 using System.Web.Mvc;
 using System.Web;
 using Microsoft.Ajax.Utilities;
+using Elmah.ContentSyndication;
 
 namespace WebApplication2.Controllers.API
 {
@@ -175,7 +176,30 @@ namespace WebApplication2.Controllers.API
             return "Failed";
         }
 
+        public HttpResponseMessage DeleteAccount(string UserId , string secret)
+        {
 
+            if (secret != "STMOBILE")
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Failed");
+
+            }
+
+            var _dataprovider = new SqlDataProvider();
+
+            var result = _dataprovider.DeleteUserAccount(UserId);
+
+            if (result == 1)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "Success");
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Failed");
+
+            }
+
+        }
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

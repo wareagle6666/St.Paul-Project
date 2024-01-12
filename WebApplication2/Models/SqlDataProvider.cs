@@ -690,7 +690,15 @@ namespace WebApplication2.Models
             return result;
         }
 
+        public int DeleteUserAccount(string UserId)
+        {
 
+            var result = ExecuteScalarSpWithDapper<int>("DeleteUserAccount ", new
+            {
+                UserId
+            });
+            return result;
+        }
 
         public string GetUserIdByUserEmail(string Email)
         {
