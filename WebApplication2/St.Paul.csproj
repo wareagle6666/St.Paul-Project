@@ -516,9 +516,11 @@
     <Content Include="Content\halpes.css" />
     <Content Include="Content\Images\about-page-img-1.jpg" />
     <Content Include="Content\Images\Anba-Wannas.png" />
+    <Content Include="Content\Images\andriod.png" />
     <Content Include="Content\Images\android-chrome-192x192.png" />
     <Content Include="Content\Images\android-chrome-512x512.png" />
     <Content Include="Content\Images\apple-touch-icon.png" />
+    <Content Include="Content\Images\apple.png" />
     <Content Include="Content\Images\author-1-1.jpg" />
     <Content Include="Content\Images\become-a-volunteer.jpg" />
     <Content Include="Content\Images\brand-1-1.png" />
