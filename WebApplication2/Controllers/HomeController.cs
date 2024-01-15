@@ -60,7 +60,7 @@ namespace WebApplication2.Controllers
             {
                 foreach (var item in list)
                 {
-                    if (item.Start.DateTime.Value.Date == today.Date || item.Start.DateTime.Value.Date == today.AddDays(1).Date)
+                    if (item.Start.DateTime== today.Date || item.Start.DateTime == today.AddDays(1).Date)
                     {
                         DateTime StartTime = item.Start.DateTime.Value;
                         DateTime EndTime = item.End.DateTime.Value;
