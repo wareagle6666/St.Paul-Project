@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
 using Elmah;
+using Elmah.ContentSyndication;
 
 namespace WebApplication2.Controllers.API
 {
@@ -141,6 +142,14 @@ namespace WebApplication2.Controllers.API
             var _dataprovider = new SqlDataProvider();
 
             var result = _dataprovider.GetAllNotifications();
+
+            //for (int i = 0; i < result.Count(); i++)
+            //{
+            //    result[i].Description = result[i].Description.Replace("https://stpaulatlanta.org/Announcement", "");
+
+            //}
+
+     
             return result;
         }
 

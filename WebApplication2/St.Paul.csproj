@@ -397,6 +397,7 @@
     <Compile Include="Controllers\AddGalleryImagesController.cs" />
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\API\AccountManagerController.cs" />
+    <Compile Include="Controllers\API\AnnouncementsController.cs" />
     <Compile Include="Controllers\API\MobileLoginController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChurchBoardController.cs" />
@@ -1071,6 +1072,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Gallery\" />
+    <Folder Include="Views\Announcements\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
