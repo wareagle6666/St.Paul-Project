@@ -30,12 +30,12 @@ namespace WebApplication2.Models
             var result = _dataProvider.CreateUserProfile( userId,  FirstName,  LastName,  PhoneNumber);
             return result;
         }
-        //public Users GetUserByUsername(string Username)
-        //{
+        public Users GetUserByUsername(string Username)
+        {
 
-        //    var list = _dataProvider.GetUserByUsername(Username);
-        //    return list;
-        //}
+            var list = _dataProvider.GetUserByUsername(Username);
+            return list;
+        }
         public Guid Id { get; set; }
         public Guid userID { get; set; }
         public Guid eventID { get; set; }

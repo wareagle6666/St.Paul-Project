@@ -763,6 +763,13 @@ namespace WebApplication2.Models
                 return new int();
             }
         }
+
+        /// <summary>
+        /// Conf Section
+        /// 
+        /// </summary>
+        /// <param name="Priest"></param>
+        /// <returns></returns>
         public List<ConfSlot> GetConfSlotbyPriest(string Priest)
         {
             var list = ExecuteSpWithDapper<ConfSlot>("GetPriestConfSlot", new
@@ -828,7 +835,14 @@ namespace WebApplication2.Models
             });
             return list;
         }
-
+        public Users GetUserByUsername(string Username)
+        {
+            var result = ExecuteScalarSpWithDapper<Users>("GetUserByUsername", new
+            {
+                Username
+            });
+            return result;
+        }
     }
 
 

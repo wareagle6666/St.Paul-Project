@@ -26,11 +26,11 @@ namespace WebApplication2.Models
         public DateTime ToDate { get; set; }
         public DateTime DateTimeStamp { get; set; }
 
-        //public bool insertConfBooking(ConfBooking booking)
-        //{
-        //    var result = _dataProvider.insertConfBooking(booking);
-        //    return Convert.ToBoolean(result);
-        //}
+        public bool insertConfBooking(ConfBooking booking)
+        {
+            var result = _dataProvider.insertConfBooking(booking);
+            return Convert.ToBoolean(result);
+        }
 
     }
 }
