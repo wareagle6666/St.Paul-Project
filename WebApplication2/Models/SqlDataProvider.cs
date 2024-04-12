@@ -763,7 +763,71 @@ namespace WebApplication2.Models
                 return new int();
             }
         }
-
+        public List<ConfSlot> GetConfSlotbyPriest(string Priest)
+        {
+            var list = ExecuteSpWithDapper<ConfSlot>("GetPriestConfSlot", new
+            {
+                Priest
+            }).ToList().OrderBy(x => DateTime.Parse(x.Date + " " + x.fromDate)).ToList();
+            return list;
+        }
+        public List<ConfSlot> GetAllConfSlot()
+        {
+            var list = ExecuteSpWithDapper<ConfSlot>("GetAllConfSlot").ToList();
+            return list;
+        }
+        public int InserConfSlots(ConfSlot slot)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("InsertIntoConfSlot", new
+            {
+                slot.Priest,
+                slot.Date,
+                slot.fromDate,
+                slot.toDate
+            });
+            return result;
+        }
+        public int DeleteConfSlot(int ID)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("DeleteConfSlot", new
+            {
+                ID
+            });
+            return result;
+        }
+        public int UpdateConfSlot(int ID)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("UpdateConfSlot", new
+            {
+                ID
+            });
+            return result;
+        }
+        public int insertConfBooking(ConfBooking booking)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("InsertConfBooking", new
+            {
+                booking.SlotID,
+                booking.Fname,
+                booking.LFname,
+                booking.Title,
+                booking.Email,
+                booking.Phone,
+                booking.Message,
+                booking.Priest,
+                booking.FromDate,
+                booking.ToDate
+            });
+            return result;
+        }
+        public ConfSlot GetConfSlotbyID(int ID)
+        {
+            var list = ExecuteScalarSpWithDapper<ConfSlot>("GetConfSlotbyID", new
+            {
+                ID
+            });
+            return list;
+        }
 
     }
 

@@ -76,7 +76,48 @@ namespace WebApplication2
                     using (SmtpClient smtp = new SmtpClient())
                     {
                         smtp.UseDefaultCredentials = false;
-                        smtp.Credentials = new NetworkCredential("st.paulchurch@stpaulatlanta.org", "jelkknhgslegwcey");
+                        smtp.Credentials = new NetworkCredential("st.paulchurch@stpaulatlanta.org", "qdlc kzjb nopj lywy");
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.Port = 587;
+                        smtp.Timeout = 400000;
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
+                }
+                return Task.FromResult(0);
+            }
+            catch (Exception e)
+            {
+                ErrorSignal.FromCurrentContext().Raise(e);
+                return Task.FromResult(1);
+            }
+        }
+        public Task ConfEmails(EmailMessageModel message)
+        {
+            try
+            {
+                List<string> optionList = new List<string>
+            { "AdditionalCardPersonAdressType", /* rest of elements */ };
+
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress("st.paulchurch@stpaulatlanta.org", "St.Paul Coptic Orthodox Church");
+                    mail.To.Add(message.Destination);
+                    if(message.sentToo.Count != 0)
+                    {
+                        foreach(var email in message.sentToo)
+                        {
+                            mail.To.Add(email);
+                        }
+                    }
+                    mail.Subject = message.Subject;
+                    mail.Body = message.Body;
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient())
+                    {
+                        smtp.UseDefaultCredentials = false;
+                        smtp.Credentials = new NetworkCredential("st.paulchurch@stpaulatlanta.org", "qdlc kzjb nopj lywy");
                         smtp.Host = "smtp.gmail.com";
                         smtp.Port = 587;
                         smtp.Timeout = 400000;
