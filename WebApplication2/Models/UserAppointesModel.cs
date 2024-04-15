@@ -9,8 +9,8 @@ namespace WebApplication2.Models
     {
         public int ID { get; set; }
         public string Title { get; set; } = string.Empty;
-        public DateTime FromDate { get; set; }
-        public DateTime ToDate { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
 
     }
 }
