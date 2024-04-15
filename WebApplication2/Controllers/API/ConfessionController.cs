@@ -7,111 +7,23 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
-using System.Web;
+using System.Threading.Tasks;
+using System.Web.Http;
 using System.Web.Mvc;
 using WebApplication2.Models;
+using System.Web.Helpers;
 
-namespace WebApplication2.Controllers
+namespace WebApplication2.Controllers.API
 {
-    [Authorize]
-    public class BookConfController : Controller
+    public class ConfessionController : ApiController
     {
         private EmailService emailService = new EmailService();
-        // GET: BookConf
-        public ActionResult Index()
-        {
-            var confList = new ConfSlot();
-            var ConfList = confList.GetConfSlotbyPriest();
-            return View(ConfList);
-        }
-        public ActionResult AdminBooking()
-        {
-            var confList = new ConfSlot();
-            var ConfList = confList.GetConfSlotbyPriest();
-            return View(ConfList);
-        }
-        // GET: BookConf/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: BookConf/Create
-        public ActionResult Create()
+        public async Task<string> BookAnAppointment(int ConfID, string Email, string Message)
         {
 
-            return View();
-        }
-
-        //public ActionResult FrEleia()
-        //{
-        //    var confList = new ConfSlot();
-        //    var ConfList = confList.GetConfSlotbyPriest("freleia@gmail.com");
-        //    return View(ConfList);
-        //}
-        //public ActionResult FrEleia2()
-        //{
-        //    var confList = new ConfSlot();
-        //    var ConfList = confList.GetConfSlotbyPriest("freleia@gmail.com");
-        //    return View(ConfList);
-        //}
-
-
-        public ActionResult Book(int ID)
-        {
-            var user = new Users();
-            var currentUser = user.GetUserByUsername(User.Identity.Name);
-            var confList = new ConfSlot();
-            var SlotDetail = confList.GetConfSlotbyID(ID);
-            ViewBag.Priest = "Fr.Steven";
-
-            ViewBag.Date = SlotDetail.Date;
-            ViewBag.From = SlotDetail.fromDate;
-            ViewBag.To = SlotDetail.toDate;
-            ViewBag.ID = ID;
-            ViewBag.Email = currentUser.Email;
-            ViewBag.FirstName = currentUser.FirstName;
-            ViewBag.LastName = currentUser.LastName;
-            ViewBag.PhoneNumber = currentUser.PhoneNumber;
-
-            return View();
-
-        }
-        public ActionResult BookForUser(int ID)
-        {
-
-            var confList = new ConfSlot();
-            var SlotDetail = confList.GetConfSlotbyID(ID);
-            ViewBag.Priest = "Fr.Steven";
-
-            ViewBag.Date = SlotDetail.Date;
-            ViewBag.From = SlotDetail.fromDate;
-            ViewBag.To = SlotDetail.toDate;
-            ViewBag.ID = ID;
-
-
-
-            return View();
-
-        }
-        //public ActionResult FrElisha()
-        //{
-        //    var confList = new ConfSlot();
-        //    var ConfList = confList.GetConfSlotbyPriest("FrElishaSoliman@gmail.com");
-        //    return View(ConfList);
-        //}
-        //public ActionResult FrElisha2()
-        //{
-        //    var confList = new ConfSlot();
-        //    var ConfList = confList.GetConfSlotbyPriest("FrElishaSoliman@gmail.com");
-        //    return View(ConfList);
-        //}
-        // POST: BookConf/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            var ConfID = Convert.ToInt32(Request["ID"]);
             var confList = new ConfSlot();
             var SlotDetail = confList.GetConfSlotbyID(ConfID);
             var booking = new ConfBooking();
@@ -119,18 +31,22 @@ namespace WebApplication2.Controllers
             var UserEmailModel = new EmailMessageModel();
             var PriestEmailModel = new EmailMessageModel();
 
+            var currentUser = user.GetUserByUsername(Email);
+
+
+
             var fromDate = SlotDetail.Date + " " + SlotDetail.fromDate;
             var toDate = SlotDetail.Date + " " + SlotDetail.toDate;
 
-            booking.Title = Request["fname"] + " " + Request["lname"] + " : " + DateTime.Parse(SlotDetail.Date).DayOfWeek.ToString() + " " + SlotDetail.Date + " between " + SlotDetail.fromDate + " - " + SlotDetail.toDate;
+            booking.Title = currentUser.FirstName + " " + currentUser.LastName + " : " + DateTime.Parse(SlotDetail.Date).DayOfWeek.ToString() + " " + SlotDetail.Date + " between " + SlotDetail.fromDate + " - " + SlotDetail.toDate;
             booking.FromDate = Convert.ToDateTime(fromDate);
             booking.ToDate = Convert.ToDateTime(toDate);
 
-            booking.Fname = Request["fname"];
-            booking.LFname = Request["lname"];
-            booking.Email = Request["email"];
-            booking.Phone = Request["number"];
-            booking.Message = Request["message"];
+            booking.Fname = currentUser.FirstName;
+            booking.LFname = currentUser.LastName;
+            booking.Email = currentUser.Email;
+            booking.Phone = currentUser.PhoneNumber;
+            booking.Message = Message;
             booking.SlotID = ConfID;
             booking.Priest = SlotDetail.Priest;
 
@@ -164,8 +80,8 @@ namespace WebApplication2.Controllers
                         var UserEmail = emailService.ConfEmails(UserEmailModel);
 
 
-                        var Priest =  "Fr.Stevens";
-               
+                        var Priest = "Fr.Stevens";
+
 
                         var AlertTitle = DateTime.Parse(SlotDetail.Date).DayOfWeek.ToString() + " " + SlotDetail.Date + " between " + SlotDetail.fromDate + " - " + SlotDetail.toDate;
                         StringBuilder BookingDetail = new StringBuilder();
@@ -174,7 +90,7 @@ namespace WebApplication2.Controllers
                         BookingDetail.AppendLine("Phone: " + booking.Phone);
                         BookingDetail.AppendLine("Message: " + booking.Message);
 
-                        var prestMessage = "Name: " + booking.Fname + " " + booking.Fname + "<br>" + "Email: " + booking.Email + "<br>" + "Phone: " + booking.Phone + "<br>" +"Message: " + booking.Message;
+                        var prestMessage = "Name: " + booking.Fname + " " + booking.Fname + "<br>" + "Email: " + booking.Email + "<br>" + "Phone: " + booking.Phone + "<br>" + "Message: " + booking.Message;
 
 
                         PriestEmailModel.Body = $@"Hi " + Priest + $@"<br><br><div>Appointment was booked for " + AlertTitle + " . <br><br>" + prestMessage;
@@ -190,23 +106,41 @@ namespace WebApplication2.Controllers
                         throw new Exception("booking failed");
                     }
                     //send email
-                    return RedirectToAction("Index");
+                    return "Success";
                 }
                 else
                 {
-                    ViewBag.ErrorMessage = "We couldn't finish the approval. Please conact admin";
-                    return RedirectToAction("Index");
+          
+                    return "Failed";
                 }
             }
             catch (Exception e)
             {
-                ViewBag.ErrorMessage = e.Message;
                 ErrorSignal.FromCurrentContext().Raise(e);
-                return View();
+                return "Failed";
             }
 
         }
-        public bool GoogleEventCreate(ConfBooking Details, string client_email, string private_key, string calendarId)
+
+
+
+        public async Task<List<ConfSlot>> GetBookingTimes()
+        {
+            var confList = new ConfSlot();
+            var ConfList = confList.GetConfSlotbyPriest();
+            return ConfList;
+        }
+
+        public async Task<List<UserAppointesModel>> GetUserCurrentAppointments(string email)
+        {
+            var _dataprovider = new SqlDataProvider();
+
+            var result = _dataprovider.GetUserAppointes(email);
+            return result;
+        }
+
+
+        private bool GoogleEventCreate(ConfBooking Details, string client_email, string private_key, string calendarId)
         {
             dynamic mymodel = new ExpandoObject();
 

@@ -65,76 +65,84 @@ namespace WebApplication2.Controllers.API
         }
 
 
-        public async Task<string> SendNotification(string Title, string Message)
+        public async Task<string> SendNotification(string Title, string Message, string PrivateToken)
         {
-            var _dataprovider = new SqlDataProvider();
-
-            var result = _dataprovider.SaveNotification(Message, Title, "", "", "");
-            var NoticiationCount = _dataprovider.GetAllNotifications().Count + 1;
-            if (result == 1)
+            if(PrivateToken == "gY3oKpRB1KsqpMskBfrWHjjrzTbSRxXbjhfZBWOECftDrt7Z9g78mP5MlvWJC0Xe")
             {
-                try
+                var _dataprovider = new SqlDataProvider();
+
+                var result = _dataprovider.SaveNotification(Message, Title, "", "", "");
+                var NoticiationCount = _dataprovider.GetAllNotifications().Count + 1;
+                if (result == 1)
                 {
-                    var listofTokens = _dataprovider.GetAllMobileTokens();
-
-                    foreach (var mobileToken in listofTokens)
+                    try
                     {
-                        var request = new NotificationRequest()
+                        var listofTokens = _dataprovider.GetAllMobileTokens();
+
+                        foreach (var mobileToken in listofTokens)
                         {
-                            to = mobileToken.Token,
-                            notification = new Notification()
+                            var request = new NotificationRequest()
                             {
-                                body = Message,
-                                title = Title,
-                                click_action = "HANDLE_BREAKING_NEWS",
-                                sound = "default",
-                                badge = 1 
-                            } ,
-                            priority = "High",
-                            data = new NotificationData()
+                                to = mobileToken.Token,
+                                notification = new Notification()
+                                {
+                                    body = Message,
+                                    title = Title,
+                                    click_action = "HANDLE_BREAKING_NEWS",
+                                    sound = "default",
+                                    badge = 1
+                                },
+                                priority = "High",
+                                data = new NotificationData()
+                                {
+                                    story_id = new Guid().ToString()
+                                }
+                            };
+
+                            string jsonString = JsonConvert.SerializeObject(request);
+
+                            var _http = new HttpClient
                             {
-                                story_id = new Guid().ToString()
+                                BaseAddress = new Uri("https://fcm.googleapis.com/fcm/send")
+                            };
+
+                            var httprequest = new HttpRequestMessage(HttpMethod.Post, "https://fcm.googleapis.com/fcm/send")
+                            {
+                                Content = new StringContent(jsonString, Encoding.UTF8, "application/json")
+                            };
+
+                            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "AAAAmt0eW0c:APA91bFPuS_8a80Wks7E7jqHpmtcTd1e9ZppKfK0h6f6o-d_o3gi8uMs8QXLmObJSEFD8Q5lsLmmVr91TR_6oNMD9w7cXq19YZ_4_Ow6SZhFl2sQc1lXNdQ8Q9KIyJr5_vQ0HOEvCGYq");
+
+                            var httpresult = await _http.SendAsync(httprequest);
+                            if (httpresult.StatusCode != HttpStatusCode.OK)
+                            {
+                                throw new Exception("Mobile Failed to get notification: " + mobileToken.Token);
                             }
-                        };
 
-                        string jsonString = JsonConvert.SerializeObject(request);
-
-                        var _http = new HttpClient
-                        {
-                            BaseAddress = new Uri("https://fcm.googleapis.com/fcm/send")
-                        };
-
-                        var httprequest = new HttpRequestMessage(HttpMethod.Post, "https://fcm.googleapis.com/fcm/send")
-                        {
-                            Content = new StringContent(jsonString, Encoding.UTF8, "application/json")
-                        };
-
-                        _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "AAAAmt0eW0c:APA91bFPuS_8a80Wks7E7jqHpmtcTd1e9ZppKfK0h6f6o-d_o3gi8uMs8QXLmObJSEFD8Q5lsLmmVr91TR_6oNMD9w7cXq19YZ_4_Ow6SZhFl2sQc1lXNdQ8Q9KIyJr5_vQ0HOEvCGYq");
-
-                        var httpresult = await _http.SendAsync(httprequest);
-                        if (httpresult.StatusCode != HttpStatusCode.OK)
-                        {
-                            throw new Exception("Mobile Failed to get notification: " + mobileToken.Token);
                         }
-                        
+
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        var issue = e;
+                        ErrorSignal.FromCurrentContext().Raise(e);
                     }
 
 
-
+                    return "Success";
                 }
-                catch (Exception e)
+                else
                 {
-                    var issue = e;
-                    ErrorSignal.FromCurrentContext().Raise(e);
+                    return "Failed";
                 }
-
-
-                return "Success";
             }
             else
             {
                 return "Failed";
             }
+
         }
 
         public async Task<List<NotificationsModel>> GetAllNotifications()

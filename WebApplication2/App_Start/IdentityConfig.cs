@@ -102,7 +102,7 @@ namespace WebApplication2
                 using (MailMessage mail = new MailMessage())
                 {
                     mail.From = new MailAddress("st.paulchurch@stpaulatlanta.org", "St.Paul Coptic Orthodox Church");
-                    mail.To.Add(message.Destination);
+                   
                     if(message.sentToo.Count != 0)
                     {
                         foreach(var email in message.sentToo)

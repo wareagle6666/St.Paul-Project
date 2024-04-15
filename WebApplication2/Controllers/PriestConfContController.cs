@@ -7,13 +7,14 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
+    [Authorize]
     public class PriestConfContController : Controller
     {
         // GET: PriestConfCont
         public ActionResult Index()
         {
             var confList = new ConfSlot();
-            var ConfList = confList.GetConfSlotbyPriest(User.Identity.Name);
+            var ConfList = confList.GetConfSlotbyPriest();
             return View(ConfList);
         }
 
@@ -30,7 +31,7 @@ namespace WebApplication2.Controllers
             try
             {
 
-                var CurrentUser = User.Identity.Name;
+                var CurrentUser = "fr.stevensaintpaul@gmail.com";
                 // TODO: Add insert logic here
                 List<string> fullnames = new List<string>();
                 foreach (var item in collection.AllKeys)

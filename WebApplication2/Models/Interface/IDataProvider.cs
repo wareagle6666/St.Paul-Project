@@ -17,7 +17,7 @@ namespace WebApplication2.Models.Interface
         List<NotificationsModel> GetAllNotifications();
         int SaveNotification(string Description, string Title, string Subtitle, string UserId, string Token);
         int DeleteUserAccount(string UserId);
-        List<ConfSlot> GetConfSlotbyPriest(string Priest);
+        List<ConfSlot> GetConfSlotbyPriest();
         List<ConfSlot> GetAllConfSlot();
         int InserConfSlots(ConfSlot slot);
         int DeleteConfSlot(int ID);
@@ -25,5 +25,7 @@ namespace WebApplication2.Models.Interface
         int insertConfBooking(ConfBooking booking);
         ConfSlot GetConfSlotbyID(int ID);
         Users GetUserByUsername(string Username);
+        int AddUserRole(string UserID, int RoleId);
+        List<UserAppointesModel> GetUserAppointes(string Email);
     }
 }

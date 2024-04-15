@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Booking Form";
+}
+
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg" style="background-color:aquamarine;"></div>
+    <!-- /.page-header__bg -->
+    <div class="container">
+        <h2>Booking Form</h2>
+        <ul class="thm-breadcrumb list-unstyled">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="color-thm-gray">/</li>
+            <li><span>Booking Form</span></li>
+        </ul>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Events Details Start-->
+<section class="event-details">
+    <div class="container">
+
+        @using (Html.BeginForm("Create", "BookConf", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "validateForm(event)" }))
+        {
+            <section class="contact-form-area">
+            
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12">
+
+                            <h3>Appointment Booking with @ViewBag.Priest on @ViewBag.Date between @ViewBag.From - @ViewBag.To  </h3>
+
+                            <form id="contact-form" action="~/Van/Create" method="post">
+                                <div class="conact-form-item">
+                                    <div class="row">
+
+                                        <input type="hidden" value="@ViewBag.LastName" name="lname" id="lastname">
+                                        <input type="hidden" value="@ViewBag.FirstName" name="fname" id="firstname">
+                                        <input type="hidden" value="@ViewBag.Email" name="email" id="email">
+                                        <input type="hidden" value="@ViewBag.PhoneNumber" name="number" id="phone">
+                                        <input type="hidden" id="ID" name="ID" value="@ViewBag.ID" />
+
+                                        <div class="col-lg-12">
+                                            <div class="input-box mt-20">
+                                                <textarea cols="30" rows="10" placeholder="Write Message" name="message" id="message"></textarea>
+                                            </div>
+                                            <div class="input-box mt-20 text-center">
+                                                <button class="siteButtons" type="submit">Book</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+          
+            </section>
+        }
+
+
+    </div>
+</section>
+<!--Events Details End-->
+<script>
+
+
+
+
+    function validateForm(event) {
+
+        event = event || window.event || event.srcElement;
+
+
+
+        if (event.target.length > 0) {
+            if (event.target[0].value == "" || event.target[0].value == undefined) {
+                alert('Please fill in your First Name');
+
+                event.preventDefault();
+                return false;
+            }
+            if (event.target[1].value == "" || event.target[1].value == undefined) {
+                alert('Please fill in your Last Name');
+
+                event.preventDefault();
+                return false;
+            }
+            if (event.target[2].value == "" || event.target[2].value == undefined) {
+                alert('Please fill in your Email');
+
+                event.preventDefault();
+                return false;
+            }
+            if (event.target[3].value == "" || event.target[3].value == undefined) {
+                alert('Please fill in your Phone Number');
+
+                event.preventDefault();
+                return false;
+            }
+
+        }
+        else {
+            $('#MonoErrorMessage').hide();
+        }
+    }
+
+</script>
+

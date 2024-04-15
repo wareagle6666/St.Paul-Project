@@ -104,7 +104,7 @@ namespace WebApplication2.Controllers
                 return View(model);
             }
 
-           
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -193,24 +193,32 @@ namespace WebApplication2.Controllers
             var modelJson = JsonConvert.SerializeObject(model);
             if (ModelState.IsValid)
             {
-
+                var sqlAccess = new SqlDataProvider();
                 string EncodedResponse = Request.Form["g-Recaptcha-Response"];
                 bool IsCaptchaValid = (ReCaptchaClass.Validate(EncodedResponse) == "true" ? true : false);
                 if (IsCaptchaValid)
                 {
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName =model.LastName, PhoneNumber = model.PhoneNumber };
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
-                       //await new Users().UserCreationUpdate(user.Id, model.FirstName, model.LastName, model.PhoneNumber);
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                
 
 
                         ///INJECT HERE THE USER DETAILS AND INFORMATION 
+                        var NewUser = new Users();
+                        var currentUser = NewUser.GetUserByUsername(model.Email);
+
+                        var UpdateResult = sqlAccess.AddUserRole(currentUser.Id.ToString(), 5);
+
+                        if (UpdateResult != 1)
+                        {
+                            throw new Exception("can't add role for user error");
+                        }
 
 
-
-
+                        //await new Users().UserCreationUpdate(user.Id, model.FirstName, model.LastName, model.PhoneNumber);
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         //For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                         //Send an email with this link
                         string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -271,7 +279,7 @@ namespace WebApplication2.Controllers
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -426,8 +434,15 @@ namespace WebApplication2.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown, FirstName = model.FirstName, LastName = model.LastName, 
-                PhoneNumber = model.PhoneNumber};
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Hometown = model.Hometown,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

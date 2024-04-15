@@ -25,9 +25,9 @@ namespace WebApplication2.Models
         public DateTime BookedDate { get; set; }
         public DateTime DeleteDate { get; set; }
 
-        public List<ConfSlot> GetConfSlotbyPriest(string Priest)
+        public List<ConfSlot> GetConfSlotbyPriest()
         {
-            var list = _dataProvider.GetConfSlotbyPriest(Priest);
+            var list = _dataProvider.GetConfSlotbyPriest();
             return list;
         }
         public List<ConfSlot> GetAllConfSlot()

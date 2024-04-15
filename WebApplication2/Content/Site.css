@@ -1490,7 +1490,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
     .styled-table thead tr {
-        background-color: #151c3d;
+        background-color: #15c8a0;
         color: #ffffff;
         text-align: left;
     }
@@ -1501,7 +1501,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .styled-table tbody tr {
-        border-bottom: 1px solid #dddddd;
+        border-bottom: 1px solid #15c8a0;
     }
 
         .styled-table tbody tr:nth-of-type(even) {
@@ -1509,7 +1509,7 @@ h1, h2, h3, h4, h5, h6 {
         }
 
         .styled-table tbody tr:last-of-type {
-            border-bottom: 2px solid #151c3d;
+            border-bottom: 2px solid #15c8a0;
         }
 
         .styled-table tbody tr.active-row {
@@ -1674,4 +1674,18 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     padding-bottom: 200px;
     padding-top: 200px;
+}
+
+.siteButtons {
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: var(--thm-gray);
+    position: relative;
+    transition: all 500ms ease;
+    background: var(--thm-primary);
+    border: none;
+    padding: 10px;
+    margin: 10px;
 }

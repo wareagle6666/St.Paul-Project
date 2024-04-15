@@ -36,7 +36,7 @@ namespace WebApplication2.Models
             var list = _dataProvider.GetUserByUsername(Username);
             return list;
         }
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public Guid userID { get; set; }
         public Guid eventID { get; set; }
         public string FirstName { get; set; }

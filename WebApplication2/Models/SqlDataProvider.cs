@@ -770,12 +770,9 @@ namespace WebApplication2.Models
         /// </summary>
         /// <param name="Priest"></param>
         /// <returns></returns>
-        public List<ConfSlot> GetConfSlotbyPriest(string Priest)
+        public List<ConfSlot> GetConfSlotbyPriest()
         {
-            var list = ExecuteSpWithDapper<ConfSlot>("GetPriestConfSlot", new
-            {
-                Priest
-            }).ToList().OrderBy(x => DateTime.Parse(x.Date + " " + x.fromDate)).ToList();
+            var list = ExecuteSpWithDapper<ConfSlot>("GetPriestConfSlot").ToList().OrderBy(x => DateTime.Parse(x.Date + " " + x.fromDate)).ToList();
             return list;
         }
         public List<ConfSlot> GetAllConfSlot()
@@ -843,10 +840,26 @@ namespace WebApplication2.Models
             });
             return result;
         }
+
+        public int AddUserRole(string UserID , int RoleId)
+        {
+            var result = ExecuteScalarSpWithDapper<int>("AddUserRole", new
+            {
+                UserID,
+                RoleId
+            });
+            return result;
+        }
+
+        public List<UserAppointesModel> GetUserAppointes(string Email)
+        {
+            var list = ExecuteSpWithDapper<UserAppointesModel>("GetUserAppointments", new
+            {
+                Email
+            }).ToList();
+            return list;
+        }
+
     }
-
-
-
-
 
 }

@@ -399,6 +399,7 @@
     <Compile Include="Controllers\API\AccountManagerController.cs" />
     <Compile Include="Controllers\API\AnnouncementsController.cs" />
     <Compile Include="Controllers\API\MobileLoginController.cs" />
+    <Compile Include="Controllers\API\ConfessionController.cs" />
     <Compile Include="Controllers\BookConfController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChurchBoardController.cs" />
@@ -447,6 +448,7 @@
     <Compile Include="Models\AttendanceClass.cs" />
     <Compile Include="Models\Calendar.cs" />
     <Compile Include="Models\ConfBooking.cs" />
+    <Compile Include="Models\ConfModel.cs" />
     <Compile Include="Models\ConfSlot.cs" />
     <Compile Include="Models\Contacts.cs" />
     <Compile Include="Models\EmailMessageModel.cs" />
@@ -477,6 +479,7 @@
     <Compile Include="Models\SingleSqlCommandConnection.cs" />
     <Compile Include="Models\SqlDataProvider.cs" />
     <Compile Include="Models\SundaySchool.cs" />
+    <Compile Include="Models\UserAppointesModel.cs" />
     <Compile Include="Models\UserRoles.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\YouTubeResponse.cs" />
@@ -1074,13 +1077,17 @@
     <Content Include="Views\AddGalleryImages\CreateImageEvent.cshtml" />
     <Content Include="Views\MobileNotification\Index.cshtml" />
     <Content Include="Views\PrivacyPolicy\Index.cshtml" />
+    <Content Include="Views\PriestConfCont\Index.cshtml" />
+    <Content Include="Views\PriestConfCont\Create.cshtml" />
+    <Content Include="Views\BookConf\Index.cshtml" />
+    <Content Include="Views\BookConf\Book.cshtml" />
+    <Content Include="Views\BookConf\BookForUser.cshtml" />
+    <Content Include="Views\BookConf\AdminBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Gallery\" />
     <Folder Include="Views\Announcements\" />
-    <Folder Include="Views\BookConf\" />
-    <Folder Include="Views\PriestConfCont\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

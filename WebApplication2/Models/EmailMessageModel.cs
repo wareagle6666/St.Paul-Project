@@ -22,7 +22,7 @@ namespace WebApplication2.Models
         //     Message contents
         public  string Body { get; set; }
 
-        public List<string> sentToo { get; set; }
+        public List<string> sentToo { get; set; } = new List<string>();
 
 
     }
