@@ -417,7 +417,8 @@
     <Compile Include="Controllers\KidsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MinistriesController.cs" />
-    <Compile Include="Controllers\MobileNotificationController.cs" />
+    <Compile Include="Controllers\MobileNotificaionsController.cs" />
+    <Compile Include="Controllers\MyAppointmentController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\OurFaithController.cs" />
@@ -1075,7 +1076,6 @@
     <Content Include="Views\Hymns\Create.cshtml" />
     <Content Include="Views\AddGalleryImages\EditImageEvent.cshtml" />
     <Content Include="Views\AddGalleryImages\CreateImageEvent.cshtml" />
-    <Content Include="Views\MobileNotification\Index.cshtml" />
     <Content Include="Views\PrivacyPolicy\Index.cshtml" />
     <Content Include="Views\PriestConfCont\Index.cshtml" />
     <Content Include="Views\PriestConfCont\Create.cshtml" />
@@ -1083,6 +1083,8 @@
     <Content Include="Views\BookConf\Book.cshtml" />
     <Content Include="Views\BookConf\BookForUser.cshtml" />
     <Content Include="Views\BookConf\AdminBooking.cshtml" />
+    <Content Include="Views\MobileNotificaions\Index.cshtml" />
+    <Content Include="Views\MyAppointment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,6 +19,7 @@ namespace WebApplication2.Controllers
     {
         private EmailService emailService = new EmailService();
         // GET: BookConf
+   
         public ActionResult Index()
         {
             var confList = new ConfSlot();
@@ -44,18 +45,6 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        //public ActionResult FrEleia()
-        //{
-        //    var confList = new ConfSlot();
-        //    var ConfList = confList.GetConfSlotbyPriest("freleia@gmail.com");
-        //    return View(ConfList);
-        //}
-        //public ActionResult FrEleia2()
-        //{
-        //    var confList = new ConfSlot();
-        //    var ConfList = confList.GetConfSlotbyPriest("freleia@gmail.com");
-        //    return View(ConfList);
-        //}
 
 
         public ActionResult Book(int ID)
@@ -95,18 +84,7 @@ namespace WebApplication2.Controllers
             return View();
 
         }
-        //public ActionResult FrElisha()
-        //{
-        //    var confList = new ConfSlot();
-        //    var ConfList = confList.GetConfSlotbyPriest("FrElishaSoliman@gmail.com");
-        //    return View(ConfList);
-        //}
-        //public ActionResult FrElisha2()
-        //{
-        //    var confList = new ConfSlot();
-        //    var ConfList = confList.GetConfSlotbyPriest("FrElishaSoliman@gmail.com");
-        //    return View(ConfList);
-        //}
+
         // POST: BookConf/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -122,7 +100,7 @@ namespace WebApplication2.Controllers
             var fromDate = SlotDetail.Date + " " + SlotDetail.fromDate;
             var toDate = SlotDetail.Date + " " + SlotDetail.toDate;
 
-            booking.Title = Request["fname"] + " " + Request["lname"] + " : " + DateTime.Parse(SlotDetail.Date).DayOfWeek.ToString() + " " + SlotDetail.Date + " between " + SlotDetail.fromDate + " - " + SlotDetail.toDate;
+            booking.Title = Request["fname"] + " " + Request["lname"] + " : " + DateTime.Parse(SlotDetail.Date).DayOfWeek.ToString() + " " + SlotDetail.Date + " " + SlotDetail.fromDate + " - " + SlotDetail.toDate;
             booking.FromDate = Convert.ToDateTime(fromDate);
             booking.ToDate = Convert.ToDateTime(toDate);
 

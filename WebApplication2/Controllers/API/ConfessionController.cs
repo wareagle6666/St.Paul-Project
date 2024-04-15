@@ -38,7 +38,7 @@ namespace WebApplication2.Controllers.API
             var fromDate = SlotDetail.Date + " " + SlotDetail.fromDate;
             var toDate = SlotDetail.Date + " " + SlotDetail.toDate;
 
-            booking.Title = currentUser.FirstName + " " + currentUser.LastName + " : " + DateTime.Parse(SlotDetail.Date).DayOfWeek.ToString() + " " + SlotDetail.Date + " between " + SlotDetail.fromDate + " - " + SlotDetail.toDate;
+            booking.Title = currentUser.FirstName + " " + currentUser.LastName + " : " + DateTime.Parse(SlotDetail.Date).DayOfWeek.ToString() + " " + SlotDetail.Date + " " + SlotDetail.fromDate + " - " + SlotDetail.toDate;
             booking.FromDate = Convert.ToDateTime(fromDate);
             booking.ToDate = Convert.ToDateTime(toDate);
 
