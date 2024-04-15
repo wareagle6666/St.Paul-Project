@@ -99,8 +99,8 @@
                                                     }
                                                     @if (User.IsInRole("Priest") || User.IsInRole("Confession") || User.IsInRole("SuperAdmin"))
                                                     {
-
-                                                        <li>@Html.ActionLink("Manage Confession", "AdminBooking", "BookConf", new { area = "" }, null)</li>
+                                                        <li>@Html.ActionLink("Manage Confession Slots", "Index", "PriestConfCont", new { area = "" }, null)</li>
+                                                        <li>@Html.ActionLink("Manage Bookings Confession", "AdminBooking", "BookConf", new { area = "" }, null)</li>
                                                     }
                                                     @if (User.IsInRole("SuperAdmin"))
                                                     {
@@ -114,15 +114,15 @@
                                                         <li>@Html.ActionLink("News Config", "Admin", "News", new { area = "" }, null)</li>
                                                     }
                                                     @*@if (User.IsInRole("Schedular") || User.IsInRole("SuperAdmin"))
-                    {
+        {
 
-                        <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
-                    }*@
+            <li>@Html.ActionLink("Guest List", "Index", "EventsAdminPage", new { area = "" }, null)</li>
+        }*@
                                                     @*@if (User.IsInRole("ChurchList") || User.IsInRole("SuperAdmin"))
-                    {
+        {
 
-                        <li>@Html.ActionLink("Church List", "Index", "Contacts", new { area = "" }, null)</li>
-                    }*@
+            <li>@Html.ActionLink("Church List", "Index", "Contacts", new { area = "" }, null)</li>
+        }*@
                                                     @if (User.IsInRole("Servant") || User.IsInRole("SuperAdmin"))
                                                     {
                                                         <li>@Html.ActionLink("Sunday School Class", "Index", "Kids", new { area = "" }, null)</li>
