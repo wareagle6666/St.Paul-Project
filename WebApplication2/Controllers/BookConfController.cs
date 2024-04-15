@@ -93,7 +93,7 @@ namespace WebApplication2.Controllers
             var confList = new ConfSlot();
             var SlotDetail = confList.GetConfSlotbyID(ConfID);
             var booking = new ConfBooking();
-            var user = new Users();
+
             var UserEmailModel = new EmailMessageModel();
             var PriestEmailModel = new EmailMessageModel();
 
