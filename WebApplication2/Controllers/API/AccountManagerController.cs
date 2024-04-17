@@ -115,6 +115,7 @@ namespace WebApplication2.Controllers.API
         }
         public async Task<string> Register(RegisterViewModel model, string secret)
         {
+            var sqlAccess = new SqlDataProvider();
             var modelJson = JsonConvert.SerializeObject(model);
             if (secret == "STMOBILE")
             {
