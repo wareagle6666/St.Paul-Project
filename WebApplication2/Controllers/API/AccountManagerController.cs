@@ -126,6 +126,12 @@ namespace WebApplication2.Controllers.API
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+
+                    var NewUser = new Users();
+                    var currentUser = NewUser.GetUserByUsername(model.Email);
+
+                    var UpdateResult = sqlAccess.AddUserRole(currentUser.Id.ToString(), 5);
                     //await new Users().UserCreationUpdate(user.Id, model.FirstName, model.LastName, model.PhoneNumber);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
